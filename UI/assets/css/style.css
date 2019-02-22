@@ -32,8 +32,13 @@ a:hover {
 }
 
 .btn-primary {
-  background: #0facf3;
-  color: #fffffa;
+  background: #10a9f0;
+  color: #ffffff;
+}
+
+.btn-hollow {
+  color: #10a9f0;
+  border: 2px solid #10a9f0;
 }
 
 .container {
@@ -59,6 +64,14 @@ a:hover {
   margin: 10px;
   box-shadow: 0px 20px 50px rgba(0, 0, 0, 0.7);
   border-radius: 20px;
+}
+
+p a {
+  color: #10a9f0;
+}
+
+p a:hover {
+  font-weight: bold;
 }
 
 .img {
@@ -170,6 +183,10 @@ nav li {
   font-size: 17px;
   padding-left: 10px;
   border-radius: 5px;
+}
+
+#btn-holder {
+  margin-top: 48px;
 }
 
 /* footer */
