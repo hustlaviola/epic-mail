@@ -20,7 +20,7 @@ a {
 }
 
 a:hover {
-  color: #0b3763;
+  font-weight: bold;
 }
 
 .btn {
@@ -38,7 +38,7 @@ a:hover {
 
 .container {
   text-align: center;
-  width: 80%;
+  width: 90%;
   margin: auto;
   overflow: hidden;
 }
@@ -69,13 +69,10 @@ a:hover {
 
 header {
   color: #2871b9;
-  height: 100px;
   border-bottom: 2px solid #757575;
 }
 
 #logo {
-  margin-top: 10px;
-  margin-left: 60px;
   float: left;
 }
 
@@ -86,16 +83,18 @@ header {
 
 nav {
   float: right;
-  margin: 33px;
-  margin-right: 60px;
+}
+
+nav ul {
+  margin-top: 20px;
+}
+
+.current {
+	font-weight: bold;
 }
 
 header a {
   color: #2871b9;
-}
-
-nav a:hover {
-  font-weight: bold;
 }
 
 nav li {
@@ -158,10 +157,6 @@ footer {
 
 @media(max-width: 768px) {
 
-  header {
-    height: 150px;
-  }
-
   #logo,
   nav {
     float: none;
@@ -184,6 +179,11 @@ footer {
 
   nav ul {
     margin-top: 30px;
+  }
+
+  nav li {
+    margin: 15px;
+    display: block;
   }
 
   #info {
