@@ -252,6 +252,7 @@ textarea {
 .message-btn {
   padding: 5px 5px;
 }
+
 .message-btn .btn {
   height: 40px;
   font-size: 15px;
@@ -272,6 +273,11 @@ textarea {
   font-weight: normal;
   border: 1.8px solid #cfcfcf;
   border-bottom: 2.5px solid #cfcfcf;
+}
+
+
+.unread, .unread:hover {
+  font-weight: bold;
 }
 
 /* footer */
