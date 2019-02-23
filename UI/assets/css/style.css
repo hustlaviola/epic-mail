@@ -42,6 +42,16 @@ a:hover {
   color: #10a9f0;
 }
 
+.btn-danger {
+  background: #ee1935;
+  color: #ffffff;
+}
+
+.btn-danger:hover {
+  background: #ffffff;
+  color: #ee1935;
+}
+
 .btn-hollow {
   background: #ffffff;
   color: #10a9f0;
@@ -206,6 +216,64 @@ textarea {
   margin-top: 48px;
 }
 
+/* Messages */
+
+.messages {
+  background-color: #ebe9e9;
+  margin-top: 50px;
+  border-radius: 10px;
+  font-size: 20px;
+}
+
+.message-head {
+  padding: 30px 0;
+  border-bottom: 2px solid #cfcfcf;
+}
+
+.sender, .subject,
+.message-body {
+  padding: 12px 10px 0;
+  height: 50px;
+  overflow: hidden;
+}
+
+.sender {
+  width: 25%;
+}
+
+.subject {
+  width: 29%;
+}
+
+.message-body {
+  width: 46%;
+}
+
+.message-btn {
+  padding: 5px 5px;
+}
+.message-btn .btn {
+  height: 40px;
+  font-size: 15px;
+}
+
+.message-container {
+  font-size: 17px;
+  display: flex;
+  text-align: left;
+  border: 1px solid #cfcfcf;
+  border-bottom: 1.8px solid #cfcfcf;
+  color: #3b3b3b;
+  border-radius: 5px;
+}
+
+.message-container:hover {
+  font-size: 19px;
+  font-weight: normal;
+  border: 1.8px solid #cfcfcf;
+  border-bottom: 2.5px solid #cfcfcf;
+}
+
 /* footer */
 
 footer {
@@ -217,7 +285,7 @@ footer {
   color: #2871b9;
 }
 
-/* Media Queries*/
+/* Media Queries */
 
 @media(max-width: 768px) {
 
@@ -256,6 +324,26 @@ footer {
 
   .form-section {
     padding: 5%;
+  }
+
+  .message-container {
+    font-size: 15px;
+  }
+
+  .message-container:hover {
+    font-size: 17px;
+  }
+
+  .sender {
+    display: none;
+  }
+
+  .subject {
+    width: 100%;
+  }
+
+  .message-body {
+    display: none;
   }
 
   footer {
