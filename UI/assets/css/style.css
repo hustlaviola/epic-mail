@@ -37,6 +37,11 @@ a:hover {
   color: #ffffff;
 }
 
+.btn-primary:hover {
+  background: #ffffff;
+  color: #10a9f0;
+}
+
 .btn-hollow {
   background: #ffffff;
   color: #10a9f0;
