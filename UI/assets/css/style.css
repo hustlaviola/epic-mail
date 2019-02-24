@@ -302,6 +302,54 @@ textarea {
   margin-bottom: 30px;
 }
 
+/* Group */
+
+.group {
+  padding: 20px;
+  background: #e4f4fc;
+  margin: 50px 20%;
+  border: 1px solid #7bcef5;
+  border-radius: 10px;
+}
+
+.group h3 {
+  margin-top: 30px;
+  border-bottom: 1px solid #cdebf8;
+}
+
+.group h4 {
+  margin-top: 40px;
+  border-bottom: 1px solid #cdebf8;
+}
+
+.group-members {
+  margin-top: 20px;
+  font-style: italic;
+  line-height: 2;
+}
+
+.group button {
+  margin-top: 20px;
+  background: transparent;
+}
+
+#group-btn:hover {
+  font-weight: normal;
+  border: 1px solid #10a9f0;
+}
+
+select {
+  background: transparent;
+  width: 60%;
+  margin-top: 20px;
+  padding: 5px;
+  font-size: 18px;
+  line-height: 1;
+  border-color: #10a9f0;
+  border-radius: 5px;
+  height: 40px;
+}
+
 /* footer */
 
 footer {
@@ -350,6 +398,10 @@ footer {
     display: block;
   }
 
+  .form h2 {
+    font-size: 20px;
+  }
+
   .form-section {
     padding: 5%;
   }
@@ -372,6 +424,23 @@ footer {
 
   .message-body {
     display: none;
+  }
+
+  .group-members, .group button {
+    font-size: 18px;
+  }
+
+  select {
+    width: 70%;
+    font-size: 16px;
+  }
+
+  .group {
+    margin: 50px 5%;
+  }
+
+  #group-btn {
+    font-size: 17px;
   }
 
   footer {
