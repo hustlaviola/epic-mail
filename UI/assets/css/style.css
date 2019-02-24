@@ -223,6 +223,7 @@ textarea {
   margin-top: 50px;
   border-radius: 10px;
   font-size: 20px;
+  padding: 10px;
 }
 
 .message-head {
@@ -275,9 +276,30 @@ textarea {
   border-bottom: 2.5px solid #cfcfcf;
 }
 
+#thread {
+  text-align: left;
+  background: #fff;
+  line-height: 2;
+  margin: 40px;
+  padding: 40px;
+  font-size: 15px;
+}
+
+#thread span {
+  font-weight: bold;
+}
+
+#thread h4 {
+  font-size: 20px;
+}
 
 .unread, .unread:hover {
   font-weight: bold;
+}
+
+.mail {
+  border-bottom: 1.5px solid #cfcfcf;
+  margin-bottom: 30px;
 }
 
 /* footer */
