@@ -5,27 +5,26 @@
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>EPIC-mail | SignIn</title>
+  <title>EPIC-mail | Create Group</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="EPIC-mail helps people exchange messages/information over the internet">
   <meta name="keywords" content="EPIC, email, message">
   <meta name="author" content="Viola">
-  <link rel="stylesheet" href="./assets/css/style.css" />
-  <link rel="shortcut icon" href="./assets/img/icon.ico" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <link rel="shortcut icon" href="../assets/img/icon.ico" />
 </head>
 
 <body>
   <header>
     <div class="container">
       <div id="logo">
-        <a href="index.html">
+        <a href="../home.html">
           <h1>EPIC-mail</h1>
         </a>
       </div>
       <nav>
         <ul>
-          <li><a href="register.html">Sign Up</a></li>
-          <li><a href="login.html" class="current">Sign In</a></li>
+          <li><a href="../index.html">Sign Out</a></li>
         </ul>
       </nav>
     </div>
@@ -33,24 +32,18 @@
   <section class="form-section">
     <div class="container">
       <div class="form">
-        <h2>Sign In</h2>
+        <h2>Create new Group</h2>
         <form>
           <div class="form-holder">
-            <input type="email" placeholder="Email.." class="form-unit" autofocus required>
+            <input type="text" placeholder="Group name" class="form-unit" autofocus required>
           </div>
           <div class="form-holder">
-            <input type="password" placeholder="Password.." class="form-unit" required>
+            <textarea placeholder="Description" required></textarea>
           </div>
           <div class="form-holder">
-            <button type="submit" class="btn btn-primary">Sign In</button>
-          </div>
-          <div class="form-holder">
-            <p><a href="register.html">Don't have an account?<br>Sign Up</a></p>
+            <button type="submit" class="btn btn-hollow">Create</button>
           </div>
         </form>
-      </div>
-      <div id="btn-holder">
-        <p><a href="resetPassword.html" class="btn btn-hollow">Forgot Password</a></p>
       </div>
     </div>
   </section>
