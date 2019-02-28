@@ -14,9 +14,14 @@ body {
 
 /* Global */
 
+a,
+.btn {
+  font-size: 20px;
+  cursor: pointer;
+}
+
 a {
   text-decoration: none;
-  font-size: 20px;
 }
 
 a:hover {
@@ -26,7 +31,6 @@ a:hover {
 .btn {
   padding: 12px 24px;
   border-radius: 10px;
-  font-size: 20px;
   display: inline-block;
   min-width: 100px;
   text-align: center;
@@ -93,10 +97,6 @@ p a {
   color: #10a9f0;
 }
 
-p a:hover {
-  font-weight: bold;
-}
-
 .img {
   margin-top: 50px;
 }
@@ -126,7 +126,7 @@ nav ul {
 }
 
 .current {
-	font-weight: bold;
+  font-weight: bold;
 }
 
 header a {
@@ -179,136 +179,373 @@ nav li {
 }
 
 /* Form */
-.form {
-  background: #ebe9e9;
-  padding: 30px;
-  border: 1px solid #d4d0d0;
-  margin: 20px 0px;
-  border-radius: 10px;
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 5px 0px;
-}
-
-.form h2 {
-  margin: 20px 0 30px;
-}
 
 .form-section {
   padding: 5% 23%;
 }
 
-.form-holder {
-  margin-bottom: 15px;
+.form {
+  padding: 30px;
+  margin: 20px 0px;
+  border-radius: 10px;
+  background: #eeeeee;
 }
 
-.form-unit, textarea {
+.form h2 {
+  margin-bottom: 30px;
+}
+
+.form-unit,
+textarea {
   width: 100%;
-  height: 50px;
+  border: 0;
+  color: #4d4c4c;
+  border-bottom: 1px solid #cecece;
+  background: transparent;
   font-size: 17px;
   padding-left: 10px;
-  border-radius: 5px;
+}
+
+.form-unit {
+  height: 50px;
+}
+
+.form-holder .btn {
+  margin: 25px 10px 0;
+  padding: 5px;
 }
 
 textarea {
+  padding-top: 15px;
+  font-family: Arial, Helvetica, sans-serif;
   height: 200px;
 }
 
-#btn-holder {
-  margin-top: 48px;
+textarea:focus,
+input:focus {
+  outline: none;
 }
 
-/* Messages */
+/* Mailbox */
 
-.messages {
-  background-color: #ebe9e9;
-  margin-top: 50px;
-  border-radius: 10px;
-  font-size: 20px;
-  padding: 10px;
-}
-
-.message-head {
-  padding: 30px 0;
-  border-bottom: 2px solid #cfcfcf;
-}
-
-.sender, .subject,
-.message-body {
-  padding: 12px 10px 0;
-  height: 50px;
-  overflow: hidden;
-}
-
-.sender {
-  width: 25%;
-}
-
-.subject {
-  width: 29%;
-}
-
-.message-body {
-  width: 46%;
-}
-
-.message-btn {
-  padding: 5px 5px;
-}
-
-.message-btn .btn {
-  height: 40px;
-  font-size: 15px;
-}
-
-.message-container {
-  font-size: 17px;
+.mail-box {
   display: flex;
-  text-align: left;
-  border: 1px solid #cfcfcf;
-  border-bottom: 1.8px solid #cfcfcf;
-  color: #3b3b3b;
-  border-radius: 5px;
 }
 
-.message-container:hover {
-  font-size: 19px;
+/* sidepanel */
+.side-panel {
+  height: 350px;
+  width: 0;
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  padding-top: 60px;
+  background-color: #f5f5f5;
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.side-panel a {
+  padding: 0 20px 10px;
+  font-size: 20px;
+  color: #585858;
+  display: block;
+}
+
+.side-panel a:hover {
+  color: #3d3d3d;
+}
+
+.side-panel .close-btn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.open-btn {
+  display: none;
+  font-size: 40px;
+  background-color: transparent;
+  color: #4d4c4c;
+  border: none;
+}
+
+.open-btn:hover {
+  font-weight: 900;
+}
+
+/* Side Nav */
+
+.side-nav {
+  padding-top: 20px;
+  width: 400px;
+}
+
+aside .btn {
+  width: 100%;
+  text-align: left;
+  padding: 5px;
+  padding-left: 25px;
+  border: 0;
+  height: 40px;
+}
+
+aside .btn:hover {
+  background: #f3f3f3;
+  color: #3b3b3b;
+}
+
+.profile-pic {
+  text-align: center;
+}
+
+aside ul {
+  list-style-type: none;
+}
+
+.aside a {
+  color: #3b3b3b;
+}
+
+.aside a:hover {
   font-weight: normal;
-  border: 1.8px solid #cfcfcf;
+}
+
+.pl {
+  padding-left: 7px;
+}
+
+/* Mail */
+
+.compose-section,
+.table-section,
+.group-section,
+.thread-section {
+  display: table;
+  border-collapse: collapse;
+  width: 100%;
+  padding: 70px 5px 10px;
+  border-radius: 10px;
+  background: #fafafa;
+}
+
+.table-section {
+  display: table;
+}
+
+.check-box {
+  -webkit-appearance: none;
+  background-color: transparent;
+  border: 1px solid #cacece;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0 -15px 10px -12px rgba(0, 0, 0, 0.05);
+  padding: 9px;
+  border-radius: 3px;
+  display: inline-block;
+  position: relative;
+}
+
+.check-box:hover {
+  border: 1px solid #9a9c9c;
+}
+
+.check-box:active,
+.check-box:checked:active {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.check-box:checked {
+  background-color: #e9ecee;
+  border: 1px solid #adb8c0;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0 -15px 10px -12px rgba(0, 0, 0, 0.05),
+    inset 15px 10px -12px rgba(255, 255, 255, 0.1);
+  color: #9da3a8;
+}
+
+.check-box:checked:after {
+  content: '\2714';
+  font-size: 14px;
+  position: absolute;
+  top: 0px;
+  left: 3px;
+  color: #9da3a8;
+}
+
+.table-row {
+  display: table-row;
+  font-size: 17px;
+  color: #4d4c4c;
+  border-bottom: 1px solid #cfcfcf;
+}
+
+.table-row:hover {
+  font-weight: inherit;
+}
+
+.table-cell {
+  display: table-cell;
+  padding: 5px;
+}
+
+.table-row:hover {
   border-bottom: 2.5px solid #cfcfcf;
 }
 
-#thread {
-  text-align: left;
-  background: #fff;
-  line-height: 2;
-  margin: 40px;
-  padding: 40px;
+.table-btn {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.check {
+  width: 2%;
+}
+
+.mail-name {
+  width: 23%;
+}
+
+.mail-body {
+  width: 75%;
+  cursor: pointer;
+}
+
+.table-cell .btn {
+  padding: 5px;
   font-size: 15px;
 }
 
-#thread span {
-  font-weight: bold;
+.mail-subject {
+  color: #000000;
 }
 
-#thread h4 {
-  font-size: 20px;
+#inbox {
+  display: block;
 }
 
-.unread, .unread:hover {
-  font-weight: bold;
+#sent {
+  display: none;
+}
+
+#thread {
+  display: none;
+}
+
+#draft {
+  display: none;
+}
+
+#compose {
+  display: none;
+}
+
+#group {
+  display: none;
+}
+
+#group-chat {
+  display: none;
+}
+
+#draft .mail-name {
+  width: 8%;
 }
 
 .mail {
+  line-height: 2;
+  padding: 20px;
+  font-size: 15px;
   border-bottom: 1.5px solid #cfcfcf;
-  margin-bottom: 30px;
+}
+
+.right,
+.left {
+  font-size: 17px;
+  width: 90%;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.chat-form {
+  text-align: center;
+}
+
+#chat-input {
+  border: 0;
+  margin: 10px;
+  border-radius: 10px;
+  padding: 17px;
+  color: #4d4c4c;
+  font-size: 17px;
+  width: 85%;
+  border: 0;
+  background: #e6e6e6;
+}
+
+.chat-details {
+  display: inline;
+  text-align: center;
+}
+
+.chat-author {
+  font-weight: bold;
+  float: left;
+}
+
+.chat-date {
+  font-style: italic;
+  font-weight: 100;
+  float: right;
+}
+
+.right {
+  float: right;
+  background: #d3ebf7;
+}
+
+.left {
+  float: left;
+  background: #bcd7e4;
+}
+
+.thread-body {
+  padding-left: 8px;
+}
+
+.thread-section span {
+  font-weight: bold;
+}
+
+.thread-section h4 {
+  font-size: 20px;
+}
+
+#div-btn {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.unread,
+.unread:hover {
+  font-weight: bold;
+}
+
+/* Admin */
+
+#add-users {
+  display: block;
+}
+
+#create-group {
+  display: none;
 }
 
 /* Group */
 
 .group {
   padding: 20px;
-  background: #e4f4fc;
   margin: 50px 20%;
-  border: 1px solid #7bcef5;
   border-radius: 10px;
 }
 
@@ -328,24 +565,23 @@ textarea {
   line-height: 2;
 }
 
-.group button {
-  margin-top: 20px;
-  background: transparent;
+.group-form {
+  margin: 50px 20%;
 }
 
 #group-btn:hover {
   font-weight: normal;
-  border: 1px solid #10a9f0;
 }
 
 select {
   background: transparent;
   width: 60%;
   margin-top: 20px;
+  margin-bottom: 20px;
   padding: 5px;
   font-size: 18px;
   line-height: 1;
-  border-color: #10a9f0;
+  border-color: #e6e6e6;
   border-radius: 5px;
   height: 40px;
 }
@@ -353,45 +589,106 @@ select {
 /* footer */
 
 footer {
+  position: relative;
+  bottom: 0;
+  width: 100%;
   margin-top: 30px;
   padding-top: 25px;
   text-align: center;
-  background: #d3d3d4;
+  background: transparent;
   height: 80px;
   color: #2871b9;
 }
 
 /* Media Queries */
 
-@media(max-width: 768px) {
+@media screen and (min-width: 568px) and (max-width: 768px) {
+  .form-section {
+    padding: 15%;
+  }
 
-  #logo,
-  nav {
-    float: none;
+  .profile-pic {
     text-align: center;
-    margin: 0;
-    padding: 0;
   }
 
-  #logo {
-    border-bottom: 2px solid #757575;
+  .aside ul {
+    margin-top: 50px;
   }
 
-  #logo h1 {
-    font-size: 40px;
+  .side-nav {
+    width: 250px;
   }
 
   a {
     font-size: 18px;
   }
 
+  .table-row,
+  select option {
+    font-size: 16px;
+  }
+
+  .aside a {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 568px) {
+
+  #logo {
+    margin-top: 20px;
+  }
+
+  #logo h1 {
+    font-size: 33px;
+  }
+
+  nav {
+    display: block;
+  }
+
+  a {
+    font-size: 16px;
+  }
+
+  .check-box {
+    padding: 6px;
+  }
+
+  .check-box:checked:after {
+    font-size: 10px;
+    left: 2.5px;
+    top: -1px;
+  }
+
+  .open-btn {
+    display: block;
+  }
+
   nav ul {
-    margin-top: 30px;
+    margin-bottom: 10px;
   }
 
   nav li {
-    margin: 15px;
     display: block;
+  }
+
+  .side-nav {
+    display: none
+  }
+
+  aside .btn {
+    padding-left: 10px;
+    text-align: left;
+  }
+
+  .table-row,
+  select option {
+    font-size: 14px;
+  }
+
+  .mail {
+    font-size: 13px;
   }
 
   #info {
@@ -406,27 +703,20 @@ footer {
     padding: 5%;
   }
 
-  .message-container {
-    font-size: 15px;
+  .form-unit {
+    height: 40px;
   }
 
-  .message-container:hover {
-    font-size: 17px;
+  textarea {
+    height: 160px;
   }
 
-  .sender {
-    display: none;
+  #compose .form-holder {
+    text-align: center;
   }
 
-  .subject {
-    width: 100%;
-  }
-
-  .message-body {
-    display: none;
-  }
-
-  .group-members, .group button {
+  .group-members,
+  .group button {
     font-size: 18px;
   }
 
