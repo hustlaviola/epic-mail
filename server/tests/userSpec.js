@@ -16,6 +16,7 @@ describe('/POST Signup route', () => {
         lastname: 'Violin',
         email: 'viola10@gmail.com',
         password: 'viola10',
+        confirmpassword: 'viola10',
         username: 'viola10',
         phonenumber: '07022334455',
       })
@@ -37,6 +38,7 @@ describe('/POST Signup route', () => {
         lastname: 'Violin',
         email: 'viola10@gmail.com',
         password: 'viola10',
+        confirmpassword: 'viola10',
         username: 'viola10',
         phonenumber: '07022334455',
       })
@@ -58,6 +60,7 @@ describe('/POST Signup route', () => {
         lastname: '',
         email: 'viola10@gmail.com',
         password: 'viola10',
+        confirmpassword: 'viola10',
         username: 'viola10',
         phonenumber: '07022334455',
       })
@@ -79,6 +82,7 @@ describe('/POST Signup route', () => {
         lastname: 'Violin33',
         email: 'viola10@gmail.com',
         password: 'viola10',
+        confirmpassword: 'viola10',
         username: 'viola10',
         phonenumber: '07022334455',
       })
@@ -100,6 +104,7 @@ describe('/POST Signup route', () => {
         lastname: 'Violin',
         email: '',
         password: 'viola10',
+        confirmpassword: 'viola10',
         username: 'viola10',
         phonenumber: '07022334455',
       })
@@ -121,6 +126,7 @@ describe('/POST Signup route', () => {
         lastname: 'Violin',
         email: 'viola10gmail.com',
         password: 'viola10',
+        confirmpassword: 'viola10',
         username: 'viola10',
         phonenumber: '07022334455',
       })
@@ -142,6 +148,7 @@ describe('/POST Signup route', () => {
         lastname: 'Violin',
         email: 'viola10@gmail.com',
         password: '',
+        confirmpassword: 'viola10',
         username: 'viola10',
         phonenumber: '07022334455',
       })
@@ -163,6 +170,7 @@ describe('/POST Signup route', () => {
         lastname: 'Violin',
         email: 'viola10@gmail.com',
         password: 'vio56',
+        confirmpassword: 'viola10',
         username: 'viola10',
         phonenumber: '07022334455',
       })
@@ -171,6 +179,50 @@ describe('/POST Signup route', () => {
         expect(res.body).to.be.an('object');
         expect(res.body).to.have.property('error')
           .eql('password must be at least 6 characters');
+        done(err);
+      });
+  });
+
+  it('should return an error if confirmpassword field is empty', (done) => {
+    chai
+      .request(app)
+      .post('/api/v1/auth/signup')
+      .send({
+        firstname: 'Viola',
+        lastname: 'Violin',
+        email: 'viola10@gmail.com',
+        password: 'viola10',
+        confirmpassword: '',
+        username: 'viola10',
+        phonenumber: '07022334455',
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+        expect(res.body).to.be.an('object');
+        expect(res.body).to.have.property('error')
+          .eql('confirm your password');
+        done(err);
+      });
+  });
+
+  it('should return an error if passwords does not match', (done) => {
+    chai
+      .request(app)
+      .post('/api/v1/auth/signup')
+      .send({
+        firstname: 'Viola',
+        lastname: 'Violin',
+        email: 'viola10@gmail.com',
+        password: 'viola10',
+        confirmpassword: 'viola11',
+        username: 'viola10',
+        phonenumber: '07022334455',
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+        expect(res.body).to.be.an('object');
+        expect(res.body).to.have.property('error')
+          .eql('password does not match');
         done(err);
       });
   });
@@ -184,6 +236,7 @@ describe('/POST Signup route', () => {
         lastname: 'Violin',
         email: 'viola10@gmail.com',
         password: 'viola10',
+        confirmpassword: 'viola10',
         username: '',
         phonenumber: '07022334455',
       })
@@ -205,6 +258,7 @@ describe('/POST Signup route', () => {
         lastname: 'Violin',
         email: 'viola10@gmail.com',
         password: 'viola10',
+        confirmpassword: 'viola10',
         username: 'o..la**10',
         phonenumber: '07022334455',
       })
@@ -212,7 +266,7 @@ describe('/POST Signup route', () => {
         expect(res).to.have.status(400);
         expect(res.body).to.be.an('object');
         expect(res.body).to.have.property('error')
-          .eql('username can only contain characters, digits and underscores between 3 and 30');
+          .eql('username can only contain chars, digits and underscores between 3 and 30');
         done(err);
       });
   });
@@ -226,6 +280,7 @@ describe('/POST Signup route', () => {
         lastname: 'Violin',
         email: 'viola10@gmail.com',
         password: 'viola10',
+        confirmpassword: 'viola10',
         username: 'viola10',
         phonenumber: '',
       })
@@ -247,6 +302,7 @@ describe('/POST Signup route', () => {
         lastname: 'Violin',
         email: 'viola10@gmail.com',
         password: 'viola10',
+        confirmpassword: 'viola10',
         username: 'viola10',
         phonenumber: '07022rt4455',
       })
@@ -268,13 +324,14 @@ describe('/POST Signup route', () => {
         lastname: 'Violin',
         email: 'viola10@gmail.com',
         password: 'viola10',
+        confirmpassword: 'viola10',
         username: 'viola10',
-        phonenumber: '07022334455',
+        phonenumber: '07033445566',
       })
       .end((err, res) => {
         expect(res).to.have.status(201);
         expect(res.body).to.be.an('object');
-        expect(res.body.data[0]).to.have.property('token');
+        expect(res.body.data).to.have.property('token');
         done(err);
       });
   });
@@ -288,6 +345,7 @@ describe('/POST Signup route', () => {
         lastname: 'Violin',
         email: 'viola10@gmail.com',
         password: 'viola10',
+        confirmpassword: 'viola10',
         username: 'viola11',
         phonenumber: '07122334455',
       })
@@ -309,6 +367,7 @@ describe('/POST Signup route', () => {
         lastname: 'Violin',
         email: 'viola11@gmail.com',
         password: 'viola10',
+        confirmpassword: 'viola10',
         username: 'viola10',
         phonenumber: '07122334455',
       })
@@ -330,8 +389,9 @@ describe('/POST Signup route', () => {
         lastname: 'Violin',
         email: 'viola11@gmail.com',
         password: 'viola10',
+        confirmpassword: 'viola10',
         username: 'viola11',
-        phonenumber: '07022334455',
+        phonenumber: '07033445566',
       })
       .end((err, res) => {
         expect(res).to.have.status(409);
