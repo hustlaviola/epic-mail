@@ -479,7 +479,7 @@ describe('/POST Login route', () => {
   it('should return an error if email does not exist', (done) => {
     const loginDetails = {
       email: 'viola54@gmail.com',
-      password: 'viola54',
+      password: 'viola123',
     };
     chai
       .request(app)
@@ -496,7 +496,7 @@ describe('/POST Login route', () => {
 
   it('should return an error if email does not match password', (done) => {
     const loginDetails = {
-      email: 'viola10@gmail.com',
+      email: 'viola@yahoo.com',
       password: 'viola12',
     };
     chai
@@ -514,8 +514,8 @@ describe('/POST Login route', () => {
 
   it('should log user in if details are valid', (done) => {
     const loginDetails = {
-      email: 'viola10@gmail.com',
-      password: 'viola10',
+      email: 'viola@yahoo.com',
+      password: 'viola123',
     };
     chai
       .request(app)
@@ -524,7 +524,7 @@ describe('/POST Login route', () => {
       .end((err, res) => {
         expect(res).to.have.status(200);
         expect(res.body).to.be.an('object');
-        expect(res.body.data[0]).to.have.property('token');
+        expect(res.body.data).to.have.property('token');
         done(err);
       });
   });

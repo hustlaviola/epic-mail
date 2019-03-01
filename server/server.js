@@ -4,10 +4,14 @@ import router from './routes/router';
 const app = express();
 
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({
+  extended: false,
+}));
 
 app.get('/', (req, res) => {
-  res.status(200).send({ message: 'Welcome to EPIC-mail' });
+  res.status(200).send({
+    message: 'Welcome to EPIC-mail',
+  });
 });
 
 app.use('/api/v1', router);

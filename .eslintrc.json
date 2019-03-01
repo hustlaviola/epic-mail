@@ -8,7 +8,19 @@
     "linebreak-style": [
       "error",
       "windows"
-    ]
+    ],
+    "object-curly-newline": ["error", {
+      "ObjectPattern": {
+        "multiline": true,
+        "minProperties": 5
+      },
+      "ImportDeclaration": "never",
+      "ExportDeclaration": {
+        "multiline": true,
+        "minProperties": 3
+      }
+    }],
+    "consistent-return": 0
   },
 
   "env": {
