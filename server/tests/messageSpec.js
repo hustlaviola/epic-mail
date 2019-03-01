@@ -1,4 +1,4 @@
-import chai from 'chai';
+/* import chai from 'chai';
 import chaiHttp from 'chai-http';
 import app from '../server';
 
@@ -206,4 +206,4 @@ describe('/DELETE Messages route', () => {
         done(err);
       });
   });
-});
+}); */
