@@ -24,14 +24,15 @@
       </div>
       <nav>
         <ul>
+          <li><a href="./admin.html" class="current">Admin</a></li>
           <li><a href="../index.html">Sign Out</a></li>
         </ul>
       </nav>
     </div>
   </header>
-  <section>
+  <section id="add-users" class="form-section">
     <div class="container">
-      <div class="group">
+      <div class="form">
         <h3>Group 1</h3>
         <h4>Members</h4>
         <div class="group-members">
@@ -43,28 +44,49 @@
           <span>Ariana Grande</span><br>
           <span>Dua Lipa</span><br>
           <span>Keke Palmer</span><br>
-            <select>
-              <option selected hidden>Select a user</option>
-              <option value="Camila Cabello">Camila Cabello</option>
-              <option value="Cardi Kulture">Cardi Kulture</option>
-              <option value="Simisola Ogunleye">Simisola Ogunleye</option>
-              <option value="Sharon Ooja">Sharon Ooja</option>
-              <option value="Camila Cabello">Camila Cabello</option>
-              <option value="Cardi Kulture">Cardi Kulture</option>
-              <option value="Simisola Ogunleye">Simisola Ogunleye</option>
-              <option value="Sharon Ooja">Sharon Ooja</option>
-            </select><br>
-            <button class="btn btn-hollow">Add Member</button>
+          <select>
+            <option selected hidden>Select a user</option>
+            <option value="Camila Cabello">Camila Cabello</option>
+            <option value="Cardi Kulture">Cardi Kulture</option>
+            <option value="Simisola Ogunleye">Simisola Ogunleye</option>
+            <option value="Sharon Ooja">Sharon Ooja</option>
+            <option value="Camila Cabello">Camila Cabello</option>
+            <option value="Cardi Kulture">Cardi Kulture</option>
+            <option value="Simisola Ogunleye">Simisola Ogunleye</option>
+            <option value="Sharon Ooja">Sharon Ooja</option>
+          </select><br>
+          <button class="btn btn-hollow">Add Member</button>
         </div>
       </div>
       <div>
-        <a href="createGroup.html" id="group-btn" class="btn btn-primary">Create New Group</a>
+        <a class="btn btn-hollow" onclick="return displayCreateGroup();">Create New Group</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="create-group" class="form-section">
+    <div class="container">
+      <div class="form">
+        <h2>Create new Group</h2>
+        <form>
+          <div class="form-holder">
+            <input type="text" placeholder="Group name.." class="form-unit" autofocus required>
+          </div>
+          <div class="form-holder">
+            <textarea placeholder="Description.." required></textarea>
+          </div>
+          <div class="form-holder">
+            <button type="submit" class="btn btn-hollow">Create</button>
+          </div>
+        </form>
       </div>
     </div>
   </section>
   <footer>
     <p>EPIC-mail. Copyright &copy; 2019</p>
   </footer>
+
+  <script src="../assets/js/script.js"></script>
 </body>
 
 </html>
