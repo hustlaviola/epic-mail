@@ -3,7 +3,7 @@
 
   "rules": {
     "max-len": ["error", {
-      "code": 80
+      "code": 100
     }],
     "linebreak-style": [
       "error",
