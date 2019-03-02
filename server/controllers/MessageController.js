@@ -87,6 +87,30 @@ class MessageController {
       data: unreadMessages,
     });
   }
+
+  /**
+  * @method getSentMessages
+  * @description Retrieve all sent messages
+  * @static
+  * @param {object} req - The request object
+  * @param {object} res - The response object
+  * @returns {object} JSON response
+  * @memberof MessageController
+  */
+  static getSentMessages(req, res) {
+    const sentMessages = [];
+
+    messages.forEach((message) => {
+      if (message.status === 'sent') {
+        sentMessages.push(message);
+      }
+    });
+
+    return res.status(200).send({
+      status: res.statusCode,
+      data: sentMessages,
+    });
+  }
 }
 
 export default MessageController;
