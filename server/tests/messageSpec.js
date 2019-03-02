@@ -90,25 +90,9 @@ describe('/GET Messages routes', () => {
       });
   });
 
-  it('should return an error if message does not exist', (done) => {
-    const message = {
-      id: 11,
-    };
-    chai
-      .request(app)
-      .get(`/api/v1/messages/${message.id}`)
-      .end((err, res) => {
-        expect(res).to.have.status(404);
-        expect(res.body).to.be.an('object');
-        expect(res.body).to.have.property('error')
-          .eql('Message with the given id does not exist');
-        done(err);
-      });
-  });
-
   it('should return an error if id is invalid', (done) => {
     const message = {
-      id: '1t',
+      id: 'tt',
     };
     chai
       .request(app)
@@ -118,6 +102,22 @@ describe('/GET Messages routes', () => {
         expect(res.body).to.be.an('object');
         expect(res.body).to.have.property('error')
           .eql('The given id is invalid');
+        done(err);
+      });
+  });
+
+  it('should return an error if message does not exist', (done) => {
+    const message = {
+      id: 177,
+    };
+    chai
+      .request(app)
+      .get(`/api/v1/messages/${message.id}`)
+      .end((err, res) => {
+        expect(res).to.have.status(404);
+        expect(res.body).to.be.an('object');
+        expect(res.body).to.have.property('error')
+          .eql('Message with the given id does not exist');
         done(err);
       });
   });
@@ -141,22 +141,6 @@ describe('/GET Messages routes', () => {
 });
 
 describe('/DELETE Messages route', () => {
-  it('should return an error if message does not exist', (done) => {
-    const message = {
-      id: 11,
-    };
-    chai
-      .request(app)
-      .delete(`/api/v1/messages/${message.id}`)
-      .end((err, res) => {
-        expect(res).to.have.status(404);
-        expect(res.body).to.be.an('object');
-        expect(res.body).to.have.property('error')
-          .eql('Message with the given id does not exist');
-        done(err);
-      });
-  });
-
   it('should return an error if id is invalid', (done) => {
     const message = {
       id: '1t',
@@ -169,6 +153,22 @@ describe('/DELETE Messages route', () => {
         expect(res.body).to.be.an('object');
         expect(res.body).to.have.property('error')
           .eql('The given id is invalid');
+        done(err);
+      });
+  });
+
+  it('should return an error if message does not exist', (done) => {
+    const message = {
+      id: 11,
+    };
+    chai
+      .request(app)
+      .delete(`/api/v1/messages/${message.id}`)
+      .end((err, res) => {
+        expect(res).to.have.status(404);
+        expect(res.body).to.be.an('object');
+        expect(res.body).to.have.property('error')
+          .eql('Message with the given id does not exist');
         done(err);
       });
   });

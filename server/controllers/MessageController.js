@@ -111,6 +111,15 @@ class MessageController {
       data: sentMessages,
     });
   }
+
+  static getMessage(req, res) {
+    const mail = messages.find(message => message.id === parseInt(req.params.id, 10));
+
+    return res.status(200).send({
+      status: res.statusCode,
+      data: mail,
+    });
+  }
 }
 
 export default MessageController;
