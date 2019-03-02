@@ -56,6 +56,7 @@ class Helper {
    */
   static regEx() {
     return {
+      id: /^[1-9](\d+)?$/,
       name: /^[a-zA-Z]{3,30}$/,
       email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
       phonenumber: /^\+?[0-9]{11,14}$/,
