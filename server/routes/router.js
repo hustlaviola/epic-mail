@@ -32,4 +32,8 @@ router.get('/messages/:id',
   MessageValidator.validateId,
   MessageController.getMessage);
 
+router.delete('/messages/:id',
+  MessageValidator.validateId,
+  MessageController.deleteMessage);
+
 export default router;

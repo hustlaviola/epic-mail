@@ -112,12 +112,43 @@ class MessageController {
     });
   }
 
+  /**
+  * @method getMessage
+  * @description Retrieve a specific message
+  * @static
+  * @param {object} req - The request object
+  * @param {object} res - The response object
+  * @returns {object} JSON response
+  * @memberof MessageController
+  */
   static getMessage(req, res) {
     const mail = messages.find(message => message.id === parseInt(req.params.id, 10));
 
     return res.status(200).send({
       status: res.statusCode,
       data: mail,
+    });
+  }
+
+  /**
+  * @method deleteMessage
+  * @description Delete a specific messages
+  * @static
+  * @param {object} req - The request object
+  * @param {object} res - The response object
+  * @returns {object} JSON response
+  * @memberof MessageController
+  */
+  static deleteMessage(req, res) {
+    const mail = messages
+      .find(message => message.id === parseInt(req.params.id, 10));
+
+    const index = messages.indexOf(mail);
+
+    messages.splice(index, 1);
+    return res.status(200).send({
+      status: res.statusCode,
+      message: 'Message with the given id has been deleted',
     });
   }
 }
