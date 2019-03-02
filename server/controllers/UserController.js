@@ -57,28 +57,28 @@ class UserController {
   */
   static signIn(req, res) {
     const { email, password } = req.body;
-    users.forEach((user) => {
-      if (user.email === email) {
-        if (!Helper.verifyPassword(password, user.password)) {
-          return ErrorHandler.validationError(res, 400,
-            'Invalid details! Email or password is incorrect');
-        }
-        const result = {
-          id: user.id,
-          email: user.email,
-          username: user.username,
-        };
-        const token = Helper.generateToken(result);
-        return res.status(200).send({
-          status: res.statusCode,
-          data: {
-            token,
-          },
-        });
+    let user;
+    users.forEach((owner) => {
+      if (owner.email === email) {
+        user = owner;
       }
     });
-    return ErrorHandler.validationError(res, 404,
-      'User does not exist');
+    if (!user) {
+      return ErrorHandler.validationError(res, 404, 'User does not exist');
+    }
+    if (!Helper.verifyPassword(password, user.password)) {
+      return ErrorHandler.validationError(res, 400, 'Password is incorrect');
+    }
+    const result = {
+      id: user.id,
+      email: user.email,
+      username: user.username,
+    };
+    const token = Helper.generateToken(result);
+    return res.status(200).send({
+      status: res.statusCode,
+      data: { token },
+    });
   }
 }
 
