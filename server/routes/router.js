@@ -22,4 +22,7 @@ router.post('/messages',
 router.get('/messages',
   MessageController.getMessages);
 
+router.get('/messages/unread',
+  MessageController.getUnreadMessages);
+
 export default router;
