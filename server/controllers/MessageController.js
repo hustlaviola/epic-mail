@@ -40,6 +40,15 @@ class MessageController {
     });
   }
 
+  /**
+  * @method getMessages
+  * @description Retrieve all received messages
+  * @static
+  * @param {object} req - The request object
+  * @param {object} res - The response object
+  * @returns {object} JSON response
+  * @memberof MessageController
+  */
   static getMessages(req, res) {
     const receivedMessages = [];
 
@@ -52,6 +61,30 @@ class MessageController {
     return res.status(200).send({
       status: res.statusCode,
       data: receivedMessages,
+    });
+  }
+
+  /**
+  * @method getUnreadMessages
+  * @description Retrieve all unread received messages
+  * @static
+  * @param {object} req - The request object
+  * @param {object} res - The response object
+  * @returns {object} JSON response
+  * @memberof MessageController
+  */
+  static getUnreadMessages(req, res) {
+    const unreadMessages = [];
+
+    messages.forEach((message) => {
+      if (message.status === 'unread') {
+        unreadMessages.push(message);
+      }
+    });
+
+    return res.status(200).send({
+      status: res.statusCode,
+      data: unreadMessages,
     });
   }
 }

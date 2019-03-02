@@ -70,7 +70,7 @@ describe('/GET Messages routes', () => {
         expect(res.body).to.be.an('object');
         expect(res.body.data[0]).to.have.property('subject');
         expect(res.body.data[0]).to.have.property('message');
-        expect(res.body.data).to.have.property('status');
+        expect(res.body.data[0]).to.have.property('status').eql('unread');
         done(err);
       });
   });
@@ -84,7 +84,7 @@ describe('/GET Messages routes', () => {
         expect(res.body).to.be.an('object');
         expect(res.body.data[0]).to.have.property('subject');
         expect(res.body.data[0]).to.have.property('message');
-        expect(res.body.data).to.have.property('status')
+        expect(res.body.data[0]).to.have.property('status')
           .eql('sent');
         done(err);
       });
@@ -132,8 +132,8 @@ describe('/GET Messages routes', () => {
       .end((err, res) => {
         expect(res).to.have.status(200);
         expect(res.body).to.be.an('object');
-        expect(res.body.data[0]).to.have.property('subject');
-        expect(res.body.data[0]).to.have.property('message');
+        expect(res.body.data).to.have.property('subject');
+        expect(res.body.data).to.have.property('message');
         expect(res.body.data).to.have.property('status');
         done(err);
       });
