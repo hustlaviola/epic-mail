@@ -49,7 +49,7 @@ class UserValidator {
       errorMessage = 'password does not match';
     } else if (!username) {
       errorMessage = 'username field cannot be empty';
-    } else if (!username || !regEx.username.test(username)) {
+    } else if (!regEx.username.test(username)) {
       errorMessage = 'username can only contain chars, digits and underscores between 3 and 30';
     } else if (!phonenumber) {
       errorMessage = 'phonenumber field cannot be empty';

@@ -507,7 +507,7 @@ describe('/POST Login route', () => {
         expect(res).to.have.status(400);
         expect(res.body).to.be.an('object');
         expect(res.body).to.have.property('error')
-          .eql('Invalid details! Email or password is incorrect');
+          .eql('Password is incorrect');
         done(err);
       });
   });
