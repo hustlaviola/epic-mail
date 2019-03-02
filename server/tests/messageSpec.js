@@ -1,4 +1,4 @@
-/* import chai from 'chai';
+import chai from 'chai';
 import chaiHttp from 'chai-http';
 import app from '../server';
 
@@ -7,24 +7,6 @@ chai.use(chaiHttp);
 const { expect } = chai;
 
 describe('/POST Messages route', () => {
-  it('should return an error if SUBJECT field is empty', (done) => {
-    const message = {
-      subject: '',
-      message: 'Buhari has been re-elected, PMB is on for second term',
-    };
-    chai
-      .request(app)
-      .post('/api/v1/messages')
-      .send(message)
-      .end((err, res) => {
-        expect(res).to.have.status(400);
-        expect(res.body).to.be.an('object');
-        expect(res.body).to.have.property('error')
-          .eql('Subject field is required');
-        done(err);
-      });
-  });
-
   it('should return an error if MESSAGE field is empty', (done) => {
     const message = {
       subject: 'Election News',
@@ -38,7 +20,7 @@ describe('/POST Messages route', () => {
         expect(res).to.have.status(400);
         expect(res.body).to.be.an('object');
         expect(res.body).to.have.property('error')
-          .eql('Message field is required');
+          .eql('message field is required');
         done(err);
       });
   });
@@ -206,4 +188,4 @@ describe('/DELETE Messages route', () => {
         done(err);
       });
   });
-}); */
+});
