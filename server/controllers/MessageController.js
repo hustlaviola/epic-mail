@@ -39,6 +39,21 @@ class MessageController {
       data: mail,
     });
   }
+
+  static getMessages(req, res) {
+    const receivedMessages = [];
+
+    messages.forEach((message) => {
+      if (message.status === 'read' || message.status === 'unread') {
+        receivedMessages.push(message);
+      }
+    });
+
+    return res.status(200).send({
+      status: res.statusCode,
+      data: receivedMessages,
+    });
+  }
 }
 
 export default MessageController;
