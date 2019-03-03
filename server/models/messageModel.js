@@ -1,7 +1,7 @@
 const messages = [
   {
     id: 1,
-    createdOn: new Date(),
+    createdOn: '2019-03-09T06:57:47.860Z',
     subject: 'Election News',
     message: 'PMB has been re-elected, APC partying hard',
     senderId: 1,
@@ -11,7 +11,7 @@ const messages = [
   },
   {
     id: 2,
-    createdOn: new Date(),
+    createdOn: '2019-03-03T11:57:47.860Z',
     subject: 'Liverpool wins the EPL',
     message: 'The wait is over, Liverpool FC is EPL champion',
     senderId: 2,
@@ -21,7 +21,7 @@ const messages = [
   },
   {
     id: 3,
-    createdOn: new Date(),
+    createdOn: '2019-03-06T06:57:47.860Z',
     subject: 'Liverpool wins the EPL',
     message: 'The wait is over, Liverpool FC is EPL champion',
     senderId: 1,
@@ -31,7 +31,7 @@ const messages = [
   },
   {
     id: 4,
-    createdOn: new Date(),
+    createdOn: '2019-02-03T09:57:47.860Z',
     subject: 'Camp Project',
     message: 'Cycle 42 project is tad easy',
     senderId: 2,
@@ -41,7 +41,7 @@ const messages = [
   },
   {
     id: 5,
-    createdOn: new Date(),
+    createdOn: '2019-03-03T06:57:47.860Z',
     subject: 'Liverpool wins the EPL',
     message: 'The wait is over, Liverpool FC is EPL champion',
     senderId: 3,
@@ -51,7 +51,7 @@ const messages = [
   },
   {
     id: 6,
-    createdOn: new Date(),
+    createdOn: '2019-03-03T08:55:47.860Z',
     subject: 'Camp Project',
     message: 'Cycle 42 project is tad easy',
     senderId: 1,

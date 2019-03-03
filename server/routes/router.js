@@ -23,10 +23,10 @@ router.get('/messages',
   MessageController.getMessages);
 
 router.get('/messages/unread',
-  MessageController.getUnreadMessages);
+  MessageController.getMails);
 
 router.get('/messages/sent',
-  MessageController.getSentMessages);
+  MessageController.getMails);
 
 router.get('/messages/:id',
   MessageValidator.validateId,
