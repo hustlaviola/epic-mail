@@ -6,6 +6,14 @@ import MessageController from '../controllers/MessageController';
 
 const router = express.Router();
 
+// Handle /api/v1 endpoint
+router.get('/', (req, res) => {
+  res.status(200).send({
+    message: 'Welcome to EPIC-mail API version 1',
+  });
+});
+
+// Handle POST requests
 router.post('/auth/signup',
   UserValidator.validateSignUp,
   UserValidator.validateExistingUser,
@@ -19,6 +27,7 @@ router.post('/messages',
   MessageValidator.validatePost,
   MessageController.postMessage);
 
+// Handle GET requests
 router.get('/messages',
   MessageController.getMessages);
 
@@ -32,6 +41,7 @@ router.get('/messages/:id',
   MessageValidator.validateId,
   MessageController.getMessage);
 
+// Handle DELETE request
 router.delete('/messages/:id',
   MessageValidator.validateId,
   MessageController.deleteMessage);
