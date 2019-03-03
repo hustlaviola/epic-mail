@@ -20,7 +20,7 @@ describe('/POST Messages route', () => {
         expect(res).to.have.status(400);
         expect(res.body).to.be.an('object');
         expect(res.body).to.have.property('error')
-          .eql('message field is required');
+          .eql('message field cannot be empty');
         done(err);
       });
   });

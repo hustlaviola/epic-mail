@@ -23,7 +23,7 @@ class MessageValidator {
 
     if (!message) {
       return ErrorHandler.validationError(res, 400,
-        'message field is required');
+        'message field cannot be empty');
     }
     return next();
   }
