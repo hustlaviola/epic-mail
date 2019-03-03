@@ -46,7 +46,7 @@ class MessageValidator {
       return ErrorHandler.validationError(res, 400, 'The given id is invalid');
     }
 
-    const mail = messages.find(message => message.id === parseInt(req.params.id, 10));
+    const mail = messages.find(message => message.id === parseInt(id, 10));
     if (!mail) {
       return ErrorHandler.validationError(res, 404, 'Message with the given id does not exist');
     }

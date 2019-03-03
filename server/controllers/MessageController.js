@@ -65,50 +65,27 @@ class MessageController {
   }
 
   /**
-  * @method getUnreadMessages
-  * @description Retrieve all unread received messages
+  * @method getMails
+  * @description Retrieve all sent or unread messages
   * @static
   * @param {object} req - The request object
   * @param {object} res - The response object
   * @returns {object} JSON response
   * @memberof MessageController
   */
-  static getUnreadMessages(req, res) {
-    const unreadMessages = [];
+  static getMails(req, res) {
+    const mails = [];
+    const mailType = req.url.split('/')[2];
 
     messages.forEach((message) => {
-      if (message.status === 'unread') {
-        unreadMessages.push(message);
+      if (message.status === mailType) {
+        mails.push(message);
       }
     });
 
     return res.status(200).send({
       status: res.statusCode,
-      data: unreadMessages,
-    });
-  }
-
-  /**
-  * @method getSentMessages
-  * @description Retrieve all sent messages
-  * @static
-  * @param {object} req - The request object
-  * @param {object} res - The response object
-  * @returns {object} JSON response
-  * @memberof MessageController
-  */
-  static getSentMessages(req, res) {
-    const sentMessages = [];
-
-    messages.forEach((message) => {
-      if (message.status === 'sent') {
-        sentMessages.push(message);
-      }
-    });
-
-    return res.status(200).send({
-      status: res.statusCode,
-      data: sentMessages,
+      data: mails,
     });
   }
 
@@ -122,7 +99,8 @@ class MessageController {
   * @memberof MessageController
   */
   static getMessage(req, res) {
-    const mail = messages.find(message => message.id === parseInt(req.params.id, 10));
+    const { id } = req.params;
+    const mail = messages.find(message => message.id === parseInt(id, 10));
 
     return res.status(200).send({
       status: res.statusCode,
@@ -140,8 +118,9 @@ class MessageController {
   * @memberof MessageController
   */
   static deleteMessage(req, res) {
+    const { id } = req.params;
     const mail = messages
-      .find(message => message.id === parseInt(req.params.id, 10));
+      .find(message => message.id === parseInt(id, 10));
 
     const index = messages.indexOf(mail);
 
