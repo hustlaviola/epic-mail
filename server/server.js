@@ -20,6 +20,6 @@ app.use('/api/v1', router);
 app.all('/*', (req, res) => ErrorHandler.routeError(res));
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`listening on port ${PORT}...`));
+app.listen(PORT);
 
 export default app;
