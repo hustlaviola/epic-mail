@@ -4,9 +4,11 @@
   "description": "The internet is increasingly becoming an integral part of lives.",
   "main": "./server/server.js",
   "scripts": {
+    "lint": "eslint ./server --fix",
     "start": "babel-node ./server/server",
     "dev": "nodemon ./server/server --exec babel-node",
-    "test": "mocha --require babel-register ./server/tests --exit"
+    "test": "nyc mocha --require babel-register ./server/tests --exit",
+    "coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
     "type": "git",
@@ -27,10 +29,13 @@
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "babel-register": "^6.26.0",
+    "coveralls": "^3.0.3",
     "eslint": "^5.14.1",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.16.0",
-    "nodemon": "^1.18.10"
+    "mocha-lcov-reporter": "^1.3.0",
+    "nodemon": "^1.18.10",
+    "nyc": "^13.3.0"
   },
   "dependencies": {
     "bcrypt": "^3.0.4",
