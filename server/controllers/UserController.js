@@ -39,10 +39,7 @@ class UserController {
     users.push(user);
     return res.status(201).send({
       status: res.statusCode,
-      data: {
-        token,
-        user,
-      },
+      data: { token },
     });
   }
 
