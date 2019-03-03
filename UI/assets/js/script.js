@@ -54,7 +54,15 @@ const displayCreateGroup = () => {
   newGroup.style.display = 'block';
 };
 
-joinGroupChat.addEventListener('click', (e) => {
+const display = (id, subId) => {
+  reset();
+  closeNav();
+
+  document.getElementById(id).style.display = 'block';
+  document.getElementById(subId).className = 'current';
+};
+
+joinGroupChat.addEventListener('click', e => {
   e.preventDefault();
 
   reset();
@@ -62,57 +70,3 @@ joinGroupChat.addEventListener('click', (e) => {
   groupChat.style.display = 'block';
   spanGroup.className = 'current';
 });
-
-const displayCompose = () => {
-  reset();
-
-  closeNav();
-
-  compose.style.display = 'block';
-  spanCompose.className = 'current';
-};
-
-const displayInbox = () => {
-  reset();
-
-  closeNav();
-
-  inbox.style.display = 'block';
-  spanInbox.className = 'current';
-};
-
-const displayDraft = () => {
-  reset();
-
-  closeNav();
-
-  draft.style.display = 'block';
-  spanDraft.className = 'current';
-};
-
-const displaySent = () => {
-  reset();
-
-  closeNav();
-
-  sent.style.display = 'block';
-  spanSent.className = 'current';
-};
-
-const displayGroup = () => {
-  reset();
-
-  closeNav();
-
-  group.style.display = 'block';
-  spanGroup.className = 'current';
-};
-
-const displayThread = () => {
-  reset();
-
-  closeNav();
-
-  spanInbox.className = 'current';
-  thread.style.display = 'block';
-};

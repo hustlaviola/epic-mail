@@ -52,7 +52,7 @@ class MessageController {
   static getMessages(req, res) {
     const receivedMessages = [];
 
-    messages.forEach((message) => {
+    messages.forEach(message => {
       if (message.status === 'read' || message.status === 'unread') {
         receivedMessages.push(message);
       }
@@ -77,7 +77,7 @@ class MessageController {
     const mails = [];
     const mailType = req.url.split('/')[2];
 
-    messages.forEach((message) => {
+    messages.forEach(message => {
       if (message.status === mailType) {
         mails.push(message);
       }

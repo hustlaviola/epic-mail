@@ -7,7 +7,7 @@ chai.use(chaiHttp);
 const { expect } = chai;
 
 describe('/POST Messages route', () => {
-  it('should return an error if MESSAGE field is empty', (done) => {
+  it('should return an error if MESSAGE field is empty', done => {
     const message = {
       subject: 'Election News',
       message: '',
@@ -25,7 +25,7 @@ describe('/POST Messages route', () => {
       });
   });
 
-  it('should create a message if details are valid', (done) => {
+  it('should create a message if details are valid', done => {
     const message = {
       subject: 'Election News',
       message: 'Buhari has been re-elected, PMB is on for second term',
@@ -47,7 +47,7 @@ describe('/POST Messages route', () => {
 });
 
 describe('/GET Messages routes', () => {
-  it('should fetch all received emails', (done) => {
+  it('should fetch all received emails', done => {
     chai
       .request(app)
       .get('/api/v1/messages')
@@ -61,7 +61,7 @@ describe('/GET Messages routes', () => {
       });
   });
 
-  it('should fetch all unread received emails', (done) => {
+  it('should fetch all unread received emails', done => {
     chai
       .request(app)
       .get('/api/v1/messages/unread')
@@ -75,7 +75,7 @@ describe('/GET Messages routes', () => {
       });
   });
 
-  it('should fetch all sent emails', (done) => {
+  it('should fetch all sent emails', done => {
     chai
       .request(app)
       .get('/api/v1/messages/sent')
@@ -90,7 +90,7 @@ describe('/GET Messages routes', () => {
       });
   });
 
-  it('should return an error if id is invalid', (done) => {
+  it('should return an error if id is invalid', done => {
     const message = {
       id: 'tt',
     };
@@ -106,7 +106,7 @@ describe('/GET Messages routes', () => {
       });
   });
 
-  it('should return an error if message does not exist', (done) => {
+  it('should return an error if message does not exist', done => {
     const message = {
       id: 177,
     };
@@ -122,7 +122,7 @@ describe('/GET Messages routes', () => {
       });
   });
 
-  it('should fetch a specific email record', (done) => {
+  it('should fetch a specific email record', done => {
     const message = {
       id: 1,
     };
@@ -141,7 +141,7 @@ describe('/GET Messages routes', () => {
 });
 
 describe('/DELETE Messages route', () => {
-  it('should return an error if id is invalid', (done) => {
+  it('should return an error if id is invalid', done => {
     const message = {
       id: '1t',
     };
@@ -157,7 +157,7 @@ describe('/DELETE Messages route', () => {
       });
   });
 
-  it('should return an error if message does not exist', (done) => {
+  it('should return an error if message does not exist', done => {
     const message = {
       id: 11,
     };
@@ -173,7 +173,7 @@ describe('/DELETE Messages route', () => {
       });
   });
 
-  it('should delete a specific email record', (done) => {
+  it('should delete a specific email record', done => {
     const message = {
       id: 1,
     };

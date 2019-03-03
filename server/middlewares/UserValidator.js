@@ -79,7 +79,7 @@ class UserValidator {
 
     let errorMessage;
 
-    users.forEach((user) => {
+    users.forEach(user => {
       if (user.email === email) {
         errorMessage = 'email already exists';
       } else if (user.username === username) {

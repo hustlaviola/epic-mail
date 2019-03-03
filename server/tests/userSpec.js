@@ -7,7 +7,7 @@ chai.use(chaiHttp);
 const { expect } = chai;
 
 describe('/POST Signup route', () => {
-  it('should return an error if first name field is empty', (done) => {
+  it('should return an error if first name field is empty', done => {
     chai
       .request(app)
       .post('/api/v1/auth/signup')
@@ -29,7 +29,7 @@ describe('/POST Signup route', () => {
       });
   });
 
-  it('should return an error if first name field is badly formatted', (done) => {
+  it('should return an error if first name field is badly formatted', done => {
     chai
       .request(app)
       .post('/api/v1/auth/signup')
@@ -51,7 +51,7 @@ describe('/POST Signup route', () => {
       });
   });
 
-  it('should return an error if last name field is empty', (done) => {
+  it('should return an error if last name field is empty', done => {
     chai
       .request(app)
       .post('/api/v1/auth/signup')
@@ -73,7 +73,7 @@ describe('/POST Signup route', () => {
       });
   });
 
-  it('should return an error if last name field is badly formatted', (done) => {
+  it('should return an error if last name field is badly formatted', done => {
     chai
       .request(app)
       .post('/api/v1/auth/signup')
@@ -95,7 +95,7 @@ describe('/POST Signup route', () => {
       });
   });
 
-  it('should return an error if email field is empty', (done) => {
+  it('should return an error if email field is empty', done => {
     chai
       .request(app)
       .post('/api/v1/auth/signup')
@@ -117,7 +117,7 @@ describe('/POST Signup route', () => {
       });
   });
 
-  it('should return an error if email field is badly formatted', (done) => {
+  it('should return an error if email field is badly formatted', done => {
     chai
       .request(app)
       .post('/api/v1/auth/signup')
@@ -139,7 +139,7 @@ describe('/POST Signup route', () => {
       });
   });
 
-  it('should return an error if password field is empty', (done) => {
+  it('should return an error if password field is empty', done => {
     chai
       .request(app)
       .post('/api/v1/auth/signup')
@@ -161,7 +161,7 @@ describe('/POST Signup route', () => {
       });
   });
 
-  it('should return an error if password is less than 6 characters', (done) => {
+  it('should return an error if password is less than 6 characters', done => {
     chai
       .request(app)
       .post('/api/v1/auth/signup')
@@ -183,7 +183,7 @@ describe('/POST Signup route', () => {
       });
   });
 
-  it('should return an error if confirmpassword field is empty', (done) => {
+  it('should return an error if confirmpassword field is empty', done => {
     chai
       .request(app)
       .post('/api/v1/auth/signup')
@@ -205,7 +205,7 @@ describe('/POST Signup route', () => {
       });
   });
 
-  it('should return an error if passwords does not match', (done) => {
+  it('should return an error if passwords does not match', done => {
     chai
       .request(app)
       .post('/api/v1/auth/signup')
@@ -227,7 +227,7 @@ describe('/POST Signup route', () => {
       });
   });
 
-  it('should return an error if username field is empty', (done) => {
+  it('should return an error if username field is empty', done => {
     chai
       .request(app)
       .post('/api/v1/auth/signup')
@@ -249,7 +249,7 @@ describe('/POST Signup route', () => {
       });
   });
 
-  it('should return an error if username field is badly formatted', (done) => {
+  it('should return an error if username field is badly formatted', done => {
     chai
       .request(app)
       .post('/api/v1/auth/signup')
@@ -271,7 +271,7 @@ describe('/POST Signup route', () => {
       });
   });
 
-  it('should return an error if phone number field is empty', (done) => {
+  it('should return an error if phone number field is empty', done => {
     chai
       .request(app)
       .post('/api/v1/auth/signup')
@@ -293,7 +293,7 @@ describe('/POST Signup route', () => {
       });
   });
 
-  it('should return an error if phone number field is badly formatted', (done) => {
+  it('should return an error if phone number field is badly formatted', done => {
     chai
       .request(app)
       .post('/api/v1/auth/signup')
@@ -315,7 +315,7 @@ describe('/POST Signup route', () => {
       });
   });
 
-  it('should create a new user if details are valid', (done) => {
+  it('should create a new user if details are valid', done => {
     chai
       .request(app)
       .post('/api/v1/auth/signup')
@@ -336,7 +336,7 @@ describe('/POST Signup route', () => {
       });
   });
 
-  it('should return an error if there is an existing email', (done) => {
+  it('should return an error if there is an existing email', done => {
     chai
       .request(app)
       .post('/api/v1/auth/signup')
@@ -358,7 +358,7 @@ describe('/POST Signup route', () => {
       });
   });
 
-  it('should return an error if there is an existing username', (done) => {
+  it('should return an error if there is an existing username', done => {
     chai
       .request(app)
       .post('/api/v1/auth/signup')
@@ -380,7 +380,7 @@ describe('/POST Signup route', () => {
       });
   });
 
-  it('should return an error if there is an existing phone number', (done) => {
+  it('should return an error if there is an existing phone number', done => {
     chai
       .request(app)
       .post('/api/v1/auth/signup')
@@ -404,7 +404,7 @@ describe('/POST Signup route', () => {
 });
 
 describe('/POST Login route', () => {
-  it('should return an error if email field is empty', (done) => {
+  it('should return an error if email field is empty', done => {
     const loginDetails = {
       email: '',
       password: 'viola10',
@@ -422,7 +422,7 @@ describe('/POST Login route', () => {
       });
   });
 
-  it('should return an error if email is badly formatted', (done) => {
+  it('should return an error if email is badly formatted', done => {
     const loginDetails = {
       email: 'viola10gmail.com',
       password: 'viola10',
@@ -440,7 +440,7 @@ describe('/POST Login route', () => {
       });
   });
 
-  it('should return an error if password field is empty', (done) => {
+  it('should return an error if password field is empty', done => {
     const loginDetails = {
       email: 'viola10@gmail.com',
       password: '',
@@ -458,7 +458,7 @@ describe('/POST Login route', () => {
       });
   });
 
-  it('should return an error if password field is less than 6 characters', (done) => {
+  it('should return an error if password field is less than 6 characters', done => {
     const loginDetails = {
       email: 'viola10@gmail.com',
       password: 'viola',
@@ -476,7 +476,7 @@ describe('/POST Login route', () => {
       });
   });
 
-  it('should return an error if email does not exist', (done) => {
+  it('should return an error if email does not exist', done => {
     const loginDetails = {
       email: 'viola54@gmail.com',
       password: 'viola123',
@@ -494,7 +494,7 @@ describe('/POST Login route', () => {
       });
   });
 
-  it('should return an error if email does not match password', (done) => {
+  it('should return an error if email does not match password', done => {
     const loginDetails = {
       email: 'viola@yahoo.com',
       password: 'viola12',
@@ -512,7 +512,7 @@ describe('/POST Login route', () => {
       });
   });
 
-  it('should log user in if details are valid', (done) => {
+  it('should log user in if details are valid', done => {
     const loginDetails = {
       email: 'viola@yahoo.com',
       password: 'viola123',

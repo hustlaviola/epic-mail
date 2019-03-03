@@ -58,7 +58,7 @@ class UserController {
   static signIn(req, res) {
     const { email, password } = req.body;
     let user;
-    users.forEach((owner) => {
+    users.forEach(owner => {
       if (owner.email === email) {
         user = owner;
       }
