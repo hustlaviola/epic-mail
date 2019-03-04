@@ -1,6 +1,8 @@
 import express from 'express';
-import router from './routes/router';
+import swaggerUi from 'swagger-ui-express';
+import swaggerDocument from '../swagger.json';
 import ErrorHandler from './utils/ErrorHandler';
+import router from './routes/router';
 
 const app = express();
 
@@ -14,6 +16,7 @@ app.get('/', (req, res) => {
     message: 'Welcome to EPIC-mail',
   });
 });
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use('/api/v1', router);
 
