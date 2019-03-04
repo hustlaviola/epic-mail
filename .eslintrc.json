@@ -24,7 +24,8 @@
     "arrow-parens": [
       "error",
       "as-needed"
-    ]
+    ],
+    "import/no-unresolved": { "commonjs": true }
   },
 
   "env": {
