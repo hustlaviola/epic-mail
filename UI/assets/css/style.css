@@ -14,6 +14,10 @@ body {
 
 /* Global */
 
+.bg-light {
+  background: #eeeeee;
+}
+
 a,
 .btn {
   font-size: 20px;
@@ -39,6 +43,7 @@ a:hover {
 .btn-primary {
   background: #10a9f0;
   color: #ffffff;
+  border: 2px solid #10a9f0;
 }
 
 .btn-primary:hover {
@@ -49,6 +54,7 @@ a:hover {
 .btn-danger {
   background: #ee1935;
   color: #ffffff;
+  border: 2px solid #ee1935;
 }
 
 .btn-danger:hover {
@@ -104,7 +110,11 @@ p a {
 /* Header */
 
 header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
   color: #2871b9;
+  background: #ffffff;
   border-bottom: 2px solid #757575;
 }
 
@@ -230,6 +240,14 @@ input:focus {
 
 .mail-box {
   display: flex;
+  margin: 50px 0 50px 0;
+}
+
+.mailbox-head {
+  width: 100%;
+  position: fixed;
+  height: 50px;
+  background: #eeeeee;
 }
 
 /* sidepanel */
@@ -279,22 +297,30 @@ input:focus {
 /* Side Nav */
 
 .side-nav {
-  padding-top: 20px;
-  width: 400px;
+  position: fixed;
+  left: 0;
+  height: 100%;
+  padding-top: 30px;
+  background: #eeeeee;
+  width: 250px;
 }
 
-aside .btn {
+aside .button {
+  display: inline-block;
   width: 100%;
   text-align: left;
   padding: 5px;
+  font-size: 17px;
   padding-left: 25px;
-  border: 0;
-  height: 40px;
+  width: 100%;
+  height: 35px;
 }
 
-aside .btn:hover {
-  background: #f3f3f3;
-  color: #3b3b3b;
+aside .button:hover {
+  transition: 0.4s;
+  background: #10a9f0;
+  color: #fff;
+  padding-left: 40px;
 }
 
 .profile-pic {
@@ -326,50 +352,16 @@ aside ul {
   display: table;
   border-collapse: collapse;
   width: 100%;
-  padding: 70px 5px 10px;
-  border-radius: 10px;
-  background: #fafafa;
+  margin-left: 250px;
+  margin-bottom: 40px;
+  padding: 40px 5px 10px;
+  border-left: 5px solid #10a9f0;
+  background: #fff;
+  overflow: auto;
 }
 
 .table-section {
   display: table;
-}
-
-.check-box {
-  -webkit-appearance: none;
-  background-color: transparent;
-  border: 1px solid #cacece;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0 -15px 10px -12px rgba(0, 0, 0, 0.05);
-  padding: 9px;
-  border-radius: 3px;
-  display: inline-block;
-  position: relative;
-}
-
-.check-box:hover {
-  border: 1px solid #9a9c9c;
-}
-
-.check-box:active,
-.check-box:checked:active {
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-.check-box:checked {
-  background-color: #e9ecee;
-  border: 1px solid #adb8c0;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0 -15px 10px -12px rgba(0, 0, 0, 0.05),
-    inset 15px 10px -12px rgba(255, 255, 255, 0.1);
-  color: #9da3a8;
-}
-
-.check-box:checked:after {
-  content: '\2714';
-  font-size: 14px;
-  position: absolute;
-  top: 0px;
-  left: 3px;
-  color: #9da3a8;
 }
 
 .table-row {
@@ -380,16 +372,13 @@ aside ul {
 }
 
 .table-row:hover {
-  font-weight: inherit;
+  background: #f1f1f1;
+  border-bottom: 2.5px solid #cfcfcf;
 }
 
 .table-cell {
   display: table-cell;
   padding: 5px;
-}
-
-.table-row:hover {
-  border-bottom: 2.5px solid #cfcfcf;
 }
 
 .table-btn {
@@ -610,13 +599,16 @@ footer {
   .profile-pic {
     text-align: center;
   }
-
-  .aside ul {
-    margin-top: 50px;
+  
+  .side-nav {
+    width: 200px;
   }
 
-  .side-nav {
-    width: 250px;
+  .compose-section,
+  .table-section,
+  .group-section,
+  .thread-section {
+    margin-left: 200px;
   }
 
   a {
@@ -677,9 +669,13 @@ footer {
     display: none
   }
 
-  aside .btn {
-    padding-left: 10px;
-    text-align: left;
+  .compose-section,
+  .table-section,
+  .group-section,
+  .thread-section {
+    margin-left: 0;
+    border-left: 0;
+    margin-bottom: 20px;
   }
 
   .table-row,
