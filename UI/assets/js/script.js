@@ -6,13 +6,15 @@ const group = document.getElementById('group')
 const groupChat = document.getElementById('group-chat');
 const thread = document.getElementById('thread');
 const pl = document.getElementById('pl');
+const sidepanel = document.getElementById("sidepanel");
 
 const openNav = () => {
-  document.getElementById("sidepanel").style.width = "100%";
+  sidepanel.style.width = "250px";
+  sidepanel.style.position = "fixed";
 }
 
 const closeNav = () => {
-  document.getElementById("sidepanel").style.width = "0";
+  sidepanel.style.width = "0";
 }
 
 const newGroup = document.getElementById('create-group');
