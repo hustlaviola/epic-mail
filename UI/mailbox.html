@@ -37,11 +37,11 @@
   </div>
   <div id="sidepanel" class="side-panel">
     <a class="close-btn" onclick="closeNav()">&times;</a>
-    <a onclick="displayCompose()"><i class="fas fa-pen"></i><span class="pl"> Compose</span></a>
-    <a onclick="displayInbox();"><i class="fas fa-envelope"></i><span class="pl"> Inbox</span></a>
-    <a onclick="displayDraft();"><i class="fas fa-file"></i><span class="pl"> Drafts</span></a>
-    <a onclick="displaySent();"><i class="fas fa-paper-plane"></i><span class="pl"> Sent</span></a>
-    <a onclick="displayGroup();"><i class="fas fa-users"></i><span class="pl"> Group</span></a>
+    <a onclick="display('compose', 'span-compose')"><i class="fas fa-pen"></i><span class="pl"> Compose</span></a>
+    <a onclick="display('inbox', 'span-inbox');"><i class="fas fa-envelope"></i><span class="pl"> Inbox</span></a>
+    <a onclick="display('draft', 'span-draft');"><i class="fas fa-file"></i><span class="pl"> Drafts</span></a>
+    <a onclick="display('sent', 'span-sent');"><i class="fas fa-paper-plane"></i><span class="pl"> Sent</span></a>
+    <a onclick="display('group', 'span-group');"><i class="fas fa-users"></i><span class="pl"> Group</span></a>
   </div>
   <div class="mail-box">
     <div class="side-nav">
@@ -53,31 +53,31 @@
         <br>
         <ul>
           <li>
-            <a class="button" onclick="displayCompose();">
+            <a class="button" onclick="display('compose', 'span-compose');">
               <span><i class="fas fa-pen"></i></span>
               <span id="span-compose" class="pl">Compose</span>
             </a>
           </li>
           <li>
-            <a class="button" onclick="displayInbox();">
+            <a class="button" onclick="display('inbox', 'span-inbox');">
               <span><i class="fas fa-envelope"></i><sup class="inbox-alert"></sup></i></span>
               <span id="span-inbox" class="pl current">Inbox</span>
             </a>
           </li>
           <li>
-            <a class="button" onclick="displayDraft();">
+            <a class="button" onclick="display('draft', 'span-draft');">
               <span><i class="fas fa-file"><sup class="inbox-alert"></sup></i></span>
               <span id="span-draft" class="pl">Drafts</span>
             </a>
           </li>
           <li>
-            <a class="button" onclick="displaySent();">
+            <a class="button" onclick="display('sent', 'span-sent');">
               <span><i class="fas fa-paper-plane"></i></span>
               <span id="span-sent" class="pl">Sent</span>
             </a>
           </li>
           <li>
-            <a class="button" onclick="displayGroup();">
+            <a class="button" onclick="display('group', 'span-group');">
               <span><i class="fas fa-users"></i></span>
               <span id="span-group" class="pl">Group</span>
             </a>
@@ -112,7 +112,7 @@
           <input type="checkbox" name="checkbox" id="" class="check-box">
         </div>
         <div class="table-cell mail-name">Charles Odili</div>
-        <div class="table-cell mail-body" onclick="displayThread();">
+        <div class="table-cell mail-body" onclick="display('thread', 'span-inbox');">
           <p><span class="mail-subject">Election News - </span>PMB has been re-elected, An election is a formal group
             decision-making process by which a population chooses an individual to hold public office.</p>
         </div>
@@ -122,7 +122,7 @@
           <input type="checkbox" name="checkbox" id="" class="check-box">
         </div>
         <div class="table-cell mail-name">Eniola Enitan</div>
-        <div class="table-cell mail-body" onclick="displayThread();">
+        <div class="table-cell mail-body" onclick="display('thread', 'span-inbox');">
           <p><span class="mail-subject">Andela Developer Challenge - </span>I finished
             my project ahead of time</p>
         </div>
@@ -132,7 +132,7 @@
           <input type="checkbox" name="checkbox" id="" class="check-box">
         </div>
         <div class="table-cell mail-name">Christopher Nkunku</div>
-        <div class="table-cell mail-body" onclick="displayThread();">
+        <div class="table-cell mail-body" onclick="display('thread', 'span-inbox');">
           <p><span class="mail-subject">Liverpool EPL Champions - </span>After 29 years waiting, Liverpool football
             club lifted the premier league trophy. A break from loosing</p>
         </div>
@@ -142,7 +142,7 @@
           <input type="checkbox" name="checkbox" id="" class="check-box">
         </div>
         <div class="table-cell mail-name">Charles Odili</div>
-        <div class="table-cell mail-body" onclick="displayThread();">
+        <div class="table-cell mail-body" onclick="display('thread', 'span-inbox');">
           <p><span class="mail-subject">Election News - </span>PMB has been re-elected, Anelectionis a formal group
             decision-making process by which a population chooses an individual to hold public office.</p>
         </div>
@@ -152,7 +152,7 @@
           <input type="checkbox" name="checkbox" id="" class="check-box">
         </div>
         <div class="table-cell mail-name">Eniola Enitan</div>
-        <div class="table-cell mail-body" onclick="displayThread();">
+        <div class="table-cell mail-body" onclick="display('thread', 'span-inbox');">
           <p><span class="mail-subject">Andela Developer Challenge - </span>I finished
             my project ahead of time</p>
         </div>
@@ -162,7 +162,7 @@
           <input type="checkbox" name="checkbox" id="" class="check-box">
         </div>
         <div class="table-cell mail-name">Christopher Nkunku</div>
-        <div class="table-cell mail-body" onclick="displayThread();">
+        <div class="table-cell mail-body" onclick="display('thread', 'span-inbox');">
           <p><span class="mail-subject">Liverpool EPL Champions - </span>After 29 years waiting, Liverpool football
             club lifted the premier league trophy. A break from loosing</p>
         </div>
@@ -172,7 +172,7 @@
           <input type="checkbox" name="checkbox" id="" class="check-box">
         </div>
         <div class="table-cell mail-name">Charles Odili</div>
-        <div class="table-cell mail-body" onclick="displayThread();">
+        <div class="table-cell mail-body" onclick="display('thread', 'span-inbox');">
           <p><span class="mail-subject">Election News - </span>PMB has been re-elected, Anelectionis a formal group
             decision-making process by which a population chooses an individual to hold public office.</p>
         </div>
@@ -182,7 +182,7 @@
           <input type="checkbox" name="checkbox" id="" class="check-box">
         </div>
         <div class="table-cell mail-name">Eniola Enitan</div>
-        <div class="table-cell mail-body" onclick="displayThread();">
+        <div class="table-cell mail-body" onclick="display('thread', 'span-inbox');">
           <p><span class="mail-subject">Andela Developer Challenge - </span>I finished
             my project ahead of time.</p>
         </div>
@@ -192,7 +192,7 @@
           <input type="checkbox" name="checkbox" id="" class="check-box">
         </div>
         <div class="table-cell mail-name">Christopher Nkunku</div>
-        <div class="table-cell mail-body" onclick="displayThread();">
+        <div class="table-cell mail-body" onclick="display('thread', 'span-inbox');">
           <p><span class="mail-subject">Liverpool EPL Champions - </span>After 29 years waiting, Liverpool football
             club lifted the premier league trophy. A break from loosing</p>
         </div>
@@ -202,7 +202,7 @@
           <input type="checkbox" name="checkbox" id="" class="check-box">
         </div>
         <div class="table-cell mail-name">Charles Odili</div>
-        <div class="table-cell mail-body" onclick="displayThread();">
+        <div class="table-cell mail-body" onclick="display('thread', 'span-inbox');">
           <p><span class="mail-subject">Election News - </span>PMB has been re-elected, An election is a formal group
             decision-making process by which a population chooses an individual to hold public office.</p>
         </div>
@@ -212,7 +212,7 @@
           <input type="checkbox" name="checkbox" id="" class="check-box">
         </div>
         <div class="table-cell mail-name">Eniola Enitan</div>
-        <div class="table-cell mail-body" onclick="displayThread();">
+        <div class="table-cell mail-body" onclick="display('thread', 'span-inbox');">
           <p><span class="mail-subject">Andela Developer Challenge - </span>I finished
             my project ahead of time</p>
         </div>
@@ -222,7 +222,7 @@
           <input type="checkbox" name="checkbox" id="" class="check-box">
         </div>
         <div class="table-cell mail-name">Christopher Nkunku</div>
-        <div class="table-cell mail-body" onclick="displayThread();">
+        <div class="table-cell mail-body" onclick="display('thread', 'span-inbox');">
           <p><span class="mail-subject">Liverpool EPL Champions - </span>After 29 years waiting, Liverpool football
             club lifted the premier league trophy. A break from loosing</p>
         </div>
@@ -232,7 +232,7 @@
           <input type="checkbox" name="checkbox" id="" class="check-box">
         </div>
         <div class="table-cell mail-name">Charles Odili</div>
-        <div class="table-cell mail-body" onclick="displayThread();">
+        <div class="table-cell mail-body" onclick="display('thread', 'span-inbox');">
           <p><span class="mail-subject">Election News - </span>PMB has been re-elected, Anelectionis a formal group
             decision-making process by which a population chooses an individual to hold public office.</p>
         </div>
@@ -242,7 +242,7 @@
           <input type="checkbox" name="checkbox" id="" class="check-box">
         </div>
         <div class="table-cell mail-name">Eniola Enitan</div>
-        <div class="table-cell mail-body" onclick="displayThread();">
+        <div class="table-cell mail-body" onclick="display('thread', 'span-inbox');">
           <p><span class="mail-subject">Andela Developer Challenge - </span>I finished
             my project ahead of time</p>
         </div>
@@ -252,7 +252,7 @@
           <input type="checkbox" name="checkbox" id="" class="check-box">
         </div>
         <div class="table-cell mail-name">Christopher Nkunku</div>
-        <div class="table-cell mail-body" onclick="displayThread();">
+        <div class="table-cell mail-body" onclick="display('thread', 'span-inbox');">
           <p><span class="mail-subject">Liverpool EPL Champions - </span>After 29 years waiting, Liverpool football
             club lifted the premier league trophy. A break from loosing</p>
         </div>
@@ -262,7 +262,7 @@
           <input type="checkbox" name="checkbox" id="" class="check-box">
         </div>
         <div class="table-cell mail-name">Charles Odili</div>
-        <div class="table-cell mail-body" onclick="displayThread();">
+        <div class="table-cell mail-body" onclick="display('thread', 'span-inbox');">
           <p><span class="mail-subject">Election News - </span>PMB has been re-elected, Anelectionis a formal group
             decision-making process by which a population chooses an individual to hold public office.</p>
         </div>
@@ -272,7 +272,7 @@
           <input type="checkbox" name="checkbox" id="" class="check-box">
         </div>
         <div class="table-cell mail-name">Eniola Enitan</div>
-        <div class="table-cell mail-body" onclick="displayThread();">
+        <div class="table-cell mail-body" onclick="display('thread', 'span-inbox');">
           <p><span class="mail-subject">Andela Developer Challenge - </span>I finished
             my project ahead of time.</p>
         </div>
@@ -282,7 +282,7 @@
           <input type="checkbox" name="checkbox" id="" class="check-box">
         </div>
         <div class="table-cell mail-name">Christopher Nkunku</div>
-        <div class="table-cell mail-body" onclick="displayThread();">
+        <div class="table-cell mail-body" onclick="display('thread', 'span-inbox');">
           <p><span class="mail-subject">Liverpool EPL Champions - </span>After 29 years waiting, Liverpool football
             club lifted the premier league trophy. A break from loosing</p>
         </div>
