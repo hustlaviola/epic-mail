@@ -16,8 +16,8 @@
   <link rel="shortcut icon" href="./assets/img/icon.ico" />
 </head>
 
-<body class="bg-light">
-  <header>
+<body>
+  <header id="header">
     <div class="container">
       <div id="logo">
         <a href="home.html">
@@ -32,8 +32,9 @@
       </nav>
     </div>
   </header>
-  <div class="mailbox-head">
+  <div class="mailbox-head flex">
     <button class="open-btn" onclick="openNav()">&#9776;</button>
+    <button id="box-btn" class="btn-small btn-hollow">Back</button>
   </div>
   <div id="sidepanel" class="side-panel">
     <a class="close-btn" onclick="closeNav()">&times;</a>
@@ -41,16 +42,15 @@
     <a onclick="display('inbox', 'span-inbox');"><i class="fas fa-envelope"></i><span class="pl"> Inbox</span></a>
     <a onclick="display('draft', 'span-draft');"><i class="fas fa-file"></i><span class="pl"> Drafts</span></a>
     <a onclick="display('sent', 'span-sent');"><i class="fas fa-paper-plane"></i><span class="pl"> Sent</span></a>
-    <a onclick="display('group', 'span-group');"><i class="fas fa-users"></i><span class="pl"> Group</span></a>
+    <a onclick="display('group', 'span-group');"><span><i class="fas fa-users"></i></span></i><span class="pl"> Group</span></a>
   </div>
-  <div class="mail-box">
+  <div class="mail-box flex">
     <div class="side-nav">
       <aside class="aside">
         <div class="profile-pic">
-          <div><img src="./assets/img/pic.png" alt="profile picture"></div>
+          <div><img src="./assets/img/pico.png" alt="profile picture"></div>
           <span>Abiola Stephen</span>
         </div>
-        <br>
         <ul>
           <li>
             <a class="button" onclick="display('compose', 'span-compose');">
@@ -60,13 +60,13 @@
           </li>
           <li>
             <a class="button" onclick="display('inbox', 'span-inbox');">
-              <span><i class="fas fa-envelope"></i><sup class="inbox-alert"></sup></i></span>
+              <span><i class="fas fa-envelope"></i></span>
               <span id="span-inbox" class="pl current">Inbox</span>
             </a>
           </li>
           <li>
             <a class="button" onclick="display('draft', 'span-draft');">
-              <span><i class="fas fa-file"><sup class="inbox-alert"></sup></i></span>
+              <span><i class="fas fa-file"></i></span>
               <span id="span-draft" class="pl">Drafts</span>
             </a>
           </li>
@@ -106,188 +106,188 @@
     </section>
 
 
-    <section id="inbox" class="table-section">
-      <div class="table-row unread">
-        <div class="table-cell">
-          <input type="checkbox" name="checkbox" id="" class="check-box">
+    <div id="message-container">
+      <a>
+        <div class="message-box grid unread">
+          <div class="sub-pic"><img src="./assets/img/picoo.png" alt=""></div>
+          <div class="nested">
+            <div class="sub-nested">
+              <p class="sendr">Charles Odili</p>
+              <p class="time">2:45PM</p>
+            </div>
+            <div class="message-summary"><span>Lorem ipsum dolor sit </span>- Lorem ipsum dolor sit amet
+              consectetur adipisicing elit. Illum, iure adipisicing</div>
+          </div>
         </div>
-        <div class="table-cell mail-name">Charles Odili</div>
-        <div class="table-cell mail-body" onclick="display('thread', 'span-inbox');">
-          <p><span class="mail-subject">Election News - </span>PMB has been re-elected, An election is a formal group
-            decision-making process by which a population chooses an individual to hold public office.</p>
+      </a>
+      <a>
+        <div class="message-box grid unread">
+          <div class="sub-pic"><img src="./assets/img/picoo.png" alt=""></div>
+          <div class="nested">
+            <div class="sub-nested">
+              <p class="sendr">Charles Odili</p>
+              <p class="time">2:45PM</p>
+            </div>
+            <div class="message-summary"><span>Lorem ipsum dolor sit </span>- Lorem ipsum dolor sit amet
+              consectetur adipisicing elit. Illum, iure </div>
+          </div>
         </div>
-      </div>
-      <div class="table-row unread">
-        <div class="table-cell">
-          <input type="checkbox" name="checkbox" id="" class="check-box">
+      </a>
+      <a>
+        <div class="message-box grid">
+          <div class="sub-pic"><img src="./assets/img/picoo.png" alt=""></div>
+          <div class="nested">
+            <div class="sub-nested">
+              <p class="sendr">Charles Odili</p>
+              <p class="time">2:45PM</p>
+            </div>
+            <div class="message-summary"><span>Lorem ipsum dolor sit </span>- Lorem ipsum dolor sit amet
+              consectetur adipisicing elit. Illum, iure repellendus?</div>
+          </div>
         </div>
-        <div class="table-cell mail-name">Eniola Enitan</div>
-        <div class="table-cell mail-body" onclick="display('thread', 'span-inbox');">
-          <p><span class="mail-subject">Andela Developer Challenge - </span>I finished
-            my project ahead of time</p>
+      </a>
+      <a>
+        <div class="message-box grid">
+          <div class="sub-pic"><img src="./assets/img/picoo.png" alt=""></div>
+          <div class="nested">
+            <div class="sub-nested">
+              <p class="sendr">Charles Odili</p>
+              <p class="time">2:45PM</p>
+            </div>
+            <div class="message-summary"><span>Lorem ipsum dolor sit </span>- Lorem ipsum dolor sit amet
+              consectetur adipisicing elit. Illum, iure repellendus?</div>
+          </div>
         </div>
-      </div>
-      <div class="table-row">
-        <div class="table-cell">
-          <input type="checkbox" name="checkbox" id="" class="check-box">
+      </a>
+      <a>
+        <div class="message-box grid">
+          <div class="sub-pic"><img src="./assets/img/picoo.png" alt=""></div>
+          <div class="nested">
+            <div class="sub-nested">
+              <p class="sendr">Charles Odili</p>
+              <p class="time">2:45PM</p>
+            </div>
+            <div class="message-summary"><span>Lorem ipsum dolor sit </span>- Lorem ipsum dolor sit amet
+              consectetur adipisicing elit. Illum, iure repellendus?</div>
+          </div>
         </div>
-        <div class="table-cell mail-name">Christopher Nkunku</div>
-        <div class="table-cell mail-body" onclick="display('thread', 'span-inbox');">
-          <p><span class="mail-subject">Liverpool EPL Champions - </span>After 29 years waiting, Liverpool football
-            club lifted the premier league trophy. A break from loosing</p>
+      </a>
+      <a>
+        <div class="message-box grid">
+          <div class="sub-pic"><img src="./assets/img/picoo.png" alt=""></div>
+          <div class="nested">
+            <div class="sub-nested">
+              <p class="sendr">Charles Odili</p>
+              <p class="time">2:45PM</p>
+            </div>
+            <div class="message-summary"><span>Lorem ipsum dolor sit </span>- Lorem ipsum dolor sit amet
+              consectetur adipisicing elit. Illum, iure repellendus?</div>
+          </div>
         </div>
-      </div>
-      <div class="table-row">
-        <div class="table-cell">
-          <input type="checkbox" name="checkbox" id="" class="check-box">
+      </a>
+      <a>
+        <div class="message-box grid">
+          <div class="sub-pic"><img src="./assets/img/picoo.png" alt=""></div>
+          <div class="nested">
+            <div class="sub-nested">
+              <p class="sendr">Charles Odili</p>
+              <p class="time">2:45PM</p>
+            </div>
+            <div class="message-summary"><span>Lorem ipsum dolor sit </span>- Lorem ipsum dolor sit amet
+              consectetur adipisicing elit. Illum, iure repellendus?</div>
+          </div>
         </div>
-        <div class="table-cell mail-name">Charles Odili</div>
-        <div class="table-cell mail-body" onclick="display('thread', 'span-inbox');">
-          <p><span class="mail-subject">Election News - </span>PMB has been re-elected, Anelectionis a formal group
-            decision-making process by which a population chooses an individual to hold public office.</p>
+      </a>
+      <a>
+        <div class="message-box grid">
+          <div class="sub-pic"><img src="./assets/img/picoo.png" alt=""></div>
+          <div class="nested">
+            <div class="sub-nested">
+              <p class="sendr">Charles Odili</p>
+              <p class="time">2:45PM</p>
+            </div>
+            <div class="message-summary"><span>Lorem ipsum dolor sit </span>- Lorem ipsum dolor sit amet
+              consectetur adipisicing elit. Illum, iure repellendus?</div>
+          </div>
         </div>
-      </div>
-      <div class="table-row unread">
-        <div class="table-cell">
-          <input type="checkbox" name="checkbox" id="" class="check-box">
-        </div>
-        <div class="table-cell mail-name">Eniola Enitan</div>
-        <div class="table-cell mail-body" onclick="display('thread', 'span-inbox');">
-          <p><span class="mail-subject">Andela Developer Challenge - </span>I finished
-            my project ahead of time</p>
-        </div>
-      </div>
-      <div class="table-row">
-        <div class="table-cell">
-          <input type="checkbox" name="checkbox" id="" class="check-box">
-        </div>
-        <div class="table-cell mail-name">Christopher Nkunku</div>
-        <div class="table-cell mail-body" onclick="display('thread', 'span-inbox');">
-          <p><span class="mail-subject">Liverpool EPL Champions - </span>After 29 years waiting, Liverpool football
-            club lifted the premier league trophy. A break from loosing</p>
-        </div>
-      </div>
-      <div class="table-row">
-        <div class="table-cell">
-          <input type="checkbox" name="checkbox" id="" class="check-box">
-        </div>
-        <div class="table-cell mail-name">Charles Odili</div>
-        <div class="table-cell mail-body" onclick="display('thread', 'span-inbox');">
-          <p><span class="mail-subject">Election News - </span>PMB has been re-elected, Anelectionis a formal group
-            decision-making process by which a population chooses an individual to hold public office.</p>
-        </div>
-      </div>
-      <div class="table-row">
-        <div class="table-cell">
-          <input type="checkbox" name="checkbox" id="" class="check-box">
-        </div>
-        <div class="table-cell mail-name">Eniola Enitan</div>
-        <div class="table-cell mail-body" onclick="display('thread', 'span-inbox');">
-          <p><span class="mail-subject">Andela Developer Challenge - </span>I finished
-            my project ahead of time.</p>
-        </div>
-      </div>
-      <div class="table-row">
-        <div class="table-cell">
-          <input type="checkbox" name="checkbox" id="" class="check-box">
-        </div>
-        <div class="table-cell mail-name">Christopher Nkunku</div>
-        <div class="table-cell mail-body" onclick="display('thread', 'span-inbox');">
-          <p><span class="mail-subject">Liverpool EPL Champions - </span>After 29 years waiting, Liverpool football
-            club lifted the premier league trophy. A break from loosing</p>
-        </div>
-      </div>
-      <div class="table-row unread">
-        <div class="table-cell">
-          <input type="checkbox" name="checkbox" id="" class="check-box">
-        </div>
-        <div class="table-cell mail-name">Charles Odili</div>
-        <div class="table-cell mail-body" onclick="display('thread', 'span-inbox');">
-          <p><span class="mail-subject">Election News - </span>PMB has been re-elected, An election is a formal group
-            decision-making process by which a population chooses an individual to hold public office.</p>
-        </div>
-      </div>
-      <div class="table-row unread">
-        <div class="table-cell">
-          <input type="checkbox" name="checkbox" id="" class="check-box">
-        </div>
-        <div class="table-cell mail-name">Eniola Enitan</div>
-        <div class="table-cell mail-body" onclick="display('thread', 'span-inbox');">
-          <p><span class="mail-subject">Andela Developer Challenge - </span>I finished
-            my project ahead of time</p>
-        </div>
-      </div>
-      <div class="table-row">
-        <div class="table-cell">
-          <input type="checkbox" name="checkbox" id="" class="check-box">
-        </div>
-        <div class="table-cell mail-name">Christopher Nkunku</div>
-        <div class="table-cell mail-body" onclick="display('thread', 'span-inbox');">
-          <p><span class="mail-subject">Liverpool EPL Champions - </span>After 29 years waiting, Liverpool football
-            club lifted the premier league trophy. A break from loosing</p>
+      </a>
+    </div>
+    <div id="chat-container" class="flex-column">
+      <div id="chat-header" class="flex">
+        <img src="./assets/img/picoo.png" alt="">
+        <div class="status flex-column">
+          <h3>Jon Champion</h3>
+          <p>available</p>
         </div>
       </div>
-      <div class="table-row">
-        <div class="table-cell">
-          <input type="checkbox" name="checkbox" id="" class="check-box">
-        </div>
-        <div class="table-cell mail-name">Charles Odili</div>
-        <div class="table-cell mail-body" onclick="display('thread', 'span-inbox');">
-          <p><span class="mail-subject">Election News - </span>PMB has been re-elected, Anelectionis a formal group
-            decision-making process by which a population chooses an individual to hold public office.</p>
-        </div>
+      <div id="chat-content" class="chat-box flex-grow-1 flex-column">
+        <section id="chat" class="flex-grow-1 flex-column">
+          <div id="chat-list" class="flex-grow-1">
+            <div class="chat chat-left mb-2">
+              <div id="chat-details" class="flex">
+                <p class="chat-author">Jon Champion</p>
+                <p class="chat-date">10/11/2020</p>
+              </div>
+              <p class="chat-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Maiores quod inventore eaque. Facere, atque obcaecati.</p>
+            </div>
+            <div class="chat chat-right mb-2">
+              <div id="chat-details" class="flex">
+                <p class="chat-author">You</p>
+                <p class="chat-date">10/11/2020</p>
+              </div>
+              <p class="chat-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Maiores quod inventore eaque. Facere, atque obcaecati.</p>
+            </div>
+            <div class="chat chat-right mb-2">
+              <div id="chat-details" class="flex">
+                <p class="chat-author">You</p>
+                <p class="chat-date">10/11/2020</p>
+              </div>
+              <p class="chat-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Maiores quod inventore eaque. Facere, atque obcaecati.</p>
+            </div>
+            <div class="chat chat-left mb-2">
+              <div id="chat-details" class="flex">
+                <p class="chat-author">Jon Champion</p>
+                <p class="chat-date">10/11/2020</p>
+              </div>
+              <p class="chat-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Maiores quod inventore eaque. Facere, atque obcaecati.</p>
+            </div>
+            <div class="chat chat-right mb-2">
+              <div id="chat-details" class="flex">
+                <p class="chat-author">You</p>
+                <p class="chat-date">10/11/2020</p>
+              </div>
+              <p class="chat-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Maiores quod inventore eaque. Facere, atque obcaecati.</p>
+            </div>
+            <div class="chat chat-left mb-2">
+              <div id="chat-details" class="flex">
+                <p class="chat-author">Jon Champion</p>
+                <p class="chat-date">10/11/2020</p>
+              </div>
+              <p class="chat-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Maiores quod inventore eaque. Facere, atque obcaecati.</p>
+            </div>
+            <div class="chat chat-right mb-2">
+              <div id="chat-details" class="flex">
+                <p class="chat-author">You</p>
+                <p class="chat-date">10/11/2020</p>
+              </div>
+              <p class="chat-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Maiores quod inventore eaque. Facere, atque obcaecati.</p>
+            </div>
+            <p class="light-text text-center mb-2">Jon Champion has joined the chat...</p>
+          </div>
+          <form id="chat-form" class="flex">
+            <input type="text" class="flex-grow-1" placeholder="Enter a message...">
+            <button class="btn-small btn-primary">Send</button>
+          </form>
+        </section>
       </div>
-      <div class="table-row unread">
-        <div class="table-cell">
-          <input type="checkbox" name="checkbox" id="" class="check-box">
-        </div>
-        <div class="table-cell mail-name">Eniola Enitan</div>
-        <div class="table-cell mail-body" onclick="display('thread', 'span-inbox');">
-          <p><span class="mail-subject">Andela Developer Challenge - </span>I finished
-            my project ahead of time</p>
-        </div>
-      </div>
-      <div class="table-row">
-        <div class="table-cell">
-          <input type="checkbox" name="checkbox" id="" class="check-box">
-        </div>
-        <div class="table-cell mail-name">Christopher Nkunku</div>
-        <div class="table-cell mail-body" onclick="display('thread', 'span-inbox');">
-          <p><span class="mail-subject">Liverpool EPL Champions - </span>After 29 years waiting, Liverpool football
-            club lifted the premier league trophy. A break from loosing</p>
-        </div>
-      </div>
-      <div class="table-row">
-        <div class="table-cell">
-          <input type="checkbox" name="checkbox" id="" class="check-box">
-        </div>
-        <div class="table-cell mail-name">Charles Odili</div>
-        <div class="table-cell mail-body" onclick="display('thread', 'span-inbox');">
-          <p><span class="mail-subject">Election News - </span>PMB has been re-elected, Anelectionis a formal group
-            decision-making process by which a population chooses an individual to hold public office.</p>
-        </div>
-      </div>
-      <div class="table-row">
-        <div class="table-cell">
-          <input type="checkbox" name="checkbox" id="" class="check-box">
-        </div>
-        <div class="table-cell mail-name">Eniola Enitan</div>
-        <div class="table-cell mail-body" onclick="display('thread', 'span-inbox');">
-          <p><span class="mail-subject">Andela Developer Challenge - </span>I finished
-            my project ahead of time.</p>
-        </div>
-      </div>
-      <div class="table-row">
-        <div class="table-cell">
-          <input type="checkbox" name="checkbox" id="" class="check-box">
-        </div>
-        <div class="table-cell mail-name">Christopher Nkunku</div>
-        <div class="table-cell mail-body" onclick="display('thread', 'span-inbox');">
-          <p><span class="mail-subject">Liverpool EPL Champions - </span>After 29 years waiting, Liverpool football
-            club lifted the premier league trophy. A break from loosing</p>
-        </div>
-      </div>
-    </section>
+    </div>
 
 
     <section id="sent" class="table-section">
@@ -630,7 +630,6 @@
       </form>
     </section>
   </div>
-
   <script src="./assets/js/script.js"></script>
 </body>
 
