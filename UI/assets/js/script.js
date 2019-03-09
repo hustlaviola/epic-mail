@@ -14,6 +14,31 @@ const spanGroup = document.getElementById('span-group');
 
 const sidepanel = document.getElementById("sidepanel");
 
+const messageContainer = document.getElementById('message-container');
+const messageBoxes = document.querySelectorAll('.message-box');
+const chatContainer = document.getElementById('chat-container');
+const chatForm = document.getElementById('chat-form');
+const boxBtn = document.getElementById('box-btn');
+
+boxBtn.addEventListener('click', () => {
+  chatContainer.style.display = 'none';
+  boxBtn.style.display = 'none';
+  messageContainer.style.width = '100%';
+})
+
+if(window.innerWidth <= 768) {
+  messageBoxes.forEach(box => {
+    box.addEventListener('click', () => {
+      messageContainer.style.width = 0;
+      chatContainer.style.display = 'inherit';
+      chatContainer.style.marginLeft = 0;
+      boxBtn.style.display = 'block';
+      chatForm.style.width = '100%';
+      chatForm.style.borderLeft = "5px solid #10a9f0";
+    })
+  });
+}
+
 const reset = () => {
   compose.style.display = 'none';
   inbox.style.display = 'none';
