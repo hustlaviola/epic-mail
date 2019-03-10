@@ -95,7 +95,7 @@ button:focus {
 
 /* Join ChatPage */
 
-#chat-container {
+.thread-box {
   margin-left: 580px;
   line-height: 1.3;
   width: 100vw;
@@ -149,10 +149,6 @@ select {
   overflow-y: scroll;
 }
 
-#chat-container button {
-  border-radius: 0;
-}
-
 .chat {
   background: var(--secondary-blue);
   padding: 10px;
@@ -200,6 +196,32 @@ select {
 
 #chat-form input, button {
   height: 40px;
+}
+
+#chat-form button {
+  border-radius: 0;
+}
+
+/* Drafts */
+
+.draft-content {
+  margin-top: 150px;
+  align-self: center;
+  width: 90%;
+}
+
+#draft-form {
+  width: 90%;
+}
+
+.draft-buttons {
+  width: 90%;
+  align-self: center;
+  justify-content: space-evenly;
+}
+
+.draft-content textarea {
+  background: var(--light-blue);
 }
 
 /* Global */
@@ -381,7 +403,7 @@ nav li:hover {
 
 
 
-#message-container {
+.message-container {
   position: fixed;
   margin-top: 70px;
   margin-left: 230px;
@@ -848,11 +870,11 @@ footer {
     display: block;
   }
 
-  #chat-container {
+  .thread-box {
     margin-left: 350px;
   }
 
-  #message-container {
+  .message-container {
     margin-left: 0;
     font-size: 0.86em;
   }
@@ -891,7 +913,7 @@ footer {
     width: 0;
   }
 
-  #chat-container {
+  .thread-box {
     display: none;
   }
 
@@ -899,7 +921,7 @@ footer {
     display: block;
   }
 
-  #message-container {
+  .message-container {
     margin-left: 0;
     font-size: 0.9em;
     width: 100%;
@@ -929,13 +951,13 @@ footer {
     font-size: 33px;
   }
 
-  #message-container {
+  .message-container {
     margin-left: 0;
     width: 100%;
     font-size: 0.8em;
   }
 
-  #chat-container {
+  .thread-box {
     display: none;
   }
 

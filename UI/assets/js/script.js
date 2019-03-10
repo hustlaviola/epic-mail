@@ -14,14 +14,14 @@ const spanGroup = document.getElementById('span-group');
 
 const sidepanel = document.getElementById("sidepanel");
 
-const messageContainer = document.getElementById('message-container');
+const messageContainer = document.querySelector('.message-container');
 const messageBoxes = document.querySelectorAll('.message-box');
-const chatContainer = document.getElementById('chat-container');
+const threadBox = document.querySelector('.thread-box');
 const chatForm = document.getElementById('chat-form');
 const boxBtn = document.getElementById('box-btn');
 
 boxBtn.addEventListener('click', () => {
-  chatContainer.style.display = 'none';
+  threadBox.style.display = 'none';
   boxBtn.style.display = 'none';
   messageContainer.style.width = '100%';
 })
@@ -30,8 +30,8 @@ if(window.innerWidth <= 768) {
   messageBoxes.forEach(box => {
     box.addEventListener('click', () => {
       messageContainer.style.width = 0;
-      chatContainer.style.display = 'inherit';
-      chatContainer.style.marginLeft = 0;
+      threadBox.style.display = 'inherit';
+      threadBox.style.marginLeft = 0;
       boxBtn.style.display = 'block';
       chatForm.style.width = '100%';
       chatForm.style.borderLeft = "5px solid #10a9f0";
