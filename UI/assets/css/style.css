@@ -237,9 +237,23 @@ select {
   justify-content: space-between;
 }
 
-
 .recipient {
   font-weight: 600;
+}
+
+/* Compose */
+
+
+#compose {
+  margin-left: 230px;
+  width: 100vw;
+  height: 100vh;
+}
+
+#compose form {
+  align-self: center;
+  margin-top: 150px;
+  width: 80%;
 }
 
 /* Global */
@@ -510,7 +524,7 @@ nav li:hover {
   padding: 30px;
   margin: 20px 0px;
   border-radius: 10px;
-  background: #eeeeee;
+  background: var(--light-blue);
 }
 
 .form h2 {
@@ -529,7 +543,7 @@ textarea {
 }
 
 .form-unit {
-  height: 50px;
+  height: 40px;
 }
 
 .form-holder .btn {
@@ -540,7 +554,7 @@ textarea {
 textarea {
   padding-top: 15px;
   font-family: Arial, Helvetica, sans-serif;
-  height: 200px;
+  height: 180px;
 }
 
 textarea:focus,
@@ -755,21 +769,6 @@ aside ul {
   display: block;
 }
 
-#sent {
-  display: none;
-}
-
-#thread {
-  display: none;
-}
-
-#draft {
-  display: none;
-}
-
-#compose {
-  display: none;
-}
 
 #group {
   display: none;
@@ -887,6 +886,14 @@ footer {
   .side-nav {
     display: none;
   }
+
+  #compose-side-nav {
+    display: block;
+  }
+
+  #compose-btn {
+    display: none;
+  }
   
   .open-btn {
     display: block;
@@ -917,6 +924,18 @@ footer {
 
   .form-section {
     padding: 15%;
+  }
+
+  #compose {
+    margin-left: 0;
+  }
+  
+  #compose-side-nav {
+    display: none;
+  }
+
+  #compose-btn {
+    display: block;
   }
 
   .profile-pic {
