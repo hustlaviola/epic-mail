@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>EPIC-mail | Sent Messages</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="EPIC-mail helps people exchange messages/information over the internet">
+  <meta name="keywords" content="EPIC, email, message">
+  <meta name="author" content="Viola">
+  <link rel="stylesheet" href="./assets/css/style.css" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+    crossorigin="anonymous">
+  <link rel="shortcut icon" href="./assets/img/icon.ico" />
+</head>
+
+<body>
+  <header id="header">
+    <div class="container">
+      <div id="logo">
+        <a href="home.html">
+          <h1>EPIC-mail</h1>
+        </a>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="./admin/admin.html">Admin</a></li>
+          <li><a href="index.html">Sign Out</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <div class="mailbox-head flex">
+    <button class="open-btn" onclick="openNav()">&#9776;</button>
+    <button id="box-btn" class="btn-small btn-hollow">Back</button>
+  </div>
+  <div id="sidepanel" class="side-panel">
+    <a class="close-btn" onclick="closeNav()">&times;</a>
+    <a href="Compose.html"><i class="fas fa-pen"></i><span class="pl"> Compose</span></a>
+    <a href="inbox.html"><i class="fas fa-envelope"></i><span class="pl"> Inbox</span></a>
+    <a href="draft.html"><i class="fas fa-file"></i><span class="pl"> Drafts</span></a>
+    <a href="sent.html"><i class="fas fa-paper-plane"></i><span class="pl current"> Sent</span></a>
+    <a href="group.html"><i class="fas fa-users"></i><span class="pl"> Group</span></a>
+  </div>
+  <div class="mail-box flex">
+    <div class="side-nav">
+      <aside class="aside">
+        <div class="profile-pic">
+          <div><img src="./assets/img/pico.png" alt="profile picture"></div>
+          <span>Abiola Stephen</span>
+        </div>
+        <ul>
+          <li>
+            <a href="Compose.html" class="button">
+              <span><i class="fas fa-pen"></i></span>
+              <span id="span-compose" class="pl">Compose</span>
+            </a>
+          </li>
+          <li>
+            <a href="inbox.html" class="button">
+              <span><i class="fas fa-envelope"></i></span>
+              <span id="span-inbox" class="pl">Inbox</span>
+            </a>
+          </li>
+          <li>
+            <a href="draft.html" class="button">
+              <span><i class="fas fa-file"></i></span>
+              <span id="span-draft" class="pl">Drafts</span>
+            </a>
+          </li>
+          <li>
+            <a href="sent.html" class="button">
+              <span><i class="fas fa-paper-plane"></i></span>
+              <span id="span-sent" class="pl current">Sent</span>
+            </a>
+          </li>
+          <li>
+            <a href="group.html" class="button">
+              <span><i class="fas fa-users"></i></span>
+              <span id="span-group" class="pl">Group</span>
+            </a>
+          </li>
+        </ul>
+      </aside>
+    </div>
+    <div class="message-container">
+      <a>
+        <div class="message-box grid">
+          <div class="sub-to">To:</div>
+          <div class="nested">
+            <div class="sub-nested">
+              <p class="sendr">charlesodili@epicmail.com</p>
+              <p class="time">2:45PM</p>
+            </div>
+            <div class="message-summary"><span>Lorem ipsum dolor sit </span>- Lorem ipsum dolor sit amet
+              consectetur adipisicing elit. Illum, iure adipisicing</div>
+          </div>
+        </div>
+      </a>
+      <a>
+        <div class="message-box grid">
+          <div class="sub-to">To:</div>
+          <div class="nested">
+            <div class="sub-nested">
+              <p class="sendr">charlesodili@epicmail.com</p>
+              <p class="time">2:45PM</p>
+            </div>
+            <div class="message-summary"><span>Lorem ipsum dolor sit </span>- Lorem ipsum dolor sit amet
+              consectetur adipisicing elit. Illum, iure </div>
+          </div>
+        </div>
+      </a>
+      <a>
+        <div class="message-box grid">
+          <div class="sub-to">To:</div>
+          <div class="nested">
+            <div class="sub-nested">
+              <p class="sendr">charlesodili@epicmail.com</p>
+              <p class="time">2:45PM</p>
+            </div>
+            <div class="message-summary"><span>Lorem ipsum dolor sit </span>- Lorem ipsum dolor sit amet
+              consectetur adipisicing elit. Illum, iure repellendus?</div>
+          </div>
+        </div>
+      </a>
+      <a>
+        <div class="message-box grid">
+          <div class="sub-to">To:</div>
+          <div class="nested">
+            <div class="sub-nested">
+              <p class="sendr">charlesodili@epicmail.com</p>
+              <p class="time">2:45PM</p>
+            </div>
+            <div class="message-summary"><span>Lorem ipsum dolor sit </span>- Lorem ipsum dolor sit amet
+              consectetur adipisicing elit. Illum, iure repellendus?</div>
+          </div>
+        </div>
+      </a>
+      <a>
+        <div class="message-box grid">
+          <div class="sub-to">To:</div>
+          <div class="nested">
+            <div class="sub-nested">
+              <p class="sendr">charlesodili@epicmail.com</p>
+              <p class="time">2:45PM</p>
+            </div>
+            <div class="message-summary"><span>Lorem ipsum dolor sit </span>- Lorem ipsum dolor sit amet
+              consectetur adipisicing elit. Illum, iure repellendus?</div>
+          </div>
+        </div>
+      </a>
+      <a>
+        <div class="message-box grid">
+          <div class="sub-to">To:</div>
+          <div class="nested">
+            <div class="sub-nested">
+              <p class="sendr">charlesodili@epicmail.com</p>
+              <p class="time">2:45PM</p>
+            </div>
+            <div class="message-summary"><span>Lorem ipsum dolor sit </span>- Lorem ipsum dolor sit amet
+              consectetur adipisicing elit. Illum, iure repellendus?</div>
+          </div>
+        </div>
+      </a>
+      <a>
+        <div class="message-box grid">
+          <div class="sub-to">To:</div>
+          <div class="nested">
+            <div class="sub-nested">
+              <p class="sendr">charlesodili@epicmail.com</p>
+              <p class="time">2:45PM</p>
+            </div>
+            <div class="message-summary"><span>Lorem ipsum dolor sit </span>- Lorem ipsum dolor sit amet
+              consectetur adipisicing elit. Illum, iure repellendus?</div>
+          </div>
+        </div>
+      </a>
+      <a>
+        <div class="message-box grid">
+          <div class="sub-to">To:</div>
+          <div class="nested">
+            <div class="sub-nested">
+              <p class="sendr">charlesodili@epicmail.com</p>
+              <p class="time">2:45PM</p>
+            </div>
+            <div class="message-summary"><span>Lorem ipsum dolor sit </span>- Lorem ipsum dolor sit amet
+              consectetur adipisicing elit. Illum, iure repellendus?</div>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="thread-box flex-column">
+      <div class="box-content sent flex-column flex-center mb-2">
+        <div class="sent-details flex mb-2">
+          <p class="recipient">charlesodili@epicmail.com</p>
+          <p>2:45PM</p>
+        </div>
+        <div class="mb-2">
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur itaque blanditiis maxime,
+            soluta, quibusdam consequuntur quo tempore quisquam earum corporis, reiciendis temporibus fugiat beatae.
+            Libero quos recusandae cum tempore, nemo vero facere iure? Eius cumque atque quis quasi facilis animi
+            dignissimos temporibus id? Facere quis commodi labore aliquam molestiae minima esse,</p>
+        </div>
+        <div class="box-buttons flex flex-center mb-2">
+          <button class="btn-small btn-danger">Retract</button>
+          <button class="btn-small btn-danger">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="./assets/js/script.js"></script>
+</body>
+
+</html>

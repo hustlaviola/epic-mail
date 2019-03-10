@@ -204,7 +204,7 @@ select {
 
 /* Drafts */
 
-.draft-content {
+.box-content {
   margin-top: 150px;
   align-self: center;
   width: 90%;
@@ -214,14 +214,32 @@ select {
   width: 90%;
 }
 
-.draft-buttons {
+.box-buttons {
   width: 90%;
   align-self: center;
   justify-content: space-evenly;
 }
 
-.draft-content textarea {
+.box-content textarea {
   background: var(--light-blue);
+}
+
+/* Sent */
+
+.sent {
+  background: var(--light-blue);
+  color: var(--secondary-text);
+  padding: 10px;
+}
+
+.sent-details {
+  width: 90%;
+  justify-content: space-between;
+}
+
+
+.recipient {
+  font-weight: 600;
 }
 
 /* Global */
@@ -440,13 +458,17 @@ nav li:hover {
   justify-self: center;
 }
 
+.sub-to {
+  justify-self: center;
+}
+
 .sub-nested {
   display: grid;
   grid-template-columns: 3fr 1fr;
 }
 
 .sendr {
-  font-weight: 800;
+  font-weight: 600;
 }
 
 .time {
