@@ -24,7 +24,8 @@ body {
   color: var(--primary-text);
 }
 
-button, a {
+button,
+a {
   cursor: pointer;
 }
 
@@ -64,6 +65,10 @@ button:focus {
   margin-bottom: 20px;
 }
 
+.mt-7 {
+  margin-top: 70px;
+}
+
 .bb {
   border-bottom: 1px solid #cecece;
 }
@@ -80,7 +85,8 @@ button:focus {
   overflow: hidden;
 }
 
-a, .btn {
+a,
+.btn {
   cursor: pointer;
 }
 
@@ -271,6 +277,7 @@ nav li:hover {
 .message-container {
   position: fixed;
   padding-left: 5px;
+  padding-top: 10px;
   margin-top: 70px;
   margin-left: 230px;
   width: 350px;
@@ -347,7 +354,7 @@ nav li:hover {
   margin-top: 70px;
   padding: 5px;
   width: 100%;
-  height:80px;
+  height: 80px;
   color: var(--primary-text);
   background: var(--white);
   border-bottom: 2px solid #757575;
@@ -421,7 +428,8 @@ select {
   font-weight: 600;
 }
 
-.chat-date, .chat-body {
+.chat-date,
+.chat-body {
   font-size: 14px;
 }
 
@@ -433,7 +441,8 @@ select {
   font-size: 15px;
 }
 
-#chat-form input, button {
+#chat-form input,
+button {
   height: 40px;
 }
 
@@ -489,12 +498,6 @@ select {
   height: 100vh;
 }
 
-#compose form {
-  align-self: center;
-  margin-top: 150px;
-  width: 80%;
-}
-
 /* showcase */
 
 #showcase {
@@ -539,14 +542,24 @@ select {
 /* Form */
 
 .form-section {
-  padding: 5% 23%;
+  height: 100vh;
+  width: 100vw;
+  margin-top: 60px;
 }
 
 .form {
+  align-items: center;
+  width: 60%;
   padding: 30px;
   margin: 20px 0px;
   border-radius: 10px;
   background: var(--light-blue);
+}
+
+form {
+  align-self: center;
+  justify-items: center;
+  width: 100%;
 }
 
 .form h2 {
@@ -568,8 +581,11 @@ textarea {
   height: 40px;
 }
 
+.form-holder {
+  text-align: center;
+}
+
 .form-holder .btn {
-  margin: 25px 10px 0;
   padding: 5px;
 }
 
@@ -710,7 +726,7 @@ aside ul {
 #back-btn {
   background: transparent;
   border: 0;
-  color:var(--white);
+  color: var(--white);
 }
 
 #back-btn:hover {
@@ -749,14 +765,15 @@ aside ul {
 }
 
 #group-info {
-  margin-left: 350px;
   margin-top: 70px;
+  margin-left: 350px;
   padding-left: 10px;
   width: 100vw;
   height: 100vh;
 }
 
 #info-box {
+  align-self: center;
   width: 90%;
   background: var(--light-blue);
   padding: 5px;
@@ -804,11 +821,6 @@ select:focus {
   width: 100%;
 }
 
-#new-group form {
-  align-self: center;
-  width: 80%;
-}
-
 /* footer */
 
 footer {
@@ -826,7 +838,7 @@ footer {
 /* Media Queries */
 
 @media (max-width: 1024px) {
-  
+
   .side-nav {
     display: none;
   }
@@ -838,7 +850,7 @@ footer {
   #compose-btn {
     display: none;
   }
-  
+
   .open-btn {
     display: block;
   }
@@ -851,7 +863,11 @@ footer {
     margin-left: 0;
     font-size: 0.86em;
   }
-  
+
+  .form {
+    width: 65%;
+  }
+
   #chat-form {
     width: 60%;
   }
@@ -860,6 +876,8 @@ footer {
     font-size: 0.82em;
   }
 }
+
+
 
 @media (max-width: 768px) {
   #logo {
@@ -870,14 +888,10 @@ footer {
     font-size: 40px;
   }
 
-  .form-section {
-    padding: 15%;
-  }
-
   #compose {
     margin-left: 0;
   }
-  
+
   #compose-side-nav {
     display: none;
   }
@@ -894,10 +908,10 @@ footer {
     margin-top: 10px;
   }
 
-  nav li{
+  nav li {
     display: block;
   }
-  
+
   .side-nav {
     width: 0;
   }
@@ -918,6 +932,10 @@ footer {
 
   .aside a {
     font-size: 18px;
+  }
+
+  .form {
+    width: 75%;
   }
 
   #group-container {
@@ -979,19 +997,18 @@ footer {
 
   #group-info {
     display: none;
-    margin-top: 90px;
   }
 
   #info {
     display: block;
   }
 
-  .form h2 {
-    font-size: 20px;
+  .form {
+    width: 90%;
   }
 
-  .form-section {
-    padding: 5%;
+  .form h2 {
+    font-size: 20px;
   }
 
   .form-unit {

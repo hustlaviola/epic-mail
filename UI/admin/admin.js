@@ -11,8 +11,8 @@ if (window.innerWidth <= 768) {
       groupInfo.style.marginLeft = 0;
       groupInfo.style.paddingLeft = 0;
       adminHead.style.display = 'flex';
-      if (window.innerHeight <= 640) {
-        groupInfo.style.marginTop = '150px';
+      if (window.innerHeight < 640) {
+        groupInfo.style.marginTop = '100px';
       }
     })
   });
