@@ -142,7 +142,7 @@
       </a>
     </div>
     <div id="group-info" class="flex-column flex-center">
-      <div id="info-box" class="mb-2">
+      <div id="info-box" class="flex-column mb-2">
         <div id="group-details" class="grid bb mb-2">
           <div class="sub-pic"><img src="../assets/img/groupicoo.png" alt=""></div>
           <div class="nested">
@@ -184,19 +184,21 @@
           <button id="create-btn" class="btn-small btn-primary">Create New Group</button>
         </div>
       </div>
-      <div id="new-group" class="flex-column hidden">
-        <form class="form flex-column">
-          <div class="form-holder">
-            <input type="text" placeholder="Name.." class="form-unit" autofocus>
-          </div>
-          <div class="form-holder mb-2">
-            <textarea placeholder="Description.."></textarea>
-          </div>
-          <div class="box-buttons flex">
-            <button class="btn-small btn-primary">Create</button>
-            <button id="cancel-btn" class="btn-small btn-primary">Cancel</button>
-          </div>
-        </form>
+      <div id="new-group" class="flex-column flex-center hidden">
+        <div class="form flex-column">
+          <form class="flex-column">
+            <div class="form-holder">
+              <input type="text" placeholder="Name.." class="form-unit" autofocus>
+            </div>
+            <div class="form-holder mb-2">
+              <textarea placeholder="Description.."></textarea>
+            </div>
+            <div class="box-buttons flex flex-center">
+              <button class="btn-small btn-primary">Create</button>
+              <button id="cancel-btn" class="btn-small btn-primary">Cancel</button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </div>
