@@ -7,6 +7,7 @@
   --primary-text: #3b3b3b;
   --secondary-text: #000000;
   --light-text: #696969;
+  --danger: #ee1935;
 }
 
 /* Resets */
@@ -32,6 +33,7 @@ button:focus {
 }
 
 /* Helper Classes */
+
 .grid {
   display: grid;
 }
@@ -78,6 +80,98 @@ button:focus {
   overflow: hidden;
 }
 
+a, .btn {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+}
+
+.btn {
+  font-size: 18px;
+  padding: 12px 24px;
+  border-radius: 10px;
+  display: inline-block;
+  min-width: 100px;
+  text-align: center;
+}
+
+.btn-small {
+  min-width: 70px;
+  text-align: center;
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 10px;
+}
+
+.btn-primary {
+  background: var(--secondary-blue);
+  color: var(--white);
+  border: 2px solid var(--secondary-blue);
+}
+
+.btn-primary:hover {
+  background: var(--white);
+  color: var(--secondary-blue);
+  transition: 0.5s;
+}
+
+.btn-danger {
+  background: var(--danger);
+  color: var(--white);
+  border: 2px solid var(--danger);
+}
+
+.btn-danger:hover {
+  background: var(--white);
+  color: var(--danger);
+  transition: 0.5s;
+}
+
+.btn-hollow {
+  background: var(--white);
+  color: var(--secondary-blue);
+  border: 2px solid var(--secondary-blue);
+}
+
+.btn-hollow:hover {
+  background: var(--secondary-blue);
+  color: var(--white);
+  border: 2px solid var(--white);
+  transition: 0.5s;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+
+.column {
+  flex: 1 1 0%;
+}
+
+.card {
+  text-align: center;
+  padding: 5px;
+  margin: 10px;
+  box-shadow: 0px 20px 50px rgba(0, 0, 0, 0.7);
+  border-radius: 20px;
+}
+
+p a {
+  color: var(--secondary-blue);
+}
+
+.unread {
+  font-weight: bold;
+}
+
+.img {
+  margin-top: 50px;
+}
+
 /* Text Classes */
 
 .primary-text {
@@ -96,8 +190,148 @@ button:focus {
   text-align: center;
 }
 
+/* Header */
 
-/* Join ChatPage */
+.header {
+  position: fixed;
+  width: 100vw;
+  height: 70px;
+  top: 0;
+  z-index: 1;
+  color: #2871b9;
+  background: var(--white);
+  border-bottom: 2px solid #757575;
+}
+
+#logo {
+  float: left;
+}
+
+#logo h1 {
+  font-size: 50px;
+  font-family: 'Ultra', serif;
+}
+
+nav {
+  float: right;
+}
+
+nav ul {
+  margin-top: 20px;
+}
+
+.current {
+  font-weight: bold;
+}
+
+.header a {
+  color: var(--secondary-blue);
+}
+
+nav li {
+  display: inline;
+  padding: 0 15px;
+}
+
+nav li:hover {
+  font-weight: 600;
+}
+
+/* Mailbox */
+
+.mail-box {
+  margin: 50px 0 0;
+  color: var(--white);
+}
+
+.mailbox-head {
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+  justify-content: space-between;
+  margin-top: 20px;
+  padding: 4px;
+  height: 50px;
+  background: var(--secondary-blue);
+}
+
+#box-btn {
+  display: none;
+  background: transparent;
+  color: var(--white);
+  border: 0;
+}
+
+#box-btn:hover {
+  background: var(--light-blue);
+  color: var(--primary-text);
+  transition: 0.5s;
+}
+
+.message-container {
+  position: fixed;
+  padding-left: 5px;
+  margin-top: 70px;
+  margin-left: 230px;
+  width: 350px;
+  height: 100vh;
+  font-size: 0.88em;
+  background: var(--white);
+  overflow-y: auto;
+  padding-bottom: 40px;
+}
+
+.message-box {
+  grid-template-columns: 1fr 4fr;
+  height: 100px;
+  color: var(--primary-text);
+  padding: 3px;
+  border-bottom: 1px solid #cecece;
+}
+
+.message-box:hover {
+  background: var(--secondary-blue);
+  margin: 3px;
+  color: var(--white);
+  transition: 0.4s;
+}
+
+.nested {
+  display: grid;
+  grid-template-rows: 1fr 3fr;
+}
+
+.sub-pic {
+  padding: 3px;
+  align-self: center;
+  justify-self: center;
+}
+
+.sub-to {
+  justify-self: center;
+}
+
+.sub-nested {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+}
+
+.sendr {
+  font-weight: 600;
+}
+
+.time {
+  padding-right: 3px;
+  justify-self: end;
+}
+
+.message-summary {
+  line-height: 1.3;
+}
+
+.message-summary span {
+  font-size: 16px;
+}
 
 .thread-box {
   margin-left: 580px;
@@ -261,143 +495,6 @@ select {
   width: 80%;
 }
 
-/* Global */
-
-a, .btn {
-  cursor: pointer;
-}
-
-a {
-  text-decoration: none;
-}
-
-.btn {
-  font-size: 20px;
-  padding: 12px 24px;
-  border-radius: 10px;
-  display: inline-block;
-  min-width: 100px;
-  text-align: center;
-}
-
-.btn-small {
-  min-width: 70px;
-  text-align: center;
-  display: inline-block;
-  padding: 6px 12px;
-  border-radius: 10px;
-}
-
-.btn-primary {
-  background: #10a9f0;
-  color: #ffffff;
-  border: 2px solid #10a9f0;
-}
-
-.btn-primary:hover {
-  background: #ffffff;
-  color: #10a9f0;
-  transition: 0.5s;
-}
-
-.btn-danger {
-  background: #ee1935;
-  color: #ffffff;
-  border: 2px solid #ee1935;
-}
-
-.btn-danger:hover {
-  background: #ffffff;
-  color: #ee1935;
-  transition: 0.5s;
-}
-
-.btn-hollow {
-  background: #ffffff;
-  color: #10a9f0;
-  border: 2px solid #10a9f0;
-}
-
-.btn-hollow:hover {
-  background: #10a9f0;
-  color: #ffffff;
-  border: 2px solid #ffffff;
-  transition: 0.5s;
-}
-
-.row {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 20px;
-}
-
-.column {
-  flex: 1 1 0%;
-}
-
-.card {
-  text-align: center;
-  padding: 5px;
-  margin: 10px;
-  box-shadow: 0px 20px 50px rgba(0, 0, 0, 0.7);
-  border-radius: 20px;
-}
-
-p a {
-  color: #10a9f0;
-}
-
-.img {
-  margin-top: 50px;
-}
-
-/* Header */
-
-.header {
-  position: fixed;
-  width: 100vw;
-  height: 70px;
-  top: 0;
-  z-index: 1;
-  color: #2871b9;
-  background: #ffffff;
-  border-bottom: 2px solid #757575;
-}
-
-#logo {
-  float: left;
-}
-
-#logo h1 {
-  font-size: 50px;
-  font-family: 'Ultra', serif;
-}
-
-nav {
-  float: right;
-}
-
-nav ul {
-  margin-top: 20px;
-}
-
-.current {
-  font-weight: bold;
-}
-
-.header a {
-  color: #2871b9;
-}
-
-nav li {
-  display: inline;
-  padding: 0 15px;
-}
-
-nav li:hover {
-  font-weight: 600;
-}
-
 /* showcase */
 
 #showcase {
@@ -406,7 +503,7 @@ nav li:hover {
     rgba(46, 77, 216, 0.9),
     rgba(15, 7, 90, 0.9)), url('../img/background.jpg') no-repeat 0 -130px;
   background-size: cover;
-  color: #fff;
+  color: var(--white);
 }
 
 #showcase h1 {
@@ -421,87 +518,6 @@ nav li:hover {
 
 #showcase a {
   margin: 50px 0;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* New */
-
-
-.message-container {
-  position: fixed;
-  padding-left: 5px;
-  margin-top: 70px;
-  margin-left: 230px;
-  width: 350px;
-  height: 100vh;
-  font-size: 0.88em;
-  background: #ffffff;
-  overflow-y: auto;
-  padding-bottom: 40px;
-}
-
-.message-box {
-  grid-template-columns: 1fr 4fr;
-  height: 100px;
-  color: var(--primary-text);
-  padding: 3px;
-  border-bottom: 1px solid #cecece;
-}
-
-.message-box:hover {
-  background: var(--secondary-blue);
-  margin: 3px;
-  color: var(--white);
-  transition: 0.4s;
-}
-
-.nested {
-  display: grid;
-  grid-template-rows: 1fr 3fr;
-}
-
-.sub-pic {
-  padding: 3px;
-  align-self: center;
-  justify-self: center;
-}
-
-.sub-to {
-  justify-self: center;
-}
-
-.sub-nested {
-  display: grid;
-  grid-template-columns: 3fr 1fr;
-}
-
-.sendr {
-  font-weight: 600;
-}
-
-.time {
-  padding-right: 3px;
-  justify-self: end;
-}
-
-.message-summary {
-  line-height: 1.3;
-}
-
-.message-summary span {
-  font-size: 16px;
 }
 
 /* info */
@@ -568,38 +584,8 @@ input:focus {
   outline: none;
 }
 
-/* Mailbox */
-
-.mail-box {
-  margin: 50px 0 0;
-  color: var(--white);
-}
-
-.mailbox-head {
-  width: 100%;
-  position: fixed;
-  z-index: 1;
-  justify-content: space-between;
-  margin-top: 20px;
-  padding: 4px;
-  height: 50px;
-  background: var(--secondary-blue);
-}
-
-#box-btn {
-  display: none;
-  background: transparent;
-  color: var(--white);
-  border: 0;
-}
-
-#box-btn:hover {
-  background: var(--light-blue);
-  color: var(--primary-text);
-  transition: 0.5s;
-}
-
 /* sidepanel */
+
 .side-panel {
   height: 350px;
   width: 0;
@@ -706,115 +692,6 @@ aside ul {
 
 .pl {
   padding-left: 7px;
-}
-
-/* Mail */
-
-.compose-section,
-.table-section,
-.group-section,
-.thread-section {
-  display: table;
-  border-collapse: collapse;
-  width: 100%;
-  margin-left: 250px;
-  margin-bottom: 40px;
-  padding: 40px 5px 10px;
-  border-left: 5px solid #10a9f0;
-  background: #fff;
-}
-
-.table-section {
-  display: table;
-}
-
-.table-row {
-  display: table-row;
-  font-size: 17px;
-  color: #4d4c4c;
-  border-bottom: 1px solid #cfcfcf;
-}
-
-.table-row:hover {
-  background: #f1f1f1;
-  border-bottom: 2.5px solid #cfcfcf;
-}
-
-.table-cell {
-  display: table-cell;
-  padding: 5px;
-}
-
-.table-btn {
-  margin-top: 20px;
-  text-align: center;
-}
-
-.check {
-  width: 2%;
-}
-
-.mail-name {
-  width: 23%;
-}
-
-.mail-body {
-  width: 75%;
-  cursor: pointer;
-}
-
-.table-cell .btn {
-  padding: 5px;
-  font-size: 15px;
-}
-
-.mail-subject {
-  color: #000000;
-}
-
-#inbox {
-  display: block;
-}
-
-
-#group {
-  display: none;
-}
-
-#group-chat {
-  display: none;
-}
-
-#draft .mail-name {
-  width: 8%;
-}
-
-.mail {
-  line-height: 2;
-  padding: 20px;
-  font-size: 15px;
-  border-bottom: 1.5px solid #cfcfcf;
-}
-
-.thread-body {
-  padding-left: 8px;
-}
-
-.thread-section span {
-  font-weight: bold;
-}
-
-.thread-section h4 {
-  font-size: 20px;
-}
-
-#div-btn {
-  text-align: center;
-  margin-top: 30px;
-}
-
-.unread {
-  font-weight: bold;
 }
 
 /* Admin */
@@ -932,12 +809,6 @@ select:focus {
   width: 80%;
 }
 
-.btn-back {
-  margin-top: -170px;
-  width: 100vw;
-  background: #000;
-}
-
 /* footer */
 
 footer {
@@ -1045,15 +916,6 @@ footer {
     width: 100%;
   }
 
-  .chat-date, .chat-body {
-    font-size: 12px;
-  }
-
-  .table-row,
-  select option {
-    font-size: 16px;
-  }
-
   .aside a {
     font-size: 18px;
   }
@@ -1120,24 +982,6 @@ footer {
     margin-top: 90px;
   }
 
-  .compose-section,
-  .table-section,
-  .group-section,
-  .thread-section {
-    margin-left: 0;
-    border-left: 0;
-    margin-bottom: 20px;
-  }
-
-  .table-row,
-  select option {
-    font-size: 14px;
-  }
-
-  .mail {
-    font-size: 13px;
-  }
-
   #info {
     display: block;
   }
@@ -1158,26 +1002,9 @@ footer {
     height: 160px;
   }
 
-  #compose .form-holder {
-    text-align: center;
-  }
-
-  .group-members,
-  .group button {
-    font-size: 18px;
-  }
-
   select {
     width: 70%;
     font-size: 16px;
-  }
-
-  .group {
-    margin: 50px 5%;
-  }
-
-  #group-btn {
-    font-size: 17px;
   }
 
   footer {
