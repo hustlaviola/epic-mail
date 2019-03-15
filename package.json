@@ -7,6 +7,9 @@
     "lint": "eslint ./server --fix",
     "start": "babel-node ./server/server",
     "dev": "nodemon ./server/server --exec babel-node",
+    "migrate-db": "babel-node ./server/usingDatabase/models",
+    "seeds": "babel-node ./server/usingDatabase/seeds",
+    "seeds-delete": "babel-node ./server/usingDatabase/seeds/deleteSeeds",
     "test": "nyc mocha --require babel-register ./server/tests --exit",
     "coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls"
   },
@@ -41,9 +44,11 @@
     "bcrypt": "^3.0.4",
     "chai": "^4.2.0",
     "chai-http": "^4.2.1",
+    "dotenv": "^7.0.0",
     "express": "^4.16.4",
     "jsonwebtoken": "^8.5.0",
     "mocha": "^6.0.1",
+    "pg": "^7.8.2",
     "swagger-ui-express": "^4.0.2"
   }
 }

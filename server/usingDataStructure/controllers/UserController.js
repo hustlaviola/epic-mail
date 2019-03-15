@@ -1,6 +1,6 @@
-import Helper from '../utils/Helper';
+import Helper from '../../utils/Helper';
 import users from '../models/userModel';
-import ErrorHandler from '../utils/ErrorHandler';
+import ErrorHandler from '../../utils/ErrorHandler';
 
 /**
  * @class UserController

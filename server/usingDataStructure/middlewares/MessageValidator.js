@@ -1,5 +1,5 @@
-import ErrorHandler from '../utils/ErrorHandler';
-import Helper from '../utils/Helper';
+import ErrorHandler from '../../utils/ErrorHandler';
+import Helper from '../../utils/Helper';
 import messages from '../models/messageModel';
 
 /**
