@@ -10,7 +10,7 @@
     "migrate-db": "babel-node ./server/usingDatabase/models",
     "seeds": "babel-node ./server/usingDatabase/seeds",
     "seeds-delete": "babel-node ./server/usingDatabase/seeds/deleteSeeds",
-    "test": "nyc mocha --require babel-register ./server/tests --exit",
+    "test": "nyc mocha --require babel-register ./server/usingDatabase/tests --exit",
     "coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
