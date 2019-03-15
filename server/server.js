@@ -2,7 +2,7 @@ import express from 'express';
 import swaggerUi from 'swagger-ui-express';
 import swaggerDocument from '../swagger.json';
 import ErrorHandler from './utils/ErrorHandler';
-import router from './usingDataStructure/routes/router';
+import router from './usingDatabase/routes/router';
 
 const app = express();
 
@@ -18,7 +18,7 @@ app.get('/', (req, res) => {
 });
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-app.use('/api/v1', router);
+app.use('/api/v2', router);
 
 app.all('/*', (req, res) => ErrorHandler.routeError(res));
 

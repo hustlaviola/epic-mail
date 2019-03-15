@@ -276,8 +276,6 @@ describe('/POST Signup route', () => {
         expect(res.body).to.be.an('object');
         expect(res.body.data).to.be.an('array');
         expect(res.body.data[0]).to.have.property('token');
-        expect(res.body).to.have.property('message')
-          .eql('User created successfully');
         done(err);
       });
   });
