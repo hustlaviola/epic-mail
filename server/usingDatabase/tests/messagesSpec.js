@@ -12,11 +12,11 @@ describe('/POST Messages route', () => {
       subject: `lorem ipsum tities lorem ipsum tities lorem ipsum tities lorem ipsum tities
         lorem ipsum tities lorem ipsum tities lorem ipsum tities lorem ipsum tities lorem ipsum
         lorem ipsum titieslorem ipsum titieslorem ipsum titieslorem ipsum titieslorem ipsum tities`,
-      message: '',
+      message: 'Yep, It is here',
     };
     chai
       .request(app)
-      .post('/api/v1/messages')
+      .post('/api/v2/messages')
       .send(message)
       .end((err, res) => {
         expect(res).to.have.status(400);

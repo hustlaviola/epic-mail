@@ -13,7 +13,7 @@ const createUsersTable = `
 const messagesTable = `
   CREATE TABLE IF NOT EXISTS messages(
     id SERIAL PRIMARY KEY NOT NULL,
-    user_id INTEGER NOT NULL,
+    user_id INTEGER,
     createdon TIMESTAMP WITH TIME ZONE DEFAULT now(),
     subject VARCHAR (255),
     message VARCHAR NOT NULL,
