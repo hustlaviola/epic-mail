@@ -35,4 +35,8 @@ router.get('/messages/unread',
 router.get('/messages/sent',
   MessageController.getMails);
 
+router.get('/messages/:id',
+  MessageValidator.validateId,
+  MessageController.getMessage);
+
 export default router;
