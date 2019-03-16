@@ -115,6 +115,32 @@ class MessageController {
       });
     });
   }
+
+  /**
+  * @method deleteMessage
+  * @description Delete a specific messages
+  * @static
+  * @param {object} req - The request object
+  * @param {object} res - The response object
+  * @returns {object} JSON response
+  * @memberof MessageController
+  */
+  static deleteMessage(req, res) {
+    const { id } = req.params;
+
+    const query = 'DELETE FROM messages WHERE id = $1';
+
+    pool.query(query, [id], err => {
+      if (err) {
+        return ErrorHandler.databaseError(res);
+      }
+
+      res.status(200).send({
+        status: res.statusCode,
+        data: [{ message: 'Message record has been deleted' }],
+      });
+    });
+  }
 }
 
 export default MessageController;
