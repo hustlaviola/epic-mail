@@ -3,6 +3,8 @@ import UserValidator from '../middlewares/UserValidator';
 import MessageValidator from '../middlewares/MessageValidator';
 import UserController from '../controllers/UserController';
 import MessageController from '../controllers/MessageController';
+import GroupController from '../controllers/GroupController';
+import GroupValidator from '../middlewares/GroupValidator';
 
 const router = express.Router();
 
@@ -43,5 +45,9 @@ router.get('/messages/:id',
 router.delete('/messages/:id',
   MessageValidator.validateId,
   MessageController.deleteMessage);
+
+router.post('/groups',
+  GroupValidator.validateCreateGroup,
+  GroupController.createGroup);
 
 export default router;
