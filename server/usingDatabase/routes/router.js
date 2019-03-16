@@ -29,4 +29,7 @@ router.post('/messages',
 router.get('/messages',
   MessageController.getMessages);
 
+router.get('/messages/unread',
+  MessageController.getMails);
+
 export default router;

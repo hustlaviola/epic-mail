@@ -52,6 +52,30 @@ const createMessage = `
     '2',
     'unread')
   RETURNING *;
+
+  INSERT INTO messages(user_id,
+    subject,
+    message,
+    parentmessageid,
+    status)
+  VALUES('1',
+    'Election News',
+    'lorem ipsum tities',
+    '2',
+    'sent')
+  RETURNING *;
+
+  INSERT INTO messages(user_id,
+    subject,
+    message,
+    parentmessageid,
+    status)
+  VALUES('1',
+    'Election News',
+    'lorem ipsum tities',
+    '2',
+    'sent')
+  RETURNING *;
 `;
 
 const createSeedsQuery = `${createUser}${createMessage}`;
