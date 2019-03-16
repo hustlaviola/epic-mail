@@ -32,4 +32,7 @@ router.get('/messages',
 router.get('/messages/unread',
   MessageController.getMails);
 
+router.get('/messages/sent',
+  MessageController.getMails);
+
 export default router;
