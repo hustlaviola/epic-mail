@@ -111,4 +111,54 @@ describe('/GET Messages routes', () => {
         done(err);
       });
   });
+
+  it('should return an error if id is invalid', done => {
+    const message = {
+      id: 'tt',
+    };
+    chai
+      .request(app)
+      .get(`/api/v2/messages/${message.id}`)
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+        expect(res.body).to.be.an('object');
+        expect(res.body).to.have.property('error')
+          .eql('The given id is invalid');
+        done(err);
+      });
+  });
+
+  it('should return an error if message does not exist', done => {
+    const message = {
+      id: 177,
+    };
+    chai
+      .request(app)
+      .get(`/api/v2/messages/${message.id}`)
+      .end((err, res) => {
+        expect(res).to.have.status(404);
+        expect(res.body).to.be.an('object');
+        expect(res.body).to.have.property('error')
+          .eql('Message record does not exist');
+        done(err);
+      });
+  });
+
+  it('should fetch a specific email record', done => {
+    const message = {
+      id: 1,
+    };
+    chai
+      .request(app)
+      .get(`/api/v2/messages/${message.id}`)
+      .end((err, res) => {
+        expect(res).to.have.status(200);
+        expect(res.body).to.be.an('object');
+        expect(res.body.data).to.be.an('array');
+        expect(res.body.data[0]).to.have.property('subject');
+        expect(res.body.data[0]).to.have.property('message');
+        expect(res.body.data[0]).to.have.property('status');
+        done(err);
+      });
+  });
 });

@@ -90,6 +90,31 @@ class MessageController {
       });
     });
   }
+
+  /**
+  * @method getMessage
+  * @description Retrieve a specific message
+  * @static
+  * @param {object} req - The request object
+  * @param {object} res - The response object
+  * @returns {object} JSON response
+  * @memberof MessageController
+  */
+  static getMessage(req, res) {
+    const { id } = req.params;
+
+    const query = 'SELECT * FROM messages WHERE id = $1';
+    pool.query(query, [id], (err, data) => {
+      if (err) {
+        return ErrorHandler.databaseError(res);
+      }
+
+      return res.status(200).send({
+        status: res.statusCode,
+        data: data.rows,
+      });
+    });
+  }
 }
 
 export default MessageController;
