@@ -1,6 +1,8 @@
 import express from 'express';
 import UserValidator from '../middlewares/UserValidator';
+import MessageValidator from '../middlewares/MessageValidator';
 import UserController from '../controllers/UserController';
+import MessageController from '../controllers/MessageController';
 
 const router = express.Router();
 
@@ -19,4 +21,9 @@ router.post('/auth/signup',
 router.post('/auth/login',
   UserValidator.validateSignIn,
   UserController.signIn);
+
+router.post('/messages',
+  MessageValidator.validatePost,
+  MessageController.postMessage);
+
 export default router;
