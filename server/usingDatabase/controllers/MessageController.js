@@ -63,6 +63,33 @@ class MessageController {
       });
     });
   }
+
+  /**
+  * @method getMails
+  * @description Retrieve all sent or unread messages
+  * @static
+  * @param {object} req - The request object
+  * @param {object} res - The response object
+  * @returns {object} JSON response
+  * @memberof MessageController
+  */
+  static getMails(req, res) {
+    const mailType = req.url.split('/')[2];
+
+    const value = [mailType];
+    const query = 'SELECT * FROM messages WHERE status = $1';
+
+    pool.query(query, value, (err, data) => {
+      if (err) {
+        return ErrorHandler.databaseError(res);
+      }
+      const mails = data.rows;
+      return res.status(200).send({
+        status: res.statusCode,
+        data: mails,
+      });
+    });
+  }
 }
 
 export default MessageController;
