@@ -39,6 +39,30 @@ class MessageController {
       });
     });
   }
+
+  /**
+  * @method postMessage
+  * @description Create a new message
+  * @static
+  * @param {object} req - The request object
+  * @param {object} res - The response object
+  * @returns {object} JSON response
+  * @memberof MessageController
+  */
+  static getMessages(req, res) {
+    const values = ['read', 'unread'];
+    const query = 'SELECT * FROM messages WHERE status = $1 OR status = $2';
+
+    pool.query(query, values, (err, data) => {
+      if (err) {
+        return ErrorHandler.databaseError(res);
+      }
+      return res.status(200).send({
+        status: res.statusCode,
+        data: data.rows,
+      });
+    });
+  }
 }
 
 export default MessageController;
