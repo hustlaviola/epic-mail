@@ -362,7 +362,7 @@ describe('/POST Login route', () => {
 
   it('should return an error if password field is empty', done => {
     const loginDetails = {
-      email: 'viola10@gmail.com',
+      email: 'viola1@gmail.com',
       password: '',
     };
     chai
@@ -380,7 +380,7 @@ describe('/POST Login route', () => {
 
   it('should return an error if password field is less than 6 characters', done => {
     const loginDetails = {
-      email: 'viola10@gmail.com',
+      email: 'viola1@gmail.com',
       password: 'viola',
     };
     chai
@@ -416,7 +416,7 @@ describe('/POST Login route', () => {
 
   it('should return an error if email does not match password', done => {
     const loginDetails = {
-      email: 'viola10@gmail.com',
+      email: 'viola1@gmail.com',
       password: 'viola12',
     };
     chai
@@ -427,15 +427,15 @@ describe('/POST Login route', () => {
         expect(res).to.have.status(400);
         expect(res.body).to.be.an('object');
         expect(res.body).to.have.property('error')
-          .eql('Invalid details! Email or password is incorrect');
+          .eql('Password is incorrect');
         done(err);
       });
   });
 
   it('should log user in if details are valid', done => {
     const loginDetails = {
-      email: 'viola10@gmail.com',
-      password: 'viola10',
+      email: 'viola1@gmail.com',
+      password: 'vvvvvv',
     };
     chai
       .request(app)
