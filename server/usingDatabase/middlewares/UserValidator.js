@@ -94,41 +94,6 @@ class UserValidator {
     }
     return next();
   }
-
-  /**
-  * @method validateSignIn
-  * @description Check if login credentials are valid
-  * @static
-  * @param {object} req - The request object
-  * @param {object} res - The response object
-  * @param {object} next
-  * @returns {object} next
-  * @memberof UserValidator
-  */
-  static validateSignIn(req, res, next) {
-    const regEx = Helper.regEx();
-    const {
-      email,
-      password,
-    } = req.body;
-
-    let error;
-
-    if (!email) {
-      error = 'email field cannot be empty';
-    } else if (!regEx.email.test(email)) {
-      error = 'Invalid email format';
-    } else if (!password) {
-      error = 'password field cannot be empty';
-    } else if (password.length < 6) {
-      error = 'password must be at least 6 characters';
-    }
-
-    if (error) {
-      return ErrorHandler.validationError(res, 400, error);
-    }
-    return next();
-  }
 }
 
 export default UserValidator;
