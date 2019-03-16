@@ -57,10 +57,9 @@ describe('/POST Messages route', () => {
       .end((err, res) => {
         expect(res).to.have.status(201);
         expect(res.body).to.be.an('object');
-        expect(res.body.data).to.be.an('object');
-        expect(res.body.data).to.have.property('subject')
+        expect(res.body.data[0]).to.have.property('subject')
           .eql(message.subject);
-        expect(res.body.data).to.have.property('status');
+        expect(res.body.data[0]).to.have.property('status');
         done(err);
       });
   });

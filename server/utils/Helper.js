@@ -51,16 +51,16 @@ class Helper {
    * @method regEx
    * @description contain regular expressions for validating user input
    * @static
-   * @returns {boolean} boolean response
+   * @returns {object} json response
    * @memberof Helper
    */
   static regEx() {
     return {
       id: /^[1-9](\d+)?$/,
       name: /^[a-zA-Z]{3,30}$/,
+      groupname: /^[\w\s]+$/,
       email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
       phonenumber: /^\+?[0-9]{11,14}$/,
-      username: /^[\w]{3,30}$/,
     };
   }
 }
