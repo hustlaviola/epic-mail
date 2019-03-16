@@ -26,4 +26,7 @@ router.post('/messages',
   MessageValidator.validatePost,
   MessageController.postMessage);
 
+router.get('/messages',
+  MessageController.getMessages);
+
 export default router;

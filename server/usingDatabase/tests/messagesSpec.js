@@ -65,3 +65,20 @@ describe('/POST Messages route', () => {
       });
   });
 });
+
+describe('/GET Messages routes', () => {
+  it('should fetch all received emails', done => {
+    chai
+      .request(app)
+      .get('/api/v2/messages')
+      .end((err, res) => {
+        expect(res).to.have.status(200);
+        expect(res.body).to.be.an('object');
+        expect(res.body.data).to.be.an('array');
+        expect(res.body.data[0]).to.have.property('subject');
+        expect(res.body.data[0]).to.have.property('message');
+        expect(res.body.data[0]).to.have.property('status').eql('unread');
+        done(err);
+      });
+  });
+});
