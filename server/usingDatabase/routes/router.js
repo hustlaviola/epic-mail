@@ -57,11 +57,19 @@ router.delete('/messages/:id',
 
 router.post('/groups',
   Auth.userAuth,
-  GroupValidator.validateCreateGroup,
+  GroupValidator.validateGroupName,
   GroupController.createGroup);
 
 router.get('/groups',
   Auth.userAuth,
   GroupController.getGroups);
+
+router.patch('/groups/:id/name',
+  Auth.userAuth,
+  GroupValidator.validateGroupName,
+  GroupValidator.validateExistingGroup,
+  GroupValidator.validateMember,
+  GroupValidator.validateAdmin,
+  GroupController.updateGroupName);
 
 export default router;
