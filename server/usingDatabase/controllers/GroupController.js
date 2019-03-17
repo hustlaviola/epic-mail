@@ -14,7 +14,7 @@ class GroupController {
   * @param {object} req - The request object
   * @param {object} res - The response object
   * @returns {object} JSON response
-  * @memberof MessageController
+  * @memberof GroupController
   */
   static createGroup(req, res) {
     const { id } = req.user;
@@ -26,19 +26,18 @@ class GroupController {
     let groupId;
     const createdOn = new Date();
 
-    const values = [name, description, 'admin', createdOn];
-    const query = `INSERT INTO groups(name, description, role, createdon)
-      VALUES($1, $2, $3, $4) RETURNING *`;
+    const values = [name, description, createdOn];
+    const query = `INSERT INTO groups(name, description, createdon)
+      VALUES($1, $2, $3) RETURNING *`;
 
-    const query2 = `INSERT INTO group_members(group_id, member_id)
-      VALUES($1, $2) RETURNING *`;
-
+    const query2 = `INSERT INTO group_members(group_id, member_id, role)
+      VALUES($1, $2, $3)`;
     pool.query(query, values, (err, data) => {
       if (err) {
         return ErrorHandler.databaseError(res);
       }
       groupId = data.rows[0].id;
-      const values2 = [groupId, id];
+      const values2 = [groupId, id, 'admin'];
       pool.query(query2, values2, error => {
         if (error) {
           return ErrorHandler.databaseError(res);
@@ -47,6 +46,32 @@ class GroupController {
       return res.status(201).send({
         status: res.statusCode,
         data: [data.rows[0]],
+      });
+    });
+  }
+
+  /**
+  * @method getGroups
+  * @description Create a new group
+  * @static
+  * @param {object} req - The request object
+  * @param {object} res - The response object
+  * @returns {object} JSON response
+  * @memberof GroupController
+  */
+  static getGroups(req, res) {
+    const { id } = req.user;
+
+    const query = `SELECT groups.id, groups.name, group_members.role FROM groups, group_members
+      WHERE groups.id = group_members.group_id AND member_id = $1`;
+    pool.query(query, [id], (err, data) => {
+      if (err) {
+        return ErrorHandler.databaseError(res);
+      }
+
+      return res.status(200).send({
+        status: res.statusCode,
+        data: data.rows,
       });
     });
   }

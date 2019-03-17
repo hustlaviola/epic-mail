@@ -30,7 +30,7 @@ describe('/POST Group route', () => {
     };
     chai
       .request(app)
-      .post('/api/v2/messages')
+      .post('/api/v2/groups')
       .set('authorization', '')
       .send(group)
       .end((err, res) => {
@@ -49,7 +49,7 @@ describe('/POST Group route', () => {
     };
     chai
       .request(app)
-      .post('/api/v2/messages')
+      .post('/api/v2/groups')
       .set('authorization', 'urgjrigriirkjwUHJFRFFJrgfr')
       .send(group)
       .end((err, res) => {
@@ -133,6 +133,50 @@ describe('/POST Group route', () => {
         expect(res.body).to.be.an('object');
         expect(res.body.data[0]).to.have.property('name')
           .eql(group.name);
+        done(err);
+      });
+  });
+});
+
+describe('/GET Group route', () => {
+  it('should return an error if user is not authenticated', done => {
+    chai
+      .request(app)
+      .get('/api/v2/groups')
+      .set('authorization', '')
+      .end((err, res) => {
+        expect(res).to.have.status(401);
+        expect(res.body).to.be.an('object');
+        expect(res.body).to.have.property('error')
+          .eql('You are not logged in');
+        done(err);
+      });
+  });
+
+  it('should return an error if token cannot be authenticated', done => {
+    chai
+      .request(app)
+      .get('/api/v2/groups')
+      .set('authorization', 'urgjrigriirkjwUHJFRFFJrgfr')
+      .end((err, res) => {
+        expect(res).to.have.status(401);
+        expect(res.body).to.be.an('object');
+        expect(res.body).to.have.property('error')
+          .eql('Authentication failed');
+        done(err);
+      });
+  });
+
+  it('should retrieve all groups the authenticated user belongs to', done => {
+    chai
+      .request(app)
+      .get('/api/v2/groups')
+      .set('authorization', `Bearer ${userToken}`)
+      .end((err, res) => {
+        expect(res).to.have.status(200);
+        expect(res.body).to.be.an('object');
+        expect(res.body.data[0]).to.have.property('name');
+        expect(res.body.data[0]).to.have.property('role');
         done(err);
       });
   });

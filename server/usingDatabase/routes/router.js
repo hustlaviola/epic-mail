@@ -60,4 +60,8 @@ router.post('/groups',
   GroupValidator.validateCreateGroup,
   GroupController.createGroup);
 
+router.get('/groups',
+  Auth.userAuth,
+  GroupController.getGroups);
+
 export default router;

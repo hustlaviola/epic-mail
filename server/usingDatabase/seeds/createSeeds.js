@@ -104,57 +104,79 @@ const createMessage = `
 
 const createGroup = `
   INSERT INTO groups(name,
-    description,
-    role)
+    description)
   VALUES('Leadership Forum',
-    'The group of leaders',
-    'owner')
+    'The group of leaders')
   RETURNING *;
 
   INSERT INTO groups(name,
-    description,
-    role)
+    description)
   VALUES('Andelans',
-    'We love EPIC',
-    'admin')
+    'We love EPIC')
+  RETURNING *;
+
+  INSERT INTO groups(name,
+    description)
+  VALUES('Liverpool',
+    'Anfield is my home')
   RETURNING *;
 `;
 
 const createGroupMember = `
   INSERT INTO group_members(group_id,
-    member_id)
+    member_id,
+    role)
   VALUES('1',
-    '1')
+    '1',
+    'admin')
   RETURNING *;
 
   INSERT INTO group_members(group_id,
-    member_id)
+    member_id,
+    role)
   VALUES('1',
-    '2')
+    '2',
+    'member')
   RETURNING *;
   
   INSERT INTO group_members(group_id,
-    member_id)
+    member_id,
+    role)
   VALUES('1',
-    '3')
+    '3',
+    'member')
   RETURNING *;
 
   INSERT INTO group_members(group_id,
-    member_id)
+    member_id,
+    role)
   VALUES('2',
-    '1')
+    '3',
+    'admin')
   RETURNING *;
   
   INSERT INTO group_members(group_id,
-    member_id)
+    member_id,
+    role)
   VALUES('2',
-    '2')
+    '2',
+    'member')
   RETURNING *;
 
   INSERT INTO group_members(group_id,
-    member_id)
+    member_id,
+    role)
   VALUES('2',
-    '3')
+    '1',
+    'member')
+  RETURNING *;
+
+  INSERT INTO group_members(group_id,
+    member_id,
+    role)
+  VALUES('3',
+    '2',
+    'admin')
   RETURNING *;
 `;
 
