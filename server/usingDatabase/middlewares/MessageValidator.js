@@ -45,14 +45,16 @@ class MessageValidator {
   */
   static validateId(req, res, next) {
     const regEx = Helper.regEx();
+    const userId = req.user.id;
     const { id } = req.params;
+    const values = [userId, id];
 
     if (!regEx.id.test(id) || (id === '0')) {
       return ErrorHandler.validationError(res, 400, 'The given id is invalid');
     }
 
-    const query = 'SELECT * FROM messages WHERE id = $1';
-    pool.query(query, [id], (err, data) => {
+    const query = 'SELECT * FROM messages WHERE user_id = $1 AND id = $2';
+    pool.query(query, values, (err, data) => {
       if (err) {
         return ErrorHandler.databaseError(res);
       }

@@ -6,7 +6,61 @@ chai.use(chaiHttp);
 
 const { expect } = chai;
 
+let userToken;
+
 describe('/POST Group route', () => {
+  before(done => {
+    chai
+      .request(app)
+      .post('/api/v2/auth/login')
+      .send({
+        email: 'viola1@gmail.com',
+        password: 'vvvvvv',
+      })
+      .end((err, res) => {
+        userToken = res.body.data[0].token;
+        done(err);
+      });
+  });
+
+  it('should return an error if user is not authenticated', done => {
+    const group = {
+      name: '',
+      description: 'Yep, It is here, our new group',
+    };
+    chai
+      .request(app)
+      .post('/api/v2/messages')
+      .set('authorization', '')
+      .send(group)
+      .end((err, res) => {
+        expect(res).to.have.status(401);
+        expect(res.body).to.be.an('object');
+        expect(res.body).to.have.property('error')
+          .eql('You are not logged in');
+        done(err);
+      });
+  });
+
+  it('should return an error if token cannot be authenticated', done => {
+    const group = {
+      name: '',
+      description: 'Yep, It is here, our new group',
+    };
+    chai
+      .request(app)
+      .post('/api/v2/messages')
+      .set('authorization', 'urgjrigriirkjwUHJFRFFJrgfr')
+      .send(group)
+      .end((err, res) => {
+        expect(res).to.have.status(401);
+        expect(res.body).to.be.an('object');
+        expect(res.body).to.have.property('error')
+          .eql('Authentication failed');
+        done(err);
+      });
+  });
+
   it('should return an error if name field is empty', done => {
     const group = {
       name: '',
@@ -15,6 +69,7 @@ describe('/POST Group route', () => {
     chai
       .request(app)
       .post('/api/v2/groups')
+      .set('authorization', `Bearer ${userToken}`)
       .send(group)
       .end((err, res) => {
         expect(res).to.have.status(400);
@@ -33,6 +88,7 @@ describe('/POST Group route', () => {
     chai
       .request(app)
       .post('/api/v2/groups')
+      .set('authorization', `Bearer ${userToken}`)
       .send(group)
       .end((err, res) => {
         expect(res).to.have.status(400);
@@ -51,6 +107,7 @@ describe('/POST Group route', () => {
     chai
       .request(app)
       .post('/api/v2/groups')
+      .set('authorization', `Bearer ${userToken}`)
       .send(group)
       .end((err, res) => {
         expect(res).to.have.status(400);
@@ -69,6 +126,7 @@ describe('/POST Group route', () => {
     chai
       .request(app)
       .post('/api/v2/groups')
+      .set('authorization', `Bearer ${userToken}`)
       .send(group)
       .end((err, res) => {
         expect(res).to.have.status(201);

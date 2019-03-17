@@ -70,7 +70,7 @@ const createMessage = `
     message,
     parentmessageid,
     status)
-  VALUES('1',
+  VALUES('2',
     'Election News',
     'lorem ipsum tities',
     '2',
@@ -94,7 +94,7 @@ const createMessage = `
     message,
     parentmessageid,
     status)
-  VALUES('1',
+  VALUES('2',
     'Election News',
     'lorem ipsum tities',
     '2',
@@ -104,65 +104,57 @@ const createMessage = `
 
 const createGroup = `
   INSERT INTO groups(name,
-    description)
+    description,
+    role)
   VALUES('Leadership Forum',
-    'The group of leaders')
+    'The group of leaders',
+    'owner')
   RETURNING *;
 
   INSERT INTO groups(name,
-    description)
+    description,
+    role)
   VALUES('Andelans',
-    'We love EPIC')
+    'We love EPIC',
+    'admin')
   RETURNING *;
 `;
 
 const createGroupMember = `
   INSERT INTO group_members(group_id,
-    member_id,
-    role)
+    member_id)
   VALUES('1',
-    '1',
-    'owner')
+    '1')
   RETURNING *;
 
   INSERT INTO group_members(group_id,
-    member_id,
-    role)
+    member_id)
   VALUES('1',
-    '2',
-    'admin')
+    '2')
   RETURNING *;
   
   INSERT INTO group_members(group_id,
-    member_id,
-    role)
+    member_id)
   VALUES('1',
-    '3',
-    'member')
+    '3')
   RETURNING *;
 
   INSERT INTO group_members(group_id,
-    member_id,
-    role)
+    member_id)
   VALUES('2',
-    '1',
-    'member')
+    '1')
   RETURNING *;
   
   INSERT INTO group_members(group_id,
-    member_id,
-    role)
+    member_id)
   VALUES('2',
-    '2',
-    'admin')
+    '2')
   RETURNING *;
 
   INSERT INTO group_members(group_id,
-    member_id,
-    role)
+    member_id)
   VALUES('2',
-    '3',
-    'owner')
+    '3')
   RETURNING *;
 `;
 

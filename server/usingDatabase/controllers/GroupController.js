@@ -17,6 +17,7 @@ class GroupController {
   * @memberof MessageController
   */
   static createGroup(req, res) {
+    const { id } = req.user;
     let { name, description } = req.body;
 
     name = name.trim();
@@ -25,11 +26,11 @@ class GroupController {
     let groupId;
     const createdOn = new Date();
 
-    const values = [name, description, createdOn];
-    const query = `INSERT INTO groups(name, description, createdon)
-      VALUES($1, $2, $3) RETURNING *`;
+    const values = [name, description, 'admin', createdOn];
+    const query = `INSERT INTO groups(name, description, role, createdon)
+      VALUES($1, $2, $3, $4) RETURNING *`;
 
-    const query2 = `INSERT INTO group_members(group_id, role)
+    const query2 = `INSERT INTO group_members(group_id, member_id)
       VALUES($1, $2) RETURNING *`;
 
     pool.query(query, values, (err, data) => {
@@ -37,7 +38,7 @@ class GroupController {
         return ErrorHandler.databaseError(res);
       }
       groupId = data.rows[0].id;
-      const values2 = [groupId, 'owner'];
+      const values2 = [groupId, id];
       pool.query(query2, values2, error => {
         if (error) {
           return ErrorHandler.databaseError(res);
