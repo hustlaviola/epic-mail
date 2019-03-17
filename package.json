@@ -8,8 +8,7 @@
     "start": "babel-node ./server/server",
     "dev": "nodemon ./server/server --exec babel-node",
     "migrate-db": "babel-node ./server/usingDatabase/models",
-    "seeds": "babel-node ./server/usingDatabase/seeds",
-    "seeds-delete": "babel-node ./server/usingDatabase/seeds/deleteSeeds",
+    "pretest": "babel-node ./server/usingDatabase/seeds",
     "test": "nyc mocha --require babel-register ./server/usingDatabase/tests --exit",
     "coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls"
   },

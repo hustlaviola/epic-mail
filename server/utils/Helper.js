@@ -16,7 +16,7 @@ class Helper {
    * @memberof Helper
    */
   static generateToken(data) {
-    const token = jwt.sign(data, 'secret', {
+    const token = jwt.sign(data, process.env.SECRET, {
       expiresIn: '7d',
     });
     return token;

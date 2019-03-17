@@ -17,6 +17,7 @@ class MessageController {
   * @memberof MessageController
   */
   static postMessage(req, res) {
+    const { id } = req.user;
     let { subject, message } = req.body;
 
     subject = subject.trim();
@@ -24,9 +25,9 @@ class MessageController {
 
     const createdOn = new Date();
 
-    const values = [createdOn, subject, message];
-    const query = `INSERT INTO messages(createdon, subject, message)
-      VALUES($1, $2, $3) RETURNING *`;
+    const values = [id, createdOn, subject, message];
+    const query = `INSERT INTO messages(user_id, createdon, subject, message)
+      VALUES($1, $2, $3, $4) RETURNING *`;
 
     pool.query(query, values, (err, data) => {
       if (err) {
@@ -41,8 +42,8 @@ class MessageController {
   }
 
   /**
-  * @method postMessage
-  * @description Create a new message
+  * @method getMessages
+  * @description Get all received messages
   * @static
   * @param {object} req - The request object
   * @param {object} res - The response object
@@ -50,8 +51,9 @@ class MessageController {
   * @memberof MessageController
   */
   static getMessages(req, res) {
-    const values = ['read', 'unread'];
-    const query = 'SELECT * FROM messages WHERE status = $1 OR status = $2';
+    const { id } = req.user;
+    const values = [id, 'read', 'unread'];
+    const query = 'SELECT * FROM messages WHERE user_id = $1 AND status = $2 OR status = $3';
 
     pool.query(query, values, (err, data) => {
       if (err) {
@@ -74,10 +76,11 @@ class MessageController {
   * @memberof MessageController
   */
   static getMails(req, res) {
+    const { id } = req.user;
     const mailType = req.url.split('/')[2];
 
-    const value = [mailType];
-    const query = 'SELECT * FROM messages WHERE status = $1';
+    const value = [id, mailType];
+    const query = 'SELECT * FROM messages WHERE user_id = $1 AND status = $2';
 
     pool.query(query, value, (err, data) => {
       if (err) {

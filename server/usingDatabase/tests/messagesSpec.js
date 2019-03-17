@@ -6,7 +6,61 @@ chai.use(chaiHttp);
 
 const { expect } = chai;
 
+let userToken;
+
 describe('/POST Messages route', () => {
+  before(done => {
+    chai
+      .request(app)
+      .post('/api/v2/auth/login')
+      .send({
+        email: 'viola1@gmail.com',
+        password: 'vvvvvv',
+      })
+      .end((err, res) => {
+        userToken = res.body.data[0].token;
+        done(err);
+      });
+  });
+
+  it('should return an error if user is not authenticated', done => {
+    const message = {
+      subject: 'Election News',
+      message: 'Buhari has been re-elected, PMB is on for second term',
+    };
+    chai
+      .request(app)
+      .post('/api/v2/messages')
+      .set('authorization', '')
+      .send(message)
+      .end((err, res) => {
+        expect(res).to.have.status(401);
+        expect(res.body).to.be.an('object');
+        expect(res.body).to.have.property('error')
+          .eql('You are not logged in');
+        done(err);
+      });
+  });
+
+  it('should return an error if token cannot be authenticated', done => {
+    const message = {
+      subject: 'Election News',
+      message: 'Buhari has been re-elected, PMB is on for second term',
+    };
+    chai
+      .request(app)
+      .post('/api/v2/messages')
+      .set('authorization', 'urgjrigriirkjwUHJFRFFJrgfr')
+      .send(message)
+      .end((err, res) => {
+        expect(res).to.have.status(401);
+        expect(res.body).to.be.an('object');
+        expect(res.body).to.have.property('error')
+          .eql('Authentication failed');
+        done(err);
+      });
+  });
+
   it('should return an error if SUBJECT field characters is greater than 255', done => {
     const message = {
       subject: `lorem ipsum tities lorem ipsum tities lorem ipsum tities lorem ipsum tities
@@ -17,6 +71,7 @@ describe('/POST Messages route', () => {
     chai
       .request(app)
       .post('/api/v2/messages')
+      .set('authorization', `Bearer ${userToken}`)
       .send(message)
       .end((err, res) => {
         expect(res).to.have.status(400);
@@ -35,6 +90,7 @@ describe('/POST Messages route', () => {
     chai
       .request(app)
       .post('/api/v2/messages')
+      .set('authorization', `Bearer ${userToken}`)
       .send(message)
       .end((err, res) => {
         expect(res).to.have.status(400);
@@ -53,6 +109,7 @@ describe('/POST Messages route', () => {
     chai
       .request(app)
       .post('/api/v2/messages')
+      .set('authorization', `Bearer ${userToken}`)
       .send(message)
       .end((err, res) => {
         expect(res).to.have.status(201);
@@ -66,10 +123,39 @@ describe('/POST Messages route', () => {
 });
 
 describe('/GET Messages routes', () => {
+  it('should return an error if user is not authenticated', done => {
+    chai
+      .request(app)
+      .get('/api/v2/messages')
+      .set('authorization', '')
+      .end((err, res) => {
+        expect(res).to.have.status(401);
+        expect(res.body).to.be.an('object');
+        expect(res.body).to.have.property('error')
+          .eql('You are not logged in');
+        done(err);
+      });
+  });
+
+  it('should return an error if token cannot be authenticated', done => {
+    chai
+      .request(app)
+      .get('/api/v2/messages')
+      .set('authorization', 'urgjrigriirkjwUHJFRFFJrgfr')
+      .end((err, res) => {
+        expect(res).to.have.status(401);
+        expect(res.body).to.be.an('object');
+        expect(res.body).to.have.property('error')
+          .eql('Authentication failed');
+        done(err);
+      });
+  });
+
   it('should fetch all received emails', done => {
     chai
       .request(app)
       .get('/api/v2/messages')
+      .set('authorization', `Bearer ${userToken}`)
       .end((err, res) => {
         expect(res).to.have.status(200);
         expect(res.body).to.be.an('object');
@@ -85,6 +171,7 @@ describe('/GET Messages routes', () => {
     chai
       .request(app)
       .get('/api/v2/messages/unread')
+      .set('authorization', `Bearer ${userToken}`)
       .end((err, res) => {
         expect(res).to.have.status(200);
         expect(res.body).to.be.an('object');
@@ -100,6 +187,7 @@ describe('/GET Messages routes', () => {
     chai
       .request(app)
       .get('/api/v2/messages/sent')
+      .set('authorization', `Bearer ${userToken}`)
       .end((err, res) => {
         expect(res).to.have.status(200);
         expect(res.body).to.be.an('object');
@@ -118,6 +206,7 @@ describe('/GET Messages routes', () => {
     chai
       .request(app)
       .get(`/api/v2/messages/${message.id}`)
+      .set('authorization', `Bearer ${userToken}`)
       .end((err, res) => {
         expect(res).to.have.status(400);
         expect(res.body).to.be.an('object');
@@ -134,6 +223,7 @@ describe('/GET Messages routes', () => {
     chai
       .request(app)
       .get(`/api/v2/messages/${message.id}`)
+      .set('authorization', `Bearer ${userToken}`)
       .end((err, res) => {
         expect(res).to.have.status(404);
         expect(res.body).to.be.an('object');
@@ -150,6 +240,7 @@ describe('/GET Messages routes', () => {
     chai
       .request(app)
       .get(`/api/v2/messages/${message.id}`)
+      .set('authorization', `Bearer ${userToken}`)
       .end((err, res) => {
         expect(res).to.have.status(200);
         expect(res.body).to.be.an('object');
@@ -163,6 +254,40 @@ describe('/GET Messages routes', () => {
 });
 
 describe('/DELETE Messages route', () => {
+  it('should return an error if user is not authenticated', done => {
+    const message = {
+      id: 1,
+    };
+    chai
+      .request(app)
+      .delete(`/api/v2/messages/${message.id}`)
+      .set('authorization', '')
+      .end((err, res) => {
+        expect(res).to.have.status(401);
+        expect(res.body).to.be.an('object');
+        expect(res.body).to.have.property('error')
+          .eql('You are not logged in');
+        done(err);
+      });
+  });
+
+  it('should return an error if token cannot be authenticated', done => {
+    const message = {
+      id: 1,
+    };
+    chai
+      .request(app)
+      .delete(`/api/v2/messages/${message.id}`)
+      .set('authorization', 'urgjrigriirkjwUHJFRFFJrgfr')
+      .end((err, res) => {
+        expect(res).to.have.status(401);
+        expect(res.body).to.be.an('object');
+        expect(res.body).to.have.property('error')
+          .eql('Authentication failed');
+        done(err);
+      });
+  });
+
   it('should return an error if id is invalid', done => {
     const message = {
       id: 'tt',
@@ -170,6 +295,7 @@ describe('/DELETE Messages route', () => {
     chai
       .request(app)
       .delete(`/api/v2/messages/${message.id}`)
+      .set('authorization', `Bearer ${userToken}`)
       .end((err, res) => {
         expect(res).to.have.status(400);
         expect(res.body).to.be.an('object');
@@ -186,6 +312,7 @@ describe('/DELETE Messages route', () => {
     chai
       .request(app)
       .delete(`/api/v2/messages/${message.id}`)
+      .set('authorization', `Bearer ${userToken}`)
       .end((err, res) => {
         expect(res).to.have.status(404);
         expect(res.body).to.be.an('object');
@@ -202,6 +329,7 @@ describe('/DELETE Messages route', () => {
     chai
       .request(app)
       .delete(`/api/v2/messages/${message.id}`)
+      .set('authorization', `Bearer ${userToken}`)
       .end((err, res) => {
         expect(res).to.have.status(200);
         expect(res.body).to.be.an('object');
