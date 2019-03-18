@@ -92,7 +92,7 @@ class GroupValidator {
         return ErrorHandler.databaseError(res);
       }
       if (data.rowCount < 1) {
-        return ErrorHandler.validationError(res, 401, 'Only an admin can edit this group');
+        return ErrorHandler.validationError(res, 401, 'Require Admin access');
       }
       return next();
     });
