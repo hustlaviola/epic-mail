@@ -77,13 +77,11 @@ class GroupController {
   }
 
   static updateGroupName(req, res) {
-    const memberId = req.user.id;
     let { name } = req.body;
     name = name.trim();
     const { id } = req.params;
-    const values = [name, id, memberId];
+    const values = [name, id];
     const query = `UPDATE groups SET name = $1 FROM group_members WHERE groups.id = $2
-      AND groups.id = group_members.group_id AND group_members.member_id = $3
       RETURNING groups.id, groups.name, group_members.role`;
 
     pool.query(query, values, (err, data) => {
@@ -93,6 +91,24 @@ class GroupController {
       res.status(200).send({
         status: res.statusCode,
         data: [data.rows[0]],
+      });
+    });
+  }
+
+  static deleteGroup(req, res) {
+    const { id } = req.params;
+    const query = 'DELETE FROM groups WHERE id = $1';
+    const value = [id];
+
+    pool.query(query, value, err => {
+      if (err) {
+        return ErrorHandler.databaseError(res);
+      }
+      return res.status(200).send({
+        status: res.statusCode,
+        data: [{
+          message: 'Group deleted successfully',
+        }],
       });
     });
   }

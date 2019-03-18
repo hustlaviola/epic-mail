@@ -72,4 +72,11 @@ router.patch('/groups/:id/name',
   GroupValidator.validateAdmin,
   GroupController.updateGroupName);
 
+router.delete('/groups/:id',
+  Auth.userAuth,
+  GroupValidator.validateExistingGroup,
+  GroupValidator.validateMember,
+  GroupValidator.validateAdmin,
+  GroupController.deleteGroup);
+
 export default router;
