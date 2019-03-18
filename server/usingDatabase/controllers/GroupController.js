@@ -76,6 +76,15 @@ class GroupController {
     });
   }
 
+  /**
+  * @method updateGroupName
+  * @description Update a group name
+  * @static
+  * @param {object} req - The request object
+  * @param {object} res - The response object
+  * @returns {object} JSON response
+  * @memberof GroupController
+  */
   static updateGroupName(req, res) {
     let { name } = req.body;
     name = name.trim();
@@ -95,6 +104,15 @@ class GroupController {
     });
   }
 
+  /**
+  * @method deleteGroup
+  * @description Delete a group
+  * @static
+  * @param {object} req - The request object
+  * @param {object} res - The response object
+  * @returns {object} JSON response
+  * @memberof GroupController
+  */
   static deleteGroup(req, res) {
     const { id } = req.params;
     const query = 'DELETE FROM groups WHERE id = $1';
@@ -109,6 +127,33 @@ class GroupController {
         data: [{
           message: 'Group deleted successfully',
         }],
+      });
+    });
+  }
+
+  /**
+  * @method addMember
+  * @description Add new member to the group
+  * @static
+  * @param {object} req - The request object
+  * @param {object} res - The response object
+  * @returns {object} JSON response
+  * @memberof GroupController
+  */
+  static addMember(req, res) {
+    const { id } = req.params;
+    const { user } = req.body;
+
+    const query = `INSERT INTO group_members(group_id, member_id, role)
+      VALUES($1, $2, $3) RETURNING group_id, member_id, role`;
+    const values = [id, user, 'member'];
+    pool.query(query, values, (err, data) => {
+      if (err) {
+        return ErrorHandler.databaseError(res);
+      }
+      return res.status(201).send({
+        status: res.statusCode,
+        data: [data.rows[0]],
       });
     });
   }

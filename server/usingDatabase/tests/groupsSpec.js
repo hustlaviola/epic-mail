@@ -136,6 +136,141 @@ describe('/POST Group route', () => {
         done(err);
       });
   });
+
+  it('should return an error if id format is invalid', done => {
+    const group = {
+      id: 'ty',
+      user: 3,
+    };
+    chai
+      .request(app)
+      .post(`/api/v2/groups/${group.id}/users`)
+      .set('authorization', `Bearer ${userToken}`)
+      .send(group)
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+        expect(res.body).to.be.an('object');
+        expect(res.body).to.have.property('error')
+          .eql('The given id is invalid');
+        done(err);
+      });
+  });
+
+  it('should return an error if group does not exist', done => {
+    const group = {
+      id: 4567,
+      user: 3,
+    };
+    chai
+      .request(app)
+      .post(`/api/v2/groups/${group.id}/users`)
+      .set('authorization', `Bearer ${userToken}`)
+      .send(group)
+      .end((err, res) => {
+        expect(res).to.have.status(404);
+        expect(res.body).to.be.an('object');
+        expect(res.body).to.have.property('error')
+          .eql('Group does not exist');
+        done(err);
+      });
+  });
+
+  it('should return an error if user does not belong to the group', done => {
+    const group = {
+      id: 3,
+      user: 3,
+    };
+    chai
+      .request(app)
+      .post(`/api/v2/groups/${group.id}/users`)
+      .set('authorization', `Bearer ${userToken}`)
+      .send(group)
+      .end((err, res) => {
+        expect(res).to.have.status(404);
+        expect(res.body).to.be.an('object');
+        expect(res.body).to.have.property('error')
+          .eql('You do not belong to this group');
+        done(err);
+      });
+  });
+
+  it('should return an error if user is not an admin', done => {
+    const group = {
+      id: 2,
+      user: 3,
+    };
+    chai
+      .request(app)
+      .post(`/api/v2/groups/${group.id}/users`)
+      .set('authorization', `Bearer ${userToken}`)
+      .send(group)
+      .end((err, res) => {
+        expect(res).to.have.status(401);
+        expect(res.body).to.be.an('object');
+        expect(res.body).to.have.property('error')
+          .eql('Require Admin access');
+        done(err);
+      });
+  });
+
+  it('should return an error if user to be added does not exist', done => {
+    const group = {
+      id: 1,
+      user: 4567,
+    };
+    chai
+      .request(app)
+      .post(`/api/v2/groups/${group.id}/users`)
+      .set('authorization', `Bearer ${userToken}`)
+      .send(group)
+      .end((err, res) => {
+        expect(res).to.have.status(404);
+        expect(res.body).to.be.an('object');
+        expect(res.body).to.have.property('error')
+          .eql('User does not exist');
+        done(err);
+      });
+  });
+
+  it('should return an error if user is already a member of the group', done => {
+    const group = {
+      id: 1,
+      user: 2,
+    };
+    chai
+      .request(app)
+      .post(`/api/v2/groups/${group.id}/users`)
+      .set('authorization', `Bearer ${userToken}`)
+      .send(group)
+      .end((err, res) => {
+        expect(res).to.have.status(409);
+        expect(res.body).to.be.an('object');
+        expect(res.body).to.have.property('error')
+          .eql('User is already a member of this group');
+        done(err);
+      });
+  });
+
+  it('should add a user if relevant credentials are valid', done => {
+    const group = {
+      id: 1,
+      user: 3,
+    };
+    chai
+      .request(app)
+      .post(`/api/v2/groups/${group.id}/users`)
+      .set('authorization', `Bearer ${userToken}`)
+      .send(group)
+      .end((err, res) => {
+        expect(res).to.have.status(201);
+        expect(res.body).to.be.an('object');
+        expect(res.body.data[0]).to.have.property('role')
+          .eql('member');
+        expect(res.body.data[0]).to.have.property('member_id')
+          .eql(group.user);
+        done(err);
+      });
+  });
 });
 
 describe('/GET Group route', () => {

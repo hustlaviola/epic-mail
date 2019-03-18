@@ -138,14 +138,6 @@ const createGroupMember = `
     '2',
     'member')
   RETURNING *;
-  
-  INSERT INTO group_members(group_id,
-    member_id,
-    role)
-  VALUES('1',
-    '3',
-    'member')
-  RETURNING *;
 
   INSERT INTO group_members(group_id,
     member_id,

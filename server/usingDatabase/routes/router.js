@@ -79,4 +79,13 @@ router.delete('/groups/:id',
   GroupValidator.validateAdmin,
   GroupController.deleteGroup);
 
+router.post('/groups/:id/users',
+  Auth.userAuth,
+  GroupValidator.validateExistingGroup,
+  GroupValidator.validateMember,
+  GroupValidator.validateAdmin,
+  GroupValidator.validateExistingUser,
+  GroupValidator.validateExistingMember,
+  GroupController.addMember);
+
 export default router;
