@@ -116,7 +116,7 @@ describe('/POST Messages route', () => {
         expect(res.body).to.be.an('object');
         expect(res.body.data[0]).to.have.property('subject')
           .eql(message.subject);
-        expect(res.body.data[0]).to.have.property('status');
+        expect(res.body.data[0]).to.have.property('status').eql('draft');
         done(err);
       });
   });

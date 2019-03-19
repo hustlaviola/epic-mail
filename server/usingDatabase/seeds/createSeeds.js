@@ -41,55 +41,35 @@ const createUser = `
 `;
 
 const createMessage = `
-  INSERT INTO messages(user_id,
+  INSERT INTO messages(sender_id,
     subject,
     message,
-    parentmessageid,
     status)
   VALUES('1',
     'Election News',
     'lorem ipsum tities',
-    '2',
-    'unread')
-  RETURNING *;
-
-  INSERT INTO messages(user_id,
-    subject,
-    message,
-    parentmessageid,
-    status)
-  VALUES('1',
-    'Election News',
-    'lorem ipsum tities',
-    '2',
-    'read')
-  RETURNING *;
-
-  INSERT INTO messages(user_id,
-    subject,
-    message,
-    parentmessageid,
-    status)
-  VALUES('2',
-    'Election News',
-    'lorem ipsum tities',
-    '2',
-    'unread')
-  RETURNING *;
-
-  INSERT INTO messages(user_id,
-    subject,
-    message,
-    parentmessageid,
-    status)
-  VALUES('1',
-    'Election News',
-    'lorem ipsum tities',
-    '2',
     'sent')
   RETURNING *;
 
-  INSERT INTO messages(user_id,
+  INSERT INTO messages(sender_id,
+    subject,
+    message,
+    status)
+  VALUES('1',
+    'Election News',
+    'lorem ipsum tities',
+    'sent')
+  RETURNING *;
+
+  INSERT INTO messages(sender_id,
+    subject,
+    message)
+  VALUES('1',
+    'Election News',
+    'lorem ipsum tities')
+  RETURNING *;
+
+  INSERT INTO messages(sender_id,
     subject,
     message,
     parentmessageid,
@@ -99,6 +79,50 @@ const createMessage = `
     'lorem ipsum tities',
     '2',
     'sent')
+  RETURNING *;
+
+  INSERT INTO messages(sender_id,
+    subject,
+    message,
+    parentmessageid,
+    status)
+  VALUES('2',
+    'Election News',
+    'lorem ipsum tities',
+    '2',
+    'sent')
+  RETURNING *;
+`;
+
+const userMessageSeeds = `
+  INSERT INTO user_messages(message_id,
+    receiver_id)
+  VALUES('1',
+    '2')
+  RETURNING *;
+
+  INSERT INTO user_messages(message_id,
+    receiver_id)
+  VALUES('3',
+    '1')
+  RETURNING *;
+
+  INSERT INTO user_messages(message_id,
+    receiver_id)
+  VALUES('2',
+    '3')
+  RETURNING *;
+
+  INSERT INTO user_messages(message_id,
+    receiver_id)
+  VALUES('4',
+    '1')
+  RETURNING *;
+
+  INSERT INTO user_messages(message_id,
+    receiver_id)
+  VALUES('5',
+    '3')
   RETURNING *;
 `;
 
@@ -194,6 +218,7 @@ const createGroupMember = `
   RETURNING *;
 `;
 
-const createSeedsQuery = `${createUser}${createMessage}${createGroup}${createGroupMember}`;
+const createSeedsQuery = `${createUser}${createMessage}${userMessageSeeds}
+  ${createGroup}${createGroupMember}`;
 
 export default createSeedsQuery;
