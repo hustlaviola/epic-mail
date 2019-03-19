@@ -179,6 +179,39 @@ class GroupValidator {
       return next();
     });
   }
+
+  /**
+  * @method validateMemberExistence
+  * @description Check if user to be deleted is not in the group
+  * @static
+  * @param {object} req - The request object
+  * @param {object} res - The response object
+  * @param {object} next
+  * @returns {object} next
+  * @memberof GroupValidator
+  */
+  static validateMemberExistence(req, res, next) {
+    const regEx = Helper.regEx();
+    const { id } = req.params;
+    const { memberId } = req.params;
+
+    if ((!regEx.id.test(memberId) || (memberId === '0')) || (!regEx.id.test(id) || (id === '0'))) {
+      return ErrorHandler.validationError(res, 400, 'The given id is invalid');
+    }
+
+    const values = [id, memberId];
+    const query = 'SELECT * FROM group_members WHERE group_id = $1 and member_id = $2';
+
+    pool.query(query, values, (err, data) => {
+      if (err) {
+        return ErrorHandler.databaseError(res);
+      }
+      if (data.rowCount < 1) {
+        return ErrorHandler.validationError(res, 404, 'User does not exist');
+      }
+      return next();
+    });
+  }
 }
 
 export default GroupValidator;

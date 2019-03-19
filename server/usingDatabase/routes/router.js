@@ -88,4 +88,12 @@ router.post('/groups/:id/users',
   GroupValidator.validateExistingMember,
   GroupController.addMember);
 
+router.delete('/groups/:id/users/:memberId',
+  Auth.userAuth,
+  GroupValidator.validateExistingGroup,
+  GroupValidator.validateMember,
+  GroupValidator.validateAdmin,
+  GroupValidator.validateMemberExistence,
+  GroupController.deleteUser);
+
 export default router;

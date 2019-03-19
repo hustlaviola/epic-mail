@@ -120,6 +120,12 @@ const createGroup = `
   VALUES('Liverpool',
     'Anfield is my home')
   RETURNING *;
+
+  INSERT INTO groups(name,
+    description)
+  VALUES('Group4',
+    'This is group 4')
+  RETURNING *;
 `;
 
 const createGroupMember = `
@@ -169,6 +175,22 @@ const createGroupMember = `
   VALUES('3',
     '2',
     'admin')
+  RETURNING *;
+
+  INSERT INTO group_members(group_id,
+    member_id,
+    role)
+  VALUES('4',
+    '1',
+    'admin')
+  RETURNING *;
+
+  INSERT INTO group_members(group_id,
+    member_id,
+    role)
+  VALUES('4',
+    '2',
+    'member')
   RETURNING *;
 `;
 

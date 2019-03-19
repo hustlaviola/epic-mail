@@ -157,6 +157,34 @@ class GroupController {
       });
     });
   }
+
+  /**
+  * @method deleteUser
+  * @description Delete member from a group
+  * @static
+  * @param {object} req - The request object
+  * @param {object} res - The response object
+  * @returns {object} JSON response
+  * @memberof GroupController
+  */
+  static deleteUser(req, res) {
+    const { id } = req.params;
+    const { memberId } = req.params;
+
+    const values = [id, memberId];
+    const query = 'DELETE FROM group_members WHERE group_id = $1 AND member_id = $2';
+
+    pool.query(query, values, err => {
+      if (err) {
+        return ErrorHandler.databaseError(res);
+      }
+
+      return res.status(200).send({
+        status: res.statusCode,
+        data: [{ message: 'Member has been deleted' }],
+      });
+    });
+  }
 }
 
 export default GroupController;

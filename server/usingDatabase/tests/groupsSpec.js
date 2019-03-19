@@ -631,4 +631,94 @@ describe('/DELETE Group route', () => {
         done(err);
       });
   });
+
+  it('should return an error if id format is invalid', done => {
+    const group = {
+      id: 'ty',
+      memberId: 2,
+    };
+    chai
+      .request(app)
+      .delete(`/api/v2/groups/${group.id}/users/${group.memberId}`)
+      .set('authorization', `Bearer ${userToken}`)
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+        expect(res.body).to.be.an('object');
+        expect(res.body).to.have.property('error')
+          .eql('The given id is invalid');
+        done(err);
+      });
+  });
+
+  it('should return an error if group does not exist', done => {
+    const group = {
+      id: 4567,
+      memberId: 2,
+    };
+    chai
+      .request(app)
+      .delete(`/api/v2/groups/${group.id}/users/${group.memberId}`)
+      .set('authorization', `Bearer ${userToken}`)
+      .end((err, res) => {
+        expect(res).to.have.status(404);
+        expect(res.body).to.be.an('object');
+        expect(res.body).to.have.property('error')
+          .eql('Group does not exist');
+        done(err);
+      });
+  });
+
+  it('should return an error if user does not belong to the group', done => {
+    const group = {
+      id: 3,
+      memberId: 2,
+    };
+    chai
+      .request(app)
+      .delete(`/api/v2/groups/${group.id}/users/${group.memberId}`)
+      .set('authorization', `Bearer ${userToken}`)
+      .end((err, res) => {
+        expect(res).to.have.status(404);
+        expect(res.body).to.be.an('object');
+        expect(res.body).to.have.property('error')
+          .eql('You do not belong to this group');
+        done(err);
+      });
+  });
+
+  it('should return an error if user is not an admin', done => {
+    const group = {
+      id: 2,
+      memberId: 2,
+    };
+    chai
+      .request(app)
+      .delete(`/api/v2/groups/${group.id}/users/${group.memberId}`)
+      .set('authorization', `Bearer ${userToken}`)
+      .end((err, res) => {
+        expect(res).to.have.status(401);
+        expect(res.body).to.be.an('object');
+        expect(res.body).to.have.property('error')
+          .eql('Require Admin access');
+        done(err);
+      });
+  });
+
+  it('should delete a user if all relevant details are valid', done => {
+    const group = {
+      id: 4,
+      memberId: 2,
+    };
+    chai
+      .request(app)
+      .delete(`/api/v2/groups/${group.id}/users/${group.memberId}`)
+      .set('authorization', `Bearer ${userToken}`)
+      .end((err, res) => {
+        expect(res).to.have.status(200);
+        expect(res.body).to.be.an('object');
+        expect(res.body.data[0]).to.have.property('message')
+          .eql('Member has been deleted');
+        done(err);
+      });
+  });
 });
