@@ -38,17 +38,16 @@ router.get('/messages',
 
 router.get('/messages/unread',
   Auth.userAuth,
-  MessageController.getMails);
+  MessageController.getUnread);
 
 router.get('/messages/sent',
   Auth.userAuth,
-  MessageController.getMails);
+  MessageController.getSent);
 
 router.get('/messages/:id',
   Auth.userAuth,
   MessageValidator.validateId,
   MessageController.getMessage);
-
 
 router.delete('/messages/:id',
   Auth.userAuth,
