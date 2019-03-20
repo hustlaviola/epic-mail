@@ -83,9 +83,8 @@ router.post('/groups/:id/users',
   GroupValidator.validateExistingGroup,
   GroupValidator.validateMember,
   GroupValidator.validateAdmin,
-  GroupValidator.validateExistingUser,
-  GroupValidator.validateExistingMember,
-  GroupController.addMember);
+  GroupValidator.validateEmailsFormat,
+  GroupController.addMembers);
 
 router.delete('/groups/:id/users/:memberId',
   Auth.userAuth,

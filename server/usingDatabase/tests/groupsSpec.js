@@ -14,7 +14,7 @@ describe('/POST Group route', () => {
       .request(app)
       .post('/api/v2/auth/login')
       .send({
-        email: 'viola1@gmail.com',
+        email: 'viola1@epicmail.com',
         password: 'vvvvvv',
       })
       .end((err, res) => {
@@ -140,7 +140,7 @@ describe('/POST Group route', () => {
   it('should return an error if id format is invalid', done => {
     const group = {
       id: 'ty',
-      user: 3,
+      emails: 'viola3@epicmail.com',
     };
     chai
       .request(app)
@@ -159,7 +159,7 @@ describe('/POST Group route', () => {
   it('should return an error if group does not exist', done => {
     const group = {
       id: 4567,
-      user: 3,
+      emails: 'viola3@epicmail.com',
     };
     chai
       .request(app)
@@ -178,7 +178,7 @@ describe('/POST Group route', () => {
   it('should return an error if user does not belong to the group', done => {
     const group = {
       id: 3,
-      user: 3,
+      emails: 'viola3@epicmail.com',
     };
     chai
       .request(app)
@@ -197,7 +197,7 @@ describe('/POST Group route', () => {
   it('should return an error if user is not an admin', done => {
     const group = {
       id: 2,
-      user: 3,
+      emails: 'viola3@epicmail.com',
     };
     chai
       .request(app)
@@ -215,8 +215,8 @@ describe('/POST Group route', () => {
 
   it('should return an error if user to be added does not exist', done => {
     const group = {
-      id: 1,
-      user: 4567,
+      id: 4,
+      emails: 'viola55@epicmail.com',
     };
     chai
       .request(app)
@@ -227,15 +227,15 @@ describe('/POST Group route', () => {
         expect(res).to.have.status(404);
         expect(res.body).to.be.an('object');
         expect(res.body).to.have.property('error')
-          .eql('User does not exist');
+          .eql(`${group.emails} does not exist`);
         done(err);
       });
   });
 
   it('should return an error if user is already a member of the group', done => {
     const group = {
-      id: 1,
-      user: 2,
+      id: 4,
+      emails: 'viola2@epicmail.com',
     };
     chai
       .request(app)
@@ -246,15 +246,15 @@ describe('/POST Group route', () => {
         expect(res).to.have.status(409);
         expect(res.body).to.be.an('object');
         expect(res.body).to.have.property('error')
-          .eql('User is already a member of this group');
+          .eql('Member(s) is already part of the group');
         done(err);
       });
   });
 
   it('should add a user if relevant credentials are valid', done => {
     const group = {
-      id: 1,
-      user: 3,
+      id: 4,
+      emails: 'viola3@epicmail.com',
     };
     chai
       .request(app)
@@ -266,8 +266,8 @@ describe('/POST Group route', () => {
         expect(res.body).to.be.an('object');
         expect(res.body.data[0]).to.have.property('role')
           .eql('member');
-        expect(res.body.data[0]).to.have.property('member_id')
-          .eql(group.user);
+        expect(res.body.data[0]).to.have.property('group_id')
+          .eql(group.id);
         done(err);
       });
   });

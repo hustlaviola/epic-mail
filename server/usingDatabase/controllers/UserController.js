@@ -36,7 +36,7 @@ class UserController {
       };
       const token = Helper.generateToken(result);
       return res.status(201).send({
-        status: res.statusCode,
+        status: 'success',
         data: [{ token }],
       });
     });
@@ -66,7 +66,7 @@ class UserController {
       };
       const token = Helper.generateToken(result);
       return res.status(200).send({
-        status: res.statusCode,
+        status: 'success',
         data: [{ token }],
       });
     });
