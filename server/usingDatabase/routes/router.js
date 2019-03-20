@@ -94,4 +94,12 @@ router.delete('/groups/:id/users/:memberId',
   GroupValidator.validateMemberExistence,
   GroupController.deleteUser);
 
+router.post('/groups/:id/messages',
+  Auth.userAuth,
+  GroupValidator.validateGroupMessageFields,
+  GroupValidator.validateExistingGroup,
+  GroupValidator.validateMember,
+  GroupValidator.validateAdmin,
+  GroupController.postGroupMessage);
+
 export default router;

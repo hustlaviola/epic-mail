@@ -38,6 +38,30 @@ const createUser = `
     '${hashed}',
     '08922334455')
   RETURNING *;
+
+  INSERT INTO users(email,
+    firstname,
+    lastname,
+    password,
+    phonenumber)
+  VALUES('viola4@epicmail.com',
+    'Alexis',
+    'Violet',
+    '${hashed}',
+    '08442334455')
+  RETURNING *;
+
+  INSERT INTO users(email,
+    firstname,
+    lastname,
+    password,
+    phonenumber)
+  VALUES('viola5@epicmail.com',
+    'John',
+    'Violet',
+    '${hashed}',
+    '08955334455')
+  RETURNING *;
 `;
 
 const createMessage = `
@@ -147,6 +171,12 @@ const createGroup = `
 
   INSERT INTO groups(name,
     description)
+  VALUES('Liverpool',
+    'Anfield is my home')
+  RETURNING *;
+
+  INSERT INTO groups(name,
+    description)
   VALUES('Group4',
     'This is group 4')
   RETURNING *;
@@ -166,6 +196,30 @@ const createGroupMember = `
     role)
   VALUES('1',
     '2',
+    'member')
+  RETURNING *;
+
+  INSERT INTO group_members(group_id,
+    member_id,
+    role)
+  VALUES('1',
+    '3',
+    'member')
+  RETURNING *;
+
+  INSERT INTO group_members(group_id,
+    member_id,
+    role)
+  VALUES('1',
+    '4',
+    'member')
+  RETURNING *;
+
+  INSERT INTO group_members(group_id,
+    member_id,
+    role)
+  VALUES('1',
+    '5',
     'member')
   RETURNING *;
 

@@ -271,6 +271,127 @@ describe('/POST Group route', () => {
         done(err);
       });
   });
+
+  it('should return an error if SUBJECT field characters is greater than 255', done => {
+    const group = {
+      id: 1,
+      subject: `lorem ipsum tities lorem ipsum tities lorem ipsum tities lorem ipsum tities
+        lorem ipsum tities lorem ipsum tities lorem ipsum tities lorem ipsum tities lorem ipsum
+        lorem ipsum titieslorem ipsum titieslorem ipsum titieslorem ipsum titieslorem ipsum tities`,
+      message: 'Yep, It is here',
+    };
+    chai
+      .request(app)
+      .post(`/api/v2/groups/${group.id}/messages`)
+      .set('authorization', `Bearer ${userToken}`)
+      .send(group)
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+        expect(res.body).to.be.an('object');
+        expect(res.body).to.have.property('error')
+          .eql(`subject contains ${group.subject.length} characters, cannot be greater than 255`);
+        done(err);
+      });
+  });
+
+  it('should return an error if MESSAGE field is empty', done => {
+    const group = {
+      id: 1,
+      subject: 'Election News',
+      message: '',
+    };
+    chai
+      .request(app)
+      .post(`/api/v2/groups/${group.id}/messages`)
+      .set('authorization', `Bearer ${userToken}`)
+      .send(group)
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+        expect(res.body).to.be.an('object');
+        expect(res.body).to.have.property('error')
+          .eql('message field cannot be empty');
+        done(err);
+      });
+  });
+
+  it('should return an error if group does not exist', done => {
+    const group = {
+      id: 66,
+      subject: 'Election News',
+      message: 'lorem ipsum titititititittiies',
+    };
+    chai
+      .request(app)
+      .post(`/api/v2/groups/${group.id}/messages`)
+      .set('authorization', `Bearer ${userToken}`)
+      .send(group)
+      .end((err, res) => {
+        expect(res).to.have.status(404);
+        expect(res.body).to.be.an('object');
+        expect(res.body).to.have.property('error')
+          .eql('Group does not exist');
+        done(err);
+      });
+  });
+
+  it('should return an error if user is not a member of the group', done => {
+    const group = {
+      id: 3,
+      subject: 'Election News',
+      message: 'lorem ipsum titititititittiies',
+    };
+    chai
+      .request(app)
+      .post(`/api/v2/groups/${group.id}/messages`)
+      .set('authorization', `Bearer ${userToken}`)
+      .send(group)
+      .end((err, res) => {
+        expect(res).to.have.status(404);
+        expect(res.body).to.be.an('object');
+        expect(res.body).to.have.property('error')
+          .eql('You do not belong to this group');
+        done(err);
+      });
+  });
+
+  it('should return an error if user is not an admin', done => {
+    const group = {
+      id: 2,
+      subject: 'Election News',
+      message: 'lorem ipsum titititititittiies',
+    };
+    chai
+      .request(app)
+      .post(`/api/v2/groups/${group.id}/messages`)
+      .set('authorization', `Bearer ${userToken}`)
+      .send(group)
+      .end((err, res) => {
+        expect(res).to.have.status(401);
+        expect(res.body).to.be.an('object');
+        expect(res.body).to.have.property('error')
+          .eql('Require Admin access');
+        done(err);
+      });
+  });
+
+  it('should send message to group members if credentials are valid', done => {
+    const group = {
+      id: 1,
+      subject: 'Election News',
+      message: 'lorem ipsum titititititittiies',
+    };
+    chai
+      .request(app)
+      .post(`/api/v2/groups/${group.id}/messages`)
+      .set('authorization', `Bearer ${userToken}`)
+      .send(group)
+      .end((err, res) => {
+        expect(res).to.have.status(201);
+        expect(res.body).to.be.an('object');
+        expect(res.body.data).to.be.an('array');
+        done(err);
+      });
+  });
 });
 
 describe('/GET Group route', () => {

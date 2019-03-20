@@ -191,6 +191,7 @@ class GroupController {
             noUser.push(email);
           }
         });
+
         const sql = `INSERT INTO group_members (group_id, member_id) VALUES
           (${id}, unnest(array[${ids}]))RETURNING group_id, member_id, role;
         `;
@@ -238,6 +239,58 @@ class GroupController {
       return res.status(200).send({
         status: 'success',
         data: [{ message: 'Member has been deleted' }],
+      });
+    });
+  }
+
+  /**
+  * @method postGroupMessage
+  * @description Create a new message
+  * @static
+  * @param {object} req - The request object
+  * @param {object} res - The response object
+  * @returns {object} JSON response
+  * @memberof GroupController
+  */
+  static postGroupMessage(req, res) {
+    const { id } = req.params;
+    const { subject } = req.body;
+    const { message } = req.body;
+    const ownerId = req.user.id;
+
+    const values = [id, 'member'];
+    const query = `SELECT member_id FROM group_members, groups WHERE id = group_id
+      AND id = $1 AND role = $2`;
+    const members = [];
+    return pool.query(query, values, (err, data) => {
+      if (err) {
+        return ErrorHandler.databaseError(res);
+      }
+      const memberIds = data.rows;
+      memberIds.forEach(member => {
+        members.push(member.member_id);
+      });
+      const vals = [ownerId, subject, message, 'sent'];
+      const sql = `INSERT INTO messages(sender_id, subject, message, status) VALUES ($1, $2, $3, $4)
+        RETURNING *;`;
+
+      return pool.query(sql, vals, (error, info) => {
+        if (error) {
+          return ErrorHandler.databaseError(res);
+        }
+        const messageId = (info.rows[0].id);
+        const sql2 = `INSERT INTO user_messages (message_id, receiver_id) VALUES
+          (${messageId}, unnest(array[${members}]));
+        `;
+        return pool.query(sql2, err2 => {
+          if (err2) {
+            return ErrorHandler.databaseError(res);
+          }
+          return res.status(201).send({
+            status: 'success',
+            data: info.rows,
+          });
+        });
       });
     });
   }
