@@ -8,7 +8,7 @@ const createUser = `
     lastname,
     password,
     phonenumber)
-  VALUES('viola1@gmail.com',
+  VALUES('viola1@epicmail.com',
     'Viola',
     'Violet',
     '${hashed}',
@@ -20,7 +20,7 @@ const createUser = `
     lastname,
     password,
     phonenumber)
-  VALUES('viola2@gmail.com',
+  VALUES('viola2@epicmail.com',
     'Georgina',
     'Violet',
     '${hashed}',
@@ -32,7 +32,7 @@ const createUser = `
     lastname,
     password,
     phonenumber)
-  VALUES('viola3@gmail.com',
+  VALUES('viola3@epicmail.com',
     'Alexa',
     'Violet',
     '${hashed}',

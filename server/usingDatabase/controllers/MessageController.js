@@ -47,7 +47,7 @@ class MessageController {
             return ErrorHandler.databaseError(res);
           }
           return res.status(201).send({
-            status: res.statusCode,
+            status: 'success',
             data: info.rows,
           });
         });
@@ -75,7 +75,7 @@ class MessageController {
         return ErrorHandler.databaseError(res);
       }
       return res.status(200).send({
-        status: res.statusCode,
+        status: 'success',
         data: data.rows,
       });
     });
@@ -104,7 +104,7 @@ class MessageController {
       }
       const mails = data.rows;
       return res.status(200).send({
-        status: res.statusCode,
+        status: 'success',
         data: mails,
       });
     });
@@ -133,7 +133,7 @@ class MessageController {
       }
       const mails = data.rows;
       return res.status(200).send({
-        status: res.statusCode,
+        status: 'success',
         data: mails,
       });
     });
@@ -174,7 +174,7 @@ class MessageController {
         }
 
         return res.status(200).send({
-          status: res.statusCode,
+          status: 'success',
           data: data.rows,
         });
       });
@@ -211,7 +211,7 @@ class MessageController {
         }
 
         res.status(200).send({
-          status: res.statusCode,
+          status: 'success',
           data: [{ message: 'Message record has been deleted' }],
         });
       });

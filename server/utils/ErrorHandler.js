@@ -16,7 +16,7 @@ class ErrorHandler {
    */
   static validationError(res, code, message) {
     return res.status(code).send({
-      status: res.statusCode,
+      status: 'error',
       error: message,
     });
   }
@@ -31,7 +31,7 @@ class ErrorHandler {
    */
   static routeError(res) {
     return res.status(404).send({
-      status: res.statusCode,
+      status: 'error',
       error: 'The requested url was not found on this server',
     });
   }
@@ -46,7 +46,7 @@ class ErrorHandler {
    */
   static databaseError(res) {
     return res.status(500).send({
-      status: res.statusCode,
+      status: 'error',
       error: 'Database Error',
     });
   }

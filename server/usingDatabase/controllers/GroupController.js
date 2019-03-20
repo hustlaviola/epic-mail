@@ -44,7 +44,7 @@ class GroupController {
         }
       });
       return res.status(201).send({
-        status: res.statusCode,
+        status: 'success',
         data: [data.rows[0]],
       });
     });
@@ -70,7 +70,7 @@ class GroupController {
       }
 
       return res.status(200).send({
-        status: res.statusCode,
+        status: 'success',
         data: data.rows,
       });
     });
@@ -98,7 +98,7 @@ class GroupController {
         return ErrorHandler.databaseError(res);
       }
       res.status(200).send({
-        status: res.statusCode,
+        status: 'success',
         data: [data.rows[0]],
       });
     });
@@ -123,7 +123,7 @@ class GroupController {
         return ErrorHandler.databaseError(res);
       }
       return res.status(200).send({
-        status: res.statusCode,
+        status: 'success',
         data: [{
           message: 'Group deleted successfully',
         }],
@@ -132,7 +132,7 @@ class GroupController {
   }
 
   /**
-  * @method addMember
+  * @method addMembers
   * @description Add new member to the group
   * @static
   * @param {object} req - The request object
@@ -140,20 +140,76 @@ class GroupController {
   * @returns {object} JSON response
   * @memberof GroupController
   */
-  static addMember(req, res) {
+  static addMembers(req, res) {
     const { id } = req.params;
-    const { user } = req.body;
-
-    const query = `INSERT INTO group_members(group_id, member_id, role)
-      VALUES($1, $2, $3) RETURNING group_id, member_id, role`;
-    const values = [id, user, 'member'];
-    pool.query(query, values, (err, data) => {
+    const { emails } = req.body;
+    const emailArray = emails.split(', ');
+    let query = `SELECT id, email FROM users WHERE email =
+      `;
+    emailArray.forEach((email, index) => {
+      if (index === emailArray.length - 1) {
+        query += `$${index + 1};`;
+      } else {
+        query += `$${index + 1} OR email = `;
+      }
+    });
+    return pool.query(query, emailArray, (err, data) => {
       if (err) {
         return ErrorHandler.databaseError(res);
       }
-      return res.status(201).send({
-        status: res.statusCode,
-        data: [data.rows[0]],
+      const ids = [];
+      const mails = [];
+      const noUser = [];
+      data.rows.forEach(info => {
+        ids.push(info.id);
+        mails.push(info.email);
+      });
+      if (!mails.length) {
+        return res.status(404).send({
+          status: 'error',
+          error: `${emailArray.join(', ')} ${emailArray.length > 1 ? 'do not' : 'does not'} exist`,
+        });
+      }
+      let query1 = `SELECT * FROM group_members, groups WHERE id = ${id} AND id = group_id
+        AND (member_id = `;
+      ids.forEach((memberId, index) => {
+        if (index === ids.length - 1) {
+          query1 += `$${index + 1});`;
+        } else {
+          query1 += `$${index + 1} OR member_id = `;
+        }
+      });
+      return pool.query(query1, ids, (err1, data1) => {
+        if (err1) {
+          return ErrorHandler.databaseError(res);
+        }
+        if (data1.rowCount > 0) {
+          return ErrorHandler.validationError(res, 409, 'Member(s) is already part of the group');
+        }
+        emailArray.forEach(email => {
+          if (!mails.includes(email)) {
+            noUser.push(email);
+          }
+        });
+        const sql = `INSERT INTO group_members (group_id, member_id) VALUES
+          (${id}, unnest(array[${ids}]))RETURNING group_id, member_id, role;
+        `;
+        return pool.query(sql, (error, info) => {
+          if (error) {
+            return ErrorHandler.databaseError(res);
+          }
+          if (!noUser.length) {
+            return res.status(201).send({
+              status: 'success',
+              data: info.rows,
+            });
+          }
+          return res.status(201).send({
+            status: 'success',
+            data: info.rows,
+            error: `${noUser.join(', ')} ${noUser.length > 1 ? 'do not' : 'does not'} exist`,
+          });
+        });
       });
     });
   }
@@ -180,7 +236,7 @@ class GroupController {
       }
 
       return res.status(200).send({
-        status: res.statusCode,
+        status: 'success',
         data: [{ message: 'Member has been deleted' }],
       });
     });

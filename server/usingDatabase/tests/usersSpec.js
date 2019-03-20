@@ -54,7 +54,7 @@ describe('/POST Signup route', () => {
       .request(app)
       .post('/api/v2/auth/signup')
       .send({
-        email: 'viola10@gmail.com',
+        email: 'viola10@epicmail.com',
         firstname: '',
         lastname: 'Violin',
         password: 'viola10',
@@ -75,7 +75,7 @@ describe('/POST Signup route', () => {
       .request(app)
       .post('/api/v2/auth/signup')
       .send({
-        email: 'viola10@gmail.com',
+        email: 'viola10@epicmail.com',
         firstname: 'Viola33',
         lastname: 'Violin',
         password: 'viola10',
@@ -96,7 +96,7 @@ describe('/POST Signup route', () => {
       .request(app)
       .post('/api/v2/auth/signup')
       .send({
-        email: 'viola10@gmail.com',
+        email: 'viola10@epicmail.com',
         firstname: 'Viola',
         lastname: '',
         password: 'viola10',
@@ -117,7 +117,7 @@ describe('/POST Signup route', () => {
       .request(app)
       .post('/api/v2/auth/signup')
       .send({
-        email: 'viola10@gmail.com',
+        email: 'viola10@epicmail.com',
         firstname: 'Viola',
         lastname: 'Violin33',
         password: 'viola10',
@@ -138,7 +138,7 @@ describe('/POST Signup route', () => {
       .request(app)
       .post('/api/v2/auth/signup')
       .send({
-        email: 'viola10@gmail.com',
+        email: 'viola10@epicmail.com',
         firstname: 'Viola',
         lastname: 'Violin',
         password: '',
@@ -159,7 +159,7 @@ describe('/POST Signup route', () => {
       .request(app)
       .post('/api/v2/auth/signup')
       .send({
-        email: 'viola10@gmail.com',
+        email: 'viola10@epicmail.com',
         firstname: 'Viola',
         lastname: 'Violin',
         password: 'vio56',
@@ -180,7 +180,7 @@ describe('/POST Signup route', () => {
       .request(app)
       .post('/api/v2/auth/signup')
       .send({
-        email: 'viola10@gmail.com',
+        email: 'viola10@epicmail.com',
         firstname: 'Viola',
         lastname: 'Violin',
         password: 'viola10',
@@ -201,7 +201,7 @@ describe('/POST Signup route', () => {
       .request(app)
       .post('/api/v2/auth/signup')
       .send({
-        email: 'viola10@gmail.com',
+        email: 'viola10@epicmail.com',
         firstname: 'Viola',
         lastname: 'Violin',
         password: 'viola10',
@@ -222,7 +222,7 @@ describe('/POST Signup route', () => {
       .request(app)
       .post('/api/v2/auth/signup')
       .send({
-        email: 'viola10@gmail.com',
+        email: 'viola10@epicmail.com',
         firstname: 'Viola',
         lastname: 'Violin',
         password: 'viola10',
@@ -243,7 +243,7 @@ describe('/POST Signup route', () => {
       .request(app)
       .post('/api/v2/auth/signup')
       .send({
-        email: 'viola10@gmail.com',
+        email: 'viola10@epicmail.com',
         firstname: 'Viola',
         lastname: 'Violin',
         password: 'viola10',
@@ -264,7 +264,7 @@ describe('/POST Signup route', () => {
       .request(app)
       .post('/api/v2/auth/signup')
       .send({
-        email: 'viola10@gmail.com',
+        email: 'viola10@epicmail.com',
         firstname: 'Viola',
         lastname: 'Violin',
         password: 'viola10',
@@ -285,7 +285,7 @@ describe('/POST Signup route', () => {
       .request(app)
       .post('/api/v2/auth/signup')
       .send({
-        email: 'viola10@gmail.com',
+        email: 'viola2@epicmail.com',
         firstname: 'Viola',
         lastname: 'Violin',
         password: 'viola10',
@@ -306,7 +306,7 @@ describe('/POST Signup route', () => {
       .request(app)
       .post('/api/v2/auth/signup')
       .send({
-        email: 'viola11@gmail.com',
+        email: 'viola7@epicmail.com',
         firstname: 'Viola',
         lastname: 'Violin',
         password: 'viola10',
@@ -344,7 +344,7 @@ describe('/POST Login route', () => {
 
   it('should return an error if email is badly formatted', done => {
     const loginDetails = {
-      email: 'viola10gmail.com',
+      email: 'viola10@gmail.com',
       password: 'viola10',
     };
     chai
@@ -362,7 +362,7 @@ describe('/POST Login route', () => {
 
   it('should return an error if password field is empty', done => {
     const loginDetails = {
-      email: 'viola1@gmail.com',
+      email: 'viola1@epicmail.com',
       password: '',
     };
     chai
@@ -380,7 +380,7 @@ describe('/POST Login route', () => {
 
   it('should return an error if password field is less than 6 characters', done => {
     const loginDetails = {
-      email: 'viola1@gmail.com',
+      email: 'viola2@epicmail.com',
       password: 'viola',
     };
     chai
@@ -398,7 +398,7 @@ describe('/POST Login route', () => {
 
   it('should return an error if email does not exist', done => {
     const loginDetails = {
-      email: 'viola54@gmail.com',
+      email: 'viola29@epicmail.com',
       password: 'viola54',
     };
     chai
@@ -416,7 +416,7 @@ describe('/POST Login route', () => {
 
   it('should return an error if email does not match password', done => {
     const loginDetails = {
-      email: 'viola1@gmail.com',
+      email: 'viola1@epicmail.com',
       password: 'viola12',
     };
     chai
@@ -434,7 +434,7 @@ describe('/POST Login route', () => {
 
   it('should log user in if details are valid', done => {
     const loginDetails = {
-      email: 'viola1@gmail.com',
+      email: 'viola1@epicmail.com',
       password: 'vvvvvv',
     };
     chai

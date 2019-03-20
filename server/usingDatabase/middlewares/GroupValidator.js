@@ -59,9 +59,9 @@ class GroupValidator {
       return ErrorHandler.validationError(res, 400, 'The given id is invalid');
     }
 
-    const query = 'SELECT * FROM groups WHERE id = $1';
+    const query = 'SELECT * FROM groups WHERE id = $1;';
 
-    pool.query(query, [id], (err, data) => {
+    return pool.query(query, [id], (err, data) => {
       if (err) {
         return ErrorHandler.databaseError(res);
       }
@@ -87,9 +87,9 @@ class GroupValidator {
     const memberId = req.user.id;
     const values = [id, memberId];
     const query = `SELECT * FROM groups, group_members WHERE groups.id = $1 
-      AND group_members.member_id = $2 AND groups.id = group_members.group_id`;
+      AND group_members.member_id = $2 AND groups.id = group_members.group_id;`;
 
-    pool.query(query, values, (err, data) => {
+    return pool.query(query, values, (err, data) => {
       if (err) {
         return ErrorHandler.databaseError(res);
       }
@@ -115,9 +115,9 @@ class GroupValidator {
     const memberId = req.user.id;
     const values = ['admin', memberId, id];
     const query = `SELECT * FROM group_members WHERE role = $1
-      AND member_id = $2 AND group_id = $3`;
+      AND member_id = $2 AND group_id = $3;`;
 
-    pool.query(query, values, (err, data) => {
+    return pool.query(query, values, (err, data) => {
       if (err) {
         return ErrorHandler.databaseError(res);
       }
@@ -129,8 +129,8 @@ class GroupValidator {
   }
 
   /**
-  * @method validateExistingUser
-  * @description Check if user exist
+  * @method validateEmailsFormat
+  * @description Check if email exists and of a valid format
   * @static
   * @param {object} req - The request object
   * @param {object} res - The response object
@@ -138,46 +138,25 @@ class GroupValidator {
   * @returns {object} next
   * @memberof GroupValidator
   */
-  static validateExistingUser(req, res, next) {
-    const { user } = req.body;
-    const query = 'SELECT * FROM users WHERE id = $1';
-
-    pool.query(query, [user], (err, data) => {
-      if (err) {
-        return ErrorHandler.databaseError(res);
+  static validateEmailsFormat(req, res, next) {
+    const regEx = Helper.regEx();
+    const { emails } = req.body;
+    const badEmails = [];
+    if (!emails) {
+      return ErrorHandler.validationError(res, 400, 'Email field cannot be empty');
+    }
+    const emailArray = emails.split(', ');
+    emailArray.forEach(email => {
+      if (!regEx.email.test(email)) {
+        badEmails.push(email);
       }
-      if (data.rowCount < 1) {
-        return ErrorHandler.validationError(res, 404, 'User does not exist');
-      }
-      return next();
     });
-  }
 
-  /**
-  * @method validateExistingMember
-  * @description Check if user to be added is already a member of the group
-  * @static
-  * @param {object} req - The request object
-  * @param {object} res - The response object
-  * @param {object} next
-  * @returns {object} next
-  * @memberof GroupValidator
-  */
-  static validateExistingMember(req, res, next) {
-    const { id } = req.params;
-    const { user } = req.body;
-    const values = [id, user];
-    const query = 'SELECT * FROM group_members WHERE group_id = $1 and member_id = $2';
-
-    pool.query(query, values, (err, data) => {
-      if (err) {
-        return ErrorHandler.databaseError(res);
-      }
-      if (data.rowCount >= 1) {
-        return ErrorHandler.validationError(res, 409, 'User is already a member of this group');
-      }
-      return next();
-    });
+    if (badEmails.length) {
+      return ErrorHandler.validationError(res, 400,
+        `${badEmails} ${badEmails.length > 1 ? 'are' : 'is'} badly formatted`);
+    }
+    return next();
   }
 
   /**

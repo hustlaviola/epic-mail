@@ -59,7 +59,7 @@ class Helper {
       id: /^[1-9](\d+)?$/,
       name: /^[a-zA-Z]{3,30}$/,
       groupname: /^[\w\s]+$/,
-      email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+      email: /^[\w]+@epicmail.com$/,
       phonenumber: /^\+?[0-9]{11,14}$/,
     };
   }

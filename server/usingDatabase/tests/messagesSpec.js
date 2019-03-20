@@ -14,7 +14,7 @@ describe('/POST Messages route', () => {
       .request(app)
       .post('/api/v2/auth/login')
       .send({
-        email: 'viola1@gmail.com',
+        email: 'viola1@epicmail.com',
         password: 'vvvvvv',
       })
       .end((err, res) => {
