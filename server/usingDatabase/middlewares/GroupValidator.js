@@ -100,6 +100,22 @@ class GroupValidator {
     });
   }
 
+  static validateGroupMessageFields(req, res, next) {
+    const { subject, message } = req.body;
+
+    if (subject.length > 255) {
+      return ErrorHandler.validationError(res, 400,
+        `subject contains ${subject.length} characters, cannot be greater than 255`);
+    }
+
+    if (!message) {
+      return ErrorHandler.validationError(res, 400,
+        'message field cannot be empty');
+    }
+
+    return next();
+  }
+
   /**
   * @method validateAdmin
   * @description Check if user is a group admin
