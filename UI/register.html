@@ -11,11 +11,13 @@
   <meta name="keywords" content="EPIC, email, message">
   <meta name="author" content="Viola">
   <link rel="stylesheet" href="./assets/css/style.css" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+    crossorigin="anonymous">
   <link rel="shortcut icon" href="./assets/img/icon.ico" />
 </head>
 
 <body>
-  <header>
+  <header class="header">
     <div class="container">
       <div id="logo">
         <a href="index.html">
@@ -30,46 +32,42 @@
       </nav>
     </div>
   </header>
-  <section class="form-section">
-    <div class="container">
-      <div class="form">
-        <h2>Create Account</h2>
-        <form>
-          <div class="form-holder">
-            <input type="text" placeholder="First Name.." class="form-unit" autofocus required>
-          </div>
-          <div class="form-holder">
-            <input type="text" placeholder="Last Name.." class="form-unit" required>
-          </div>
-          <div class="form-holder">
-            <input type="email" placeholder="Email.." class="form-unit" required>
-          </div>
-          <div class="form-holder">
-            <input type="password" placeholder="Password.." class="form-unit" required>
-          </div>
-          <div class="form-holder">
-            <input type="password" placeholder="Confirm Password.." class="form-unit" required>
-          </div>
-          <div class="form-holder">
-            <input type="text" placeholder="Username.." class="form-unit" required>
-          </div>
-          <div class="form-holder">
-            <input type="number" placeholder="Phone number.." class="form-unit" required>
-          </div>
-          <div class="form-holder">
-            <button type="submit" class="btn btn-primary">Sign Up</button>
-          </div>
-          <br>
-          <div class="form-holder">
-            <p><a href="login.html">Already have an account?<br>Sign In</a></p>
-          </div>
-        </form>
-      </div>
+  <section class="form-section flex-column flex-center">
+    <div class="form flex-column">
+      <h2>Create Account</h2>
+      <form class="flex-column auth-form">
+        <div class="form-holder">
+          <input type="text" placeholder="First Name.." id="firstname" class="form-unit" autofocus required>
+        </div>
+        <div class="form-holder">
+          <input type="text" placeholder="Last Name.." id="lastname" class="form-unit" required>
+        </div>
+        <div class="form-holder">
+          <input type="email" placeholder="Email.." id="email" class="form-unit" required>
+        </div>
+        <div class="form-holder">
+          <input type="password" placeholder="Password.." id="password" class="form-unit" required>
+        </div>
+        <div class="form-holder">
+          <input type="password" placeholder="Confirm Password.." id="confirmpassword" class="form-unit" required>
+        </div>
+        <div class="form-holder">
+          <input type="number" placeholder="Phone number.." id="phonenumber" class="form-unit mb-2" required>
+        </div>
+        <div class="form-holder">
+          <button type="submit" class="btn btn-primary">Sign Up</button>
+        </div>
+        <br>
+        <div class="form-holder">
+          <p><a href="login.html">Already have an account?<br>Sign In</a></p>
+        </div>
+      </form>
     </div>
   </section>
   <footer>
     <p>EPIC-mail. Copyright &copy; 2019</p>
   </footer>
+  <script src="./assets/js/auth.js"></script>
 </body>
 
 </html>

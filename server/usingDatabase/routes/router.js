@@ -11,10 +11,10 @@ import Auth from '../middlewares/Auth';
 
 const router = express.Router();
 
-// Handle /api/v1 endpoint
+// Handle /api/v2 endpoint
 router.get('/', (req, res) => {
   res.status(200).send({
-    message: 'Welcome to EPIC-mail API version 1',
+    message: 'Welcome to EPIC-mail API version 2',
   });
 });
 
