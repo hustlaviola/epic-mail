@@ -5,12 +5,13 @@
   "main": "./server/server.js",
   "scripts": {
     "lint": "eslint ./server --fix",
-    "start": "babel-node ./server/server",
-    "dev": "nodemon ./server/server --exec babel-node",
+    "start": "cross-env NODE_ENV=production babel-node ./server/server",
+    "dev": "cross-env NODE_ENV=development nodemon ./server/server --exec babel-node",
     "migrate-db": "babel-node ./server/usingDatabase/models",
-    "pretest": "babel-node ./server/usingDatabase/seeds",
-    "test": "nyc mocha --require babel-register ./server/usingDatabase/tests --exit",
-    "coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls"
+    "pretest": "cross-env NODE_ENV=test babel-node ./server/usingDatabase/seeds",
+    "test": "cross-env NODE_ENV=test nyc mocha --require babel-register ./server/usingDatabase/tests --exit",
+    "coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
+    "heroku-postbuild": "npm run migrate-db"
   },
   "repository": {
     "type": "git",
@@ -44,6 +45,7 @@
     "chai": "^4.2.0",
     "chai-http": "^4.2.1",
     "cors": "^2.8.5",
+    "cross-env": "^5.2.0",
     "dotenv": "^7.0.0",
     "express": "^4.16.4",
     "jsonwebtoken": "^8.5.0",

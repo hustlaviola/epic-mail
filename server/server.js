@@ -24,7 +24,7 @@ app.use('/api/v2', router);
 
 app.all('/*', (req, res) => ErrorHandler.routeError(res));
 
-const PORT = process.env.PORT || 5000;
+const { PORT } = process.env;
 app.listen(PORT);
 
 export default app;
