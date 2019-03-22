@@ -21,7 +21,11 @@ class MessageValidator {
   static validatePost(req, res, next) {
     const { id } = req.user;
     const regEx = Helper.regEx();
-    const { subject, message, email } = req.body;
+    const { email } = req.body;
+    let { subject, message } = req.body;
+    subject = subject.trim();
+    message = message.trim();
+    message = message.replace(/  +/g, ' ');
 
     if (subject.length > 255) {
       return ErrorHandler.validationError(res, 400,

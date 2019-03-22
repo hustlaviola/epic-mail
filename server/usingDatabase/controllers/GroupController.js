@@ -20,8 +20,8 @@ class GroupController {
     const { id } = req.user;
     let { name, description } = req.body;
 
-    name = name.trim();
-    description = description.trim();
+    name = name.replace(/  +/g, ' ');
+    description = description.replace(/  +/g, ' ');
 
     let groupId;
     const createdOn = new Date();
@@ -87,7 +87,7 @@ class GroupController {
   */
   static updateGroupName(req, res) {
     let { name } = req.body;
-    name = name.trim();
+    name = name.replace(/  +/g, ' ');
     const { id } = req.params;
     const values = [name, id];
     const query = `UPDATE groups SET name = $1 FROM group_members WHERE groups.id = $2

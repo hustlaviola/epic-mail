@@ -18,7 +18,11 @@ class MessageController {
   */
   static postMessage(req, res) {
     const { id } = req.user;
-    const { subject, message, email } = req.body;
+    const { email } = req.body;
+    let { subject, message } = req.body;
+    subject = subject.trim();
+    message = message.trim();
+    message = message.replace(/  +/g, ' ');
     const sql = 'SELECT id FROM users WHERE email = $1';
     const createdOn = new Date();
     const status = 'sent';

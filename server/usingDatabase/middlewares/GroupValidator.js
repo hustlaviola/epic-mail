@@ -28,6 +28,7 @@ class GroupValidator {
     }
 
     name = name.trim();
+    name = name.replace(/  +/g, ' ');
 
     if (name.length > 50 || name.length < 3) {
       return ErrorHandler.validationError(res, 400,
@@ -101,7 +102,10 @@ class GroupValidator {
   }
 
   static validateGroupMessageFields(req, res, next) {
-    const { subject, message } = req.body;
+    let { subject, message } = req.body;
+    subject = subject.trim();
+    message = message.trim();
+    message = message.replace(/  +/g, ' ');
 
     if (subject.length > 255) {
       return ErrorHandler.validationError(res, 400,
@@ -159,7 +163,7 @@ class GroupValidator {
     const { emails } = req.body;
     const badEmails = [];
     if (!emails) {
-      return ErrorHandler.validationError(res, 400, 'Email cannot be empty');
+      return ErrorHandler.validationError(res, 400, 'emails field is required');
     }
     const emailArray = emails.split(', ');
     emailArray.forEach(email => {
