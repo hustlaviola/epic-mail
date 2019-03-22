@@ -67,8 +67,8 @@ class MessageController {
   static getMessages(req, res) {
     const { id } = req.user;
     const query = `SELECT id, messages.createdon, subject, message, sender_id, receiver_id,
-      parentmessageid, user_messages.status FROM user_messages, messages
-      WHERE receiver_id = $1 AND message_id = id`;
+      parentmessageid FROM user_messages, messages
+      WHERE (receiver_id = $1 AND message_id = id) OR (sender_id = $1 AND message_id = id)`;
 
     pool.query(query, [id], (err, data) => {
       if (err) {
@@ -111,7 +111,7 @@ class MessageController {
   }
 
   /**
-  * @method getUnread
+  * @method getSent
   * @description Retrieve all unread messages
   * @static
   * @param {object} req - The request object
@@ -202,15 +202,23 @@ class MessageController {
       const userId = data.rows[0].sender_id;
       if (userId === id) {
         sql = 'DELETE FROM messages WHERE id = $1';
-      } else {
-        sql = 'DELETE FROM user_messages WHERE message_id = $1';
+        return pool.query(sql, [messageId], error => {
+          if (error) {
+            return ErrorHandler.databaseError(res);
+          }
+          return res.status(200).send({
+            status: 'success',
+            data: [{ message: 'Message record has been deleted' }],
+          });
+        });
       }
-      pool.query(sql, [messageId], error => {
+      sql = `UPDATE user_messages SET receiver_id = null FROM messages WHERE message_id = $1
+        AND receiver_id = $2;`;
+      return pool.query(sql, [messageId, id], error => {
         if (error) {
           return ErrorHandler.databaseError(res);
         }
-
-        res.status(200).send({
+        return res.status(200).send({
           status: 'success',
           data: [{ message: 'Message record has been deleted' }],
         });

@@ -127,14 +127,14 @@ const userMessageSeeds = `
 
   INSERT INTO user_messages(message_id,
     receiver_id)
-  VALUES('3',
-    '1')
+  VALUES('2',
+    '3')
   RETURNING *;
 
   INSERT INTO user_messages(message_id,
     receiver_id)
-  VALUES('2',
-    '3')
+  VALUES('3',
+    '2')
   RETURNING *;
 
   INSERT INTO user_messages(message_id,

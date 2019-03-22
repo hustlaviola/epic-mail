@@ -24,7 +24,7 @@ class GroupValidator {
 
     if (!name) {
       return ErrorHandler.validationError(res, 400,
-        'Group must have a name');
+        'name is required');
     }
 
     name = name.trim();
@@ -110,7 +110,7 @@ class GroupValidator {
 
     if (!message) {
       return ErrorHandler.validationError(res, 400,
-        'message field cannot be empty');
+        'message is required');
     }
 
     return next();
@@ -159,7 +159,7 @@ class GroupValidator {
     const { emails } = req.body;
     const badEmails = [];
     if (!emails) {
-      return ErrorHandler.validationError(res, 400, 'Email field cannot be empty');
+      return ErrorHandler.validationError(res, 400, 'Email cannot be empty');
     }
     const emailArray = emails.split(', ');
     emailArray.forEach(email => {

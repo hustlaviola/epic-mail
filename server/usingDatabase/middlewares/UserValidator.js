@@ -32,7 +32,7 @@ class UserValidator {
         if (result.email === email) {
           conflict = 'email';
         } else if (result.phonenumber === phonenumber) {
-          conflict = 'phone number';
+          conflict = 'phonenumber';
         }
         return ErrorHandler.validationError(res, 409,
           `${conflict} already exists`);
@@ -65,29 +65,29 @@ class UserValidator {
     let errorMessage;
 
     if (!email) {
-      errorMessage = 'email field cannot be empty';
+      errorMessage = 'email is required';
     } else if (!regEx.email.test(email)) {
       errorMessage = 'Invalid email format';
     } else if (!firstname) {
-      errorMessage = 'firstname field cannot be empty';
+      errorMessage = 'firstname is required';
     } else if (!regEx.name.test(firstname)) {
-      errorMessage = 'first name must be alphabets only between 3 and 30';
+      errorMessage = 'firstname must be alphabets only between 3 and 30';
     } else if (!lastname) {
-      errorMessage = 'lastname field cannot be empty';
+      errorMessage = 'lastname is required';
     } else if (!regEx.name.test(lastname)) {
-      errorMessage = 'last name must be alphabets only between 3 and 30';
+      errorMessage = 'lastname must be alphabets only between 3 and 30';
     } else if (!password) {
-      errorMessage = 'password field cannot be empty';
+      errorMessage = 'password is required';
     } else if (password.length < 6) {
       errorMessage = 'password must be at least 6 characters';
     } else if (!confirmpassword) {
-      errorMessage = 'confirm your password';
+      errorMessage = 'confirmpassword is required';
     } else if (password !== confirmpassword) {
-      errorMessage = 'password does not match';
+      errorMessage = 'confirmpassword does not match password';
     } else if (!phonenumber) {
-      errorMessage = 'phonenumber field cannot be empty';
+      errorMessage = 'phonenumber is required';
     } else if (!regEx.phonenumber.test(phonenumber)) {
-      errorMessage = 'Invalid phone number format';
+      errorMessage = 'Invalid phonenumber format';
     }
     if (errorMessage) {
       return ErrorHandler.validationError(res, 400, errorMessage);
@@ -112,11 +112,11 @@ class UserValidator {
     let error;
 
     if (!email) {
-      error = 'email field cannot be empty';
+      error = 'email is required';
     } else if (!regEx.email.test(email)) {
       error = 'Invalid email format';
     } else if (!password) {
-      error = 'password field cannot be empty';
+      error = 'password is required';
     } else if (password.length < 6) {
       error = 'password must be at least 6 characters';
     }

@@ -590,6 +590,14 @@ textarea {
   padding: 5px;
 }
 
+.spin {
+  display: none;
+}
+
+.error {
+  display: none;
+}
+
 textarea {
   padding-top: 15px;
   font-family: Arial, Helvetica, sans-serif;

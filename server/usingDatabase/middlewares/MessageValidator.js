@@ -49,7 +49,7 @@ class MessageValidator {
           }
         });
         return res.status(201).send({
-          status: res.statusCode,
+          status: 'success',
           data: data.rows,
           message: 'draft saved',
         });

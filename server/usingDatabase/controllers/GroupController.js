@@ -62,9 +62,9 @@ class GroupController {
   static getGroups(req, res) {
     const { id } = req.user;
 
-    const query = `SELECT groups.id, groups.name, group_members.role FROM groups, group_members
-      WHERE groups.id = group_members.group_id AND member_id = $1`;
-    pool.query(query, [id], (err, data) => {
+    const query = `SELECT member_id, groups.id, groups.name FROM groups, group_members
+      WHERE groups.id = group_members.group_id AND member_id = $1 AND role = $2`;
+    pool.query(query, [id, 'admin'], (err, data) => {
       if (err) {
         return ErrorHandler.databaseError(res);
       }

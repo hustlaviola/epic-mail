@@ -19,8 +19,8 @@ router.get('/', (req, res) => {
 });
 
 router.post('/auth/signup',
-  UserValidator.validateSignUp,
   UserValidator.validateExistingUser,
+  UserValidator.validateSignUp,
   UserController.signUp);
 
 router.post('/auth/login',

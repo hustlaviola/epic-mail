@@ -15,7 +15,7 @@ class Auth {
       return next();
     } catch (err) {
       return res.status(401).send({
-        status: res.statusCode,
+        status: 'error',
         error: 'Authentication failed',
       });
     }

@@ -75,7 +75,7 @@ describe('/POST Group route', () => {
         expect(res).to.have.status(400);
         expect(res.body).to.be.an('object');
         expect(res.body).to.have.property('error')
-          .eql('Group must have a name');
+          .eql('name is required');
         done(err);
       });
   });
@@ -309,7 +309,7 @@ describe('/POST Group route', () => {
         expect(res).to.have.status(400);
         expect(res.body).to.be.an('object');
         expect(res.body).to.have.property('error')
-          .eql('message field cannot be empty');
+          .eql('message is required');
         done(err);
       });
   });
@@ -432,7 +432,6 @@ describe('/GET Group route', () => {
         expect(res).to.have.status(200);
         expect(res.body).to.be.an('object');
         expect(res.body.data[0]).to.have.property('name');
-        expect(res.body.data[0]).to.have.property('role');
         done(err);
       });
   });
@@ -491,7 +490,7 @@ describe('/PATCH Group route', () => {
         expect(res).to.have.status(400);
         expect(res.body).to.be.an('object');
         expect(res.body).to.have.property('error')
-          .eql('Group must have a name');
+          .eql('name is required');
         done(err);
       });
   });

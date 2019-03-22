@@ -162,7 +162,6 @@ describe('/GET Messages routes', () => {
         expect(res.body.data).to.be.an('array');
         expect(res.body.data[0]).to.have.property('subject');
         expect(res.body.data[0]).to.have.property('message');
-        expect(res.body.data[0]).to.have.property('status').eql('unread');
         done(err);
       });
   });

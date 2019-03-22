@@ -23,7 +23,7 @@ describe('/POST Signup route', () => {
         expect(res).to.have.status(400);
         expect(res.body).to.be.an('object');
         expect(res.body).to.have.property('error')
-          .eql('email field cannot be empty');
+          .eql('email is required');
         done(err);
       });
   });
@@ -65,7 +65,7 @@ describe('/POST Signup route', () => {
         expect(res).to.have.status(400);
         expect(res.body).to.be.an('object');
         expect(res.body).to.have.property('error')
-          .eql('firstname field cannot be empty');
+          .eql('firstname is required');
         done(err);
       });
   });
@@ -86,7 +86,7 @@ describe('/POST Signup route', () => {
         expect(res).to.have.status(400);
         expect(res.body).to.be.an('object');
         expect(res.body).to.have.property('error')
-          .eql('first name must be alphabets only between 3 and 30');
+          .eql('firstname must be alphabets only between 3 and 30');
         done(err);
       });
   });
@@ -107,7 +107,7 @@ describe('/POST Signup route', () => {
         expect(res).to.have.status(400);
         expect(res.body).to.be.an('object');
         expect(res.body).to.have.property('error')
-          .eql('lastname field cannot be empty');
+          .eql('lastname is required');
         done(err);
       });
   });
@@ -128,7 +128,7 @@ describe('/POST Signup route', () => {
         expect(res).to.have.status(400);
         expect(res.body).to.be.an('object');
         expect(res.body).to.have.property('error')
-          .eql('last name must be alphabets only between 3 and 30');
+          .eql('lastname must be alphabets only between 3 and 30');
         done(err);
       });
   });
@@ -149,7 +149,7 @@ describe('/POST Signup route', () => {
         expect(res).to.have.status(400);
         expect(res.body).to.be.an('object');
         expect(res.body).to.have.property('error')
-          .eql('password field cannot be empty');
+          .eql('password is required');
         done(err);
       });
   });
@@ -191,7 +191,7 @@ describe('/POST Signup route', () => {
         expect(res).to.have.status(400);
         expect(res.body).to.be.an('object');
         expect(res.body).to.have.property('error')
-          .eql('confirm your password');
+          .eql('confirmpassword is required');
         done(err);
       });
   });
@@ -212,7 +212,7 @@ describe('/POST Signup route', () => {
         expect(res).to.have.status(400);
         expect(res.body).to.be.an('object');
         expect(res.body).to.have.property('error')
-          .eql('password does not match');
+          .eql('confirmpassword does not match password');
         done(err);
       });
   });
@@ -233,7 +233,7 @@ describe('/POST Signup route', () => {
         expect(res).to.have.status(400);
         expect(res.body).to.be.an('object');
         expect(res.body).to.have.property('error')
-          .eql('phonenumber field cannot be empty');
+          .eql('phonenumber is required');
         done(err);
       });
   });
@@ -254,7 +254,7 @@ describe('/POST Signup route', () => {
         expect(res).to.have.status(400);
         expect(res.body).to.be.an('object');
         expect(res.body).to.have.property('error')
-          .eql('Invalid phone number format');
+          .eql('Invalid phonenumber format');
         done(err);
       });
   });
@@ -317,7 +317,7 @@ describe('/POST Signup route', () => {
         expect(res).to.have.status(409);
         expect(res.body).to.be.an('object');
         expect(res.body).to.have.property('error')
-          .eql('phone number already exists');
+          .eql('phonenumber already exists');
         done(err);
       });
   });
@@ -337,7 +337,7 @@ describe('/POST Login route', () => {
         expect(res).to.have.status(400);
         expect(res.body).to.be.an('object');
         expect(res.body).to.have.property('error')
-          .eql('email field cannot be empty');
+          .eql('email is required');
         done(err);
       });
   });
@@ -373,7 +373,7 @@ describe('/POST Login route', () => {
         expect(res).to.have.status(400);
         expect(res.body).to.be.an('object');
         expect(res.body).to.have.property('error')
-          .eql('password field cannot be empty');
+          .eql('password is required');
         done(err);
       });
   });
