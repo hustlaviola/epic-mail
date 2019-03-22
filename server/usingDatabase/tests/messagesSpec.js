@@ -101,7 +101,7 @@ describe('/POST Messages route', () => {
       });
   });
 
-  it('should create a message if details are valid', done => {
+  it('should create a draft if email field is absent ', done => {
     const message = {
       subject: 'Election News',
       message: 'Buhari has been re-elected, PMB is on for second term',
@@ -117,6 +117,47 @@ describe('/POST Messages route', () => {
         expect(res.body.data[0]).to.have.property('subject')
           .eql(message.subject);
         expect(res.body.data[0]).to.have.property('status').eql('draft');
+        done(err);
+      });
+  });
+
+  it('should create a draft if email field is absent ', done => {
+    const message = {
+      subject: 'Election News',
+      message: 'Buhari has been re-elected, PMB is on for second term',
+    };
+    chai
+      .request(app)
+      .post('/api/v2/messages')
+      .set('authorization', `Bearer ${userToken}`)
+      .send(message)
+      .end((err, res) => {
+        expect(res).to.have.status(201);
+        expect(res.body).to.be.an('object');
+        expect(res.body.data[0]).to.have.property('subject')
+          .eql(message.subject);
+        expect(res.body.data[0]).to.have.property('status').eql('draft');
+        done(err);
+      });
+  });
+
+  it('should send a message if all details are valid', done => {
+    const message = {
+      email: 'viola2@epicmail.com',
+      subject: 'Election News',
+      message: 'Buhari has been re-elected, PMB is on for second term',
+    };
+    chai
+      .request(app)
+      .post('/api/v2/messages')
+      .set('authorization', `Bearer ${userToken}`)
+      .send(message)
+      .end((err, res) => {
+        expect(res).to.have.status(201);
+        expect(res.body).to.be.an('object');
+        expect(res.body.data[0]).to.have.property('subject')
+          .eql(message.subject);
+        expect(res.body.data[0]).to.have.property('status').eql('sent');
         done(err);
       });
   });

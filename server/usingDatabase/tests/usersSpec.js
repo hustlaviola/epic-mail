@@ -274,6 +274,8 @@ describe('/POST Signup route', () => {
       .end((err, res) => {
         expect(res).to.have.status(201);
         expect(res.body).to.be.an('object');
+        expect(res.body).to.have.property('status')
+          .eql('success');
         expect(res.body.data).to.be.an('array');
         expect(res.body.data[0]).to.have.property('token');
         done(err);
