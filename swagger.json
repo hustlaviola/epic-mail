@@ -14,7 +14,7 @@
     }
   },
   "host": "epic-email.herokuapp.com",
-  "basePath": "/api/v1",
+  "basePath": "/api/v2",
   "tags": [
     {
       "name": "User",
