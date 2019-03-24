@@ -246,7 +246,7 @@ describe('/POST Group route', () => {
         expect(res).to.have.status(409);
         expect(res.body).to.be.an('object');
         expect(res.body).to.have.property('error')
-          .eql('Member(s) is already part of the group');
+          .eql('Member(s) already part of the group');
         done(err);
       });
   });
@@ -432,6 +432,75 @@ describe('/GET Group route', () => {
         expect(res).to.have.status(200);
         expect(res.body).to.be.an('object');
         expect(res.body.data[0]).to.have.property('name');
+        done(err);
+      });
+  });
+
+  it('should return an error if group does not exist', done => {
+    const group = {
+      id: 66,
+    };
+    chai
+      .request(app)
+      .get(`/api/v2/groups/${group.id}/users`)
+      .set('authorization', `Bearer ${userToken}`)
+      .end((err, res) => {
+        expect(res).to.have.status(404);
+        expect(res.body).to.be.an('object');
+        expect(res.body).to.have.property('error')
+          .eql('Group does not exist');
+        done(err);
+      });
+  });
+
+  it('should return an error if user is not a member of the group', done => {
+    const group = {
+      id: 3,
+    };
+    chai
+      .request(app)
+      .get(`/api/v2/groups/${group.id}/users`)
+      .set('authorization', `Bearer ${userToken}`)
+      .end((err, res) => {
+        expect(res).to.have.status(404);
+        expect(res.body).to.be.an('object');
+        expect(res.body).to.have.property('error')
+          .eql('You do not belong to this group');
+        done(err);
+      });
+  });
+
+  it('should return an error if user is not an admin', done => {
+    const group = {
+      id: 2,
+    };
+    chai
+      .request(app)
+      .get(`/api/v2/groups/${group.id}/users`)
+      .set('authorization', `Bearer ${userToken}`)
+      .end((err, res) => {
+        expect(res).to.have.status(401);
+        expect(res.body).to.be.an('object');
+        expect(res.body).to.have.property('error')
+          .eql('Require Admin access');
+        done(err);
+      });
+  });
+
+  it('should retrieve all group members if all credentials are valid', done => {
+    const group = {
+      id: 1,
+    };
+    chai
+      .request(app)
+      .get(`/api/v2/groups/${group.id}/users`)
+      .set('authorization', `Bearer ${userToken}`)
+      .end((err, res) => {
+        expect(res).to.have.status(200);
+        expect(res.body).to.be.an('object');
+        expect(res.body.data).to.be.an('array');
+        expect(res.body).to.have.property('status')
+          .eql('success');
         done(err);
       });
   });

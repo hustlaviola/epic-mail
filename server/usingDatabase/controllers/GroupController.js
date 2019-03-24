@@ -52,7 +52,7 @@ class GroupController {
 
   /**
   * @method getGroups
-  * @description Create a new group
+  * @description Retrieve all user's groups
   * @static
   * @param {object} req - The request object
   * @param {object} res - The response object
@@ -184,7 +184,7 @@ class GroupController {
           return ErrorHandler.databaseError(res);
         }
         if (data1.rowCount > 0) {
-          return ErrorHandler.validationError(res, 409, 'Member(s) is already part of the group');
+          return ErrorHandler.validationError(res, 409, 'Member(s) already part of the group');
         }
         emailArray.forEach(email => {
           if (!mails.includes(email)) {
@@ -290,6 +290,52 @@ class GroupController {
             status: 'success',
             data: info.rows,
           });
+        });
+      });
+    });
+  }
+
+  /**
+  * @method getGroupMembers
+  * @description Retrieve all group members
+  * @static
+  * @param {object} req - The request object
+  * @param {object} res - The response object
+  * @returns {object} JSON response
+  * @memberof GroupController
+  */
+  static getGroupMembers(req, res) {
+    const { id } = req.params;
+
+    const values = [id, 'member'];
+    const query = `SELECT member_id FROM group_members, groups WHERE id = group_id
+      AND id = $1 AND role = $2`;
+    const members = [];
+    return pool.query(query, values, (err, data) => {
+      if (err) {
+        return ErrorHandler.databaseError(res);
+      }
+      const memberIds = data.rows;
+      memberIds.forEach(member => {
+        members.push(member.member_id);
+      });
+      let sql = `SELECT id, email FROM users WHERE id =
+        `;
+
+      members.forEach((memberId, index) => {
+        if (index === members.length - 1) {
+          sql += `${memberId};`;
+        } else {
+          sql += `${memberId} OR id = `;
+        }
+      });
+      pool.query(sql, (error, info) => {
+        if (error) {
+          return ErrorHandler.databaseError(res);
+        }
+        res.status(200).send({
+          status: 'success',
+          data: info.rows,
         });
       });
     });
