@@ -175,48 +175,6 @@ describe('/POST Signup route', () => {
       });
   });
 
-  it('should return an error if confirmpassword field is empty', done => {
-    chai
-      .request(app)
-      .post('/api/v2/auth/signup')
-      .send({
-        email: 'viola10@epicmail.com',
-        firstname: 'Viola',
-        lastname: 'Violin',
-        password: 'viola10',
-        confirmpassword: '',
-        phonenumber: '07022334455',
-      })
-      .end((err, res) => {
-        expect(res).to.have.status(400);
-        expect(res.body).to.be.an('object');
-        expect(res.body).to.have.property('error')
-          .eql('confirmpassword is required');
-        done(err);
-      });
-  });
-
-  it('should return an error if password does not match', done => {
-    chai
-      .request(app)
-      .post('/api/v2/auth/signup')
-      .send({
-        email: 'viola10@epicmail.com',
-        firstname: 'Viola',
-        lastname: 'Violin',
-        password: 'viola10',
-        confirmpassword: 'violds',
-        phonenumber: '07022334455',
-      })
-      .end((err, res) => {
-        expect(res).to.have.status(400);
-        expect(res.body).to.be.an('object');
-        expect(res.body).to.have.property('error')
-          .eql('confirmpassword does not match password');
-        done(err);
-      });
-  });
-
   it('should return an error if phone number field is empty', done => {
     chai
       .request(app)

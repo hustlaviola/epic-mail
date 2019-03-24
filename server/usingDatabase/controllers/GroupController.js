@@ -329,7 +329,7 @@ class GroupController {
           sql += `${memberId} OR id = `;
         }
       });
-      pool.query(sql, (error, info) => {
+      return pool.query(sql, (error, info) => {
         if (error) {
           return ErrorHandler.databaseError(res);
         }

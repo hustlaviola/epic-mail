@@ -17,7 +17,7 @@ class Helper {
    */
   static generateToken(data) {
     const token = jwt.sign(data, process.env.SECRET, {
-      expiresIn: '7d',
+      expiresIn: '365d',
     });
     return token;
   }

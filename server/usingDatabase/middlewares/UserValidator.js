@@ -58,7 +58,6 @@ class UserValidator {
       firstname,
       lastname,
       password,
-      confirmpassword,
       phonenumber,
     } = req.body;
 
@@ -80,10 +79,6 @@ class UserValidator {
       errorMessage = 'password is required';
     } else if (password.length < 6) {
       errorMessage = 'password must be at least 6 characters';
-    } else if (!confirmpassword) {
-      errorMessage = 'confirmpassword is required';
-    } else if (password !== confirmpassword) {
-      errorMessage = 'confirmpassword does not match password';
     } else if (!phonenumber) {
       errorMessage = 'phonenumber is required';
     } else if (!regEx.phonenumber.test(phonenumber)) {
