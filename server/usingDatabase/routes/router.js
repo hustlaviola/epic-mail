@@ -102,4 +102,11 @@ router.post('/groups/:id/messages',
   GroupValidator.validateAdmin,
   GroupController.postGroupMessage);
 
+router.get('/groups/:id/users',
+  Auth.userAuth,
+  GroupValidator.validateExistingGroup,
+  GroupValidator.validateMember,
+  GroupValidator.validateAdmin,
+  GroupController.getGroupMembers);
+
 export default router;
