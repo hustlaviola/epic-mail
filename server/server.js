@@ -1,5 +1,6 @@
 import express from 'express';
 import cors from 'cors';
+import path from 'path';
 import swaggerUi from 'swagger-ui-express';
 import swaggerDocument from '../swagger.json';
 import ErrorHandler from './utils/ErrorHandler';
@@ -12,6 +13,8 @@ app.use(express.json());
 app.use(express.urlencoded({
   extended: false,
 }));
+
+app.use(express.static(path.join(__dirname, '../UI')));
 
 app.get('/', (req, res) => {
   res.status(200).send({

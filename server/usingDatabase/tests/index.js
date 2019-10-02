@@ -7,17 +7,6 @@ chai.use(chaiHttp);
 const { expect } = chai;
 
 describe('Handle requests on other endpoints', () => {
-  it('should return a welcome message', done => {
-    chai
-      .request(app)
-      .get('/')
-      .end((err, res) => {
-        expect(res).to.have.status(200);
-        expect(res.body.message).to.equal('Welcome to EPIC-mail');
-        done(err);
-      });
-  });
-
   it('should return a welcome message for version 2 of the API', done => {
     chai
       .request(app)
